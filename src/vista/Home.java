@@ -12,6 +12,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import modelo.componentes.tablero.Casilla;
+import modelo.componentes.tablero.Tablero;
+
 public class Home extends Frame
 {
 	private static final long serialVersionUID = 1L;
@@ -22,35 +25,28 @@ public class Home extends Frame
 	Menu mnArchivo = new Menu("Archivo");
 	Menu mnPuntacion = new Menu("Puntuación"); 
 	Menu mnAyuda = new Menu("Ayuda");
-	
+	// Archivo
 	MenuItem miNuevoJuego = new MenuItem("Nuevo juego");
+	MenuItem miSalir = new MenuItem("Salir");
 	MenuItem miRanking10 = new MenuItem("Ranking");
 	MenuItem miManual = new MenuItem("Manual");
 	MenuItem miCreditos = new MenuItem("Créditos");
 	
 	/////////////  Imágenes  //////////////////
 	Image imgIcono;
-	Image imgTablero;
 	
 	////////////  Componenetes  //////////////
+	Tablero tablero;
 	
 	
-	public Home()
-	{		
-		// Imágenes
+	public Home(Tablero tablero)
+	{
+		this.tablero = tablero;
+		// Cargamos el icono
 		File pathIcono = new File("./images/jasper.jpeg");
 		try
 		{
 			imgIcono = ImageIO.read(pathIcono);
-		} catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-		
-		File pathTablero = new File("./images/tablero.jpg");
-		try
-		{
-			imgTablero = ImageIO.read(pathTablero);
 		} catch (IOException e)
 		{
 			e.printStackTrace();
@@ -65,6 +61,7 @@ public class Home extends Frame
 		setLayout(new FlowLayout());
 		
 		mnArchivo.add(miNuevoJuego);
+		mnArchivo.add(miSalir);
 		mnPuntacion.add(miRanking10);
 		mnAyuda.add(miManual);
 		mnAyuda.add(miCreditos);
@@ -82,14 +79,24 @@ public class Home extends Frame
 	{
 		super.paint(g);
 		// Primero se pinta el tablero
-		g.drawImage(imgTablero, 0, 40, 485, 972, null);
+		// Empieza en la x = 0, y = 40. Anchura = 485, altura = 972
+		g.drawImage(
+				tablero.getImage(), 
+				tablero.getX(), tablero.getY(), 
+				tablero.getWidth(), tablero.getHeight(), 
+				null
+				);
 		
 		// Sobre el tablero, se pintan los componenetes
 		// Primera casilla: 
 		// posición x: 60 y: 230 
 		// Tamaño de la casilla: 60 x 60
 		// g.drawRect(62, 230, 58, 58);
-		g.drawRect(60, 230, 60, 60);
+		// La de abajo es la casilla 2,3
+		// g.drawRect(60 + 120, 230 + 60, 60, 60);
+		// Prueba, suando para dibujar las casillas del tablero
+		Casilla casilla = tablero.getCasilla(1, 5);
+		g.drawRect(casilla.getX(), casilla.getY(), casilla.getWidth(), casilla.getHeight());
 	}
 
 }
