@@ -19,7 +19,7 @@ public class CasillaNull extends Elemento implements Casilla {
 
 	public int getNumber() {
 		// TODO - implement CasillaNull.getNumber
-		throw new UnsupportedOperationException();
+		return 0;
 	}
 
 	@Override
