@@ -1,73 +1,51 @@
 package modelo.componentes.tablero;
 
-import modelo.componentes.Elemento;
-
-public class CasillaNull extends Elemento implements Casilla {
-
-	private int row;
-	private int column;
+public class CasillaNull implements Casilla {
 	
 	public CasillaNull() {}
 
 	public int getRow() {
-		return this.row;
+		return 0;
 	}
 
 	public int getColumn() {
-		return this.column;
+		return 0;
 	}
 
 	public int getNumber() {
-		// TODO - implement CasillaNull.getNumber
 		return 0;
 	}
 
 	@Override
-	public void setRow(int row)
-	{
-		// TODO Auto-generated method stub
-		
-	}
+	public void setRow(int row) {}
 
 	@Override
-	public void setColumn(int column)
-	{
-		// TODO Auto-generated method stub
-		
-	}
+	public void setColumn(int column) {}
 
 	@Override
-	public void setNumber(int number)
-	{
-		// TODO Auto-generated method stub
-		
-	}
+	public void setNumber(int number) {}
 
 	@Override
 	public int getX()
 	{
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getY()
 	{
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getWidth()
 	{
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getHeight()
 	{
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
