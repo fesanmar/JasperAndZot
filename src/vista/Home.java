@@ -105,6 +105,7 @@ public class Home extends Frame
 		dlgSalir.add(btnDlgNo);
 
 		// JUGADOR
+		btnDlgJugador.setEnabled(false);
 		dlgJugador.setIconImage(imgIcono);
 		dlgJugador.setSize(220, 120);
 		dlgJugador.setLocationRelativeTo(null);

@@ -1,5 +1,7 @@
 package controlador;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -71,6 +73,33 @@ public class ControladorHome
 				this.vistaHome.repaint();
 			}
 		});
+		
+		////////////  Eventos de TextFields  ///////////
+		this.vistaHome.txtDlgJugador.addKeyListener(
+				new KeyListener()
+				{
+					
+					@Override
+					public void keyTyped(KeyEvent arg0) {}
+					
+					@Override
+					public void keyReleased(KeyEvent arg0) 
+					{
+						String name = vistaHome.txtDlgJugador.getText();
+						if (name.trim().length() > 0 && name.length() <= 8)
+						{
+							vistaHome.btnDlgJugador.setEnabled(true);
+						}
+						else
+						{
+							vistaHome.btnDlgJugador.setEnabled(false);
+						}
+					}
+					
+					@Override
+					public void keyPressed(KeyEvent arg0) {}
+				}
+				);
 		
 		
 		this.vistaHome.setVisible(true);
