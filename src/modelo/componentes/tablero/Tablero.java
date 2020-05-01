@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import modelo.componentes.Componente;
 import modelo.componentes.tokens.Token;
+import modelo.partida.Partida;
 
 public class Tablero extends Componente {
 
@@ -14,6 +15,7 @@ public class Tablero extends Componente {
 	private final static int FIRST_Y = 230;
 	private CasillaReal[][] casillas;
 	private ArrayList<Token> tokens;
+	private Partida partida;
 	
 	public Tablero()
 	{
@@ -57,9 +59,35 @@ public class Tablero extends Componente {
 		return tempToken;
 	}
 	
+	public int getScore()
+	{
+		return partida.getScore();
+	}
+	
+	public String getPlayerName()
+	{
+		return partida.getPlayer();
+	}
+	
 	public CasillaReal getCasilla(int row, int column) throws ArrayIndexOutOfBoundsException
 	{
 		return casillas[row][column];
+	}
+
+	/**
+	 * @return the partida
+	 */
+	public Partida getPartida()
+	{
+		return partida;
+	}
+
+	/**
+	 * @param partida the partida to set
+	 */
+	public void setPartida(Partida partida)
+	{
+		this.partida = partida;
 	}
 
 }

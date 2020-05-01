@@ -20,7 +20,6 @@ import javax.imageio.ImageIO;
 
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tablero.Tablero;
-import modelo.partida.Partida;
 
 public class Home extends Frame
 {
@@ -58,9 +57,6 @@ public class Home extends Frame
 
 	//////////// Componenetes //////////////
 	public Tablero tablero;
-	
-	/////////// Partida  //////////////////
-	public Partida partida;
 
 	public Home(Tablero tablero)
 	{
@@ -108,7 +104,7 @@ public class Home extends Frame
 		dlgSalir.add(btnDlgSi);
 		dlgSalir.add(btnDlgNo);
 
-		// SALIR
+		// JUGADOR
 		dlgJugador.setIconImage(imgIcono);
 		dlgJugador.setSize(220, 120);
 		dlgJugador.setLocationRelativeTo(null);
@@ -129,13 +125,16 @@ public class Home extends Frame
 		g.drawImage(tablero.getImage(), tablero.getX(), tablero.getY(), tablero.getWidth(), tablero.getHeight(), null);
 		Color defaultColor = g.getColor();
 		
-		// Dibujamos la puntuación
+		// Dibujamos la puntuación y las indicaciones
 		try
 		{
-			String socre = String.valueOf(partida.getScore());
+			String score = String.valueOf(tablero.getScore());
 			g.setColor(Color.WHITE);
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-			g.drawString(partida.getPlayer() + ": "+ socre, 300, 65);
+			// Indicaciones
+			g.drawString(tablero.getPartida().getIndication(), 30, 65);
+			// Marcador
+			g.drawString(tablero.getPlayerName() + ": "+ score, 310, 65);
 			g.setColor(defaultColor);			
 		}
 		catch (NullPointerException npe) {}

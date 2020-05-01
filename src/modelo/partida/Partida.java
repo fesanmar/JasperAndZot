@@ -5,6 +5,7 @@ import modelo.partida.steps.*;
 public class Partida {
 
 	private String player;
+	private String indication;
 	private int score;
 	private Dice manyDice;
 	private Dice appearDice;
@@ -19,6 +20,7 @@ public class Partida {
 	{
 		this.player = player;
 		score = 0;
+		indication = "Prueba de indicación.";
 		manyDice = new Dice();
 		appearDice = new Dice();
 		prevStep = new PrevStep();
@@ -137,6 +139,22 @@ public class Partida {
 	 */
 	public void setSmashStep(SmashStep smashStep) {
 		this.smashStep = smashStep;
+	}
+
+	/**
+	 * @return the indication
+	 */
+	public String getIndication()
+	{
+		return indication;
+	}
+
+	/**
+	 * @param indication the indication to set
+	 */
+	public void setIndication(String indication)
+	{
+		this.indication = indication;
 	}
 
 }

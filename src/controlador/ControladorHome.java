@@ -10,7 +10,6 @@ public class ControladorHome
 {
 	Home vistaHome;
 	ControladorVentana controladorVentana;
-	Partida partida;
 	public ControladorHome(Home vistaHome)
 	{
 		this.vistaHome = vistaHome;
@@ -65,12 +64,9 @@ public class ControladorHome
 			String player = this.vistaHome.txtDlgJugador.getText();
 			if (!player.trim().isEmpty())
 			{
-				partida = new Partida(player);
-				
-				System.out.println(player + " comienza la partida con "+ partida.getScore());
+				this.vistaHome.tablero.setPartida(new Partida(player));
 				this.vistaHome.dlgJugador.setVisible(false);
 				this.vistaHome.txtDlgJugador.setText("");
-				this.vistaHome.partida = partida;
 				this.vistaHome.validate();
 				this.vistaHome.repaint();
 			}
