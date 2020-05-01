@@ -1,9 +1,12 @@
 package vista;
 
+import java.awt.Button;
+import java.awt.Dialog;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Label;
 import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;
@@ -20,23 +23,31 @@ public class Home extends Frame
 	private static final long serialVersionUID = 1L;
 	
 	////////////////  Menú  /////////////////////
-	MenuBar menuBar = new MenuBar();
+	public MenuBar menuBar = new MenuBar();
 	
-	Menu mnArchivo = new Menu("Archivo");
-	Menu mnPuntacion = new Menu("Puntuación"); 
-	Menu mnAyuda = new Menu("Ayuda");
+	public Menu mnArchivo = new Menu("Archivo");
+	public Menu mnPuntacion = new Menu("Puntuación"); 
+	public Menu mnAyuda = new Menu("Ayuda");
 	// Archivo
-	MenuItem miNuevoJuego = new MenuItem("Nuevo juego");
-	MenuItem miSalir = new MenuItem("Salir");
-	MenuItem miRanking10 = new MenuItem("Ranking");
-	MenuItem miManual = new MenuItem("Manual");
-	MenuItem miCreditos = new MenuItem("Créditos");
+	public MenuItem miNuevoJuego = new MenuItem("Nuevo juego");
+	public MenuItem miSalir = new MenuItem("Salir");
+	public MenuItem miRanking10 = new MenuItem("Ranking");
+	public MenuItem miManual = new MenuItem("Manual");
+	public MenuItem miCreditos = new MenuItem("Créditos");
+	
+	///////////////////// Diálogos //////////////////////////
+
+	// Diálogo SALIR
+	public Dialog dlgSalir = new Dialog(this, "Salir");
+	public Label lblSalir = new Label("¿Está seguro de que quiere salir?");
+	public Button btnDlgSi = new Button("Sí");
+	public Button btnDlgNo = new Button("No");
 	
 	/////////////  Imágenes  //////////////////
 	Image imgIcono;
 	
 	////////////  Componenetes  //////////////
-	Tablero tablero;
+	public Tablero tablero;
 	
 	
 	public Home(Tablero tablero)
@@ -52,13 +63,15 @@ public class Home extends Frame
 			e.printStackTrace();
 		}
 		
-		// Seteos iniciales
+		////////////// Seteos iniciales  ////////////////
 		setTitle("Jasper and Zot");
 		setSize(485, 1012);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setIconImage(imgIcono);
 		setLayout(new FlowLayout());
+		
+		///////////// Menú  ///////////////
 		
 		mnArchivo.add(miNuevoJuego);
 		mnArchivo.add(miSalir);
@@ -72,7 +85,16 @@ public class Home extends Frame
 		
 		setMenuBar(menuBar);
 		
-		setVisible(true);
+		//////////// Seteos ventanas de DIÁLOGO /////////////
+		// SALIR
+		dlgSalir.setIconImage(imgIcono);
+		dlgSalir.setSize(220, 100);
+		dlgSalir.setLocationRelativeTo(null);
+		dlgSalir.setResizable(false);
+		dlgSalir.setLayout(new FlowLayout());
+		dlgSalir.add(lblSalir);
+		dlgSalir.add(btnDlgSi);
+		dlgSalir.add(btnDlgNo);
 	}
 	
 	public void paint(Graphics g)
