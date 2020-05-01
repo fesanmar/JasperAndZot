@@ -16,10 +16,13 @@ public class Tablero extends Componente {
 	private CasillaReal[][] casillas;
 	private ArrayList<Token> tokens;
 	private Partida partida;
+	private String message;
 	
 	public Tablero()
 	{
 		super(0, 40, 485, 972, PATH_TABLERO);
+		// El mensaje de inicio muestra que se inicie partida
+		message = "Comineza una nueva partida";
 		
 		// Inicializamos los tokens. Al inicio, el tablero empieza vacío
 		tokens = new ArrayList<Token>();
@@ -88,6 +91,22 @@ public class Tablero extends Componente {
 	public void setPartida(Partida partida)
 	{
 		this.partida = partida;
+	}
+
+	/**
+	 * @return the message
+	 */
+	public String getMessage()
+	{
+		return message;
+	}
+
+	/**
+	 * @param message the message to set
+	 */
+	public void setMessage(String message)
+	{
+		this.message = message;
 	}
 
 }

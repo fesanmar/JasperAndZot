@@ -5,6 +5,11 @@ import modelo.partida.*;
 public class DescendStep implements Step {
 
 	private Partida partida;
+	
+	public DescendStep(Partida partida)
+	{
+		this.partida = partida;
+	}
 
 	public void descend() {
 		// TODO - implement DescendStep.descend

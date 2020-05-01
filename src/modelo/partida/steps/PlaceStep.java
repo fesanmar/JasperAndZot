@@ -6,6 +6,11 @@ public class PlaceStep implements Step {
 
 	private Partida partida;
 
+	public PlaceStep(Partida partida)
+	{
+		this.partida = partida;
+	}
+	
 	public void descend() {
 		// TODO - implement PlaceStep.descend
 		throw new UnsupportedOperationException();

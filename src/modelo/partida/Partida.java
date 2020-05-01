@@ -1,5 +1,6 @@
 package modelo.partida;
 
+import modelo.componentes.tablero.Tablero;
 import modelo.partida.steps.*;
 
 public class Partida {
@@ -7,6 +8,7 @@ public class Partida {
 	private String player;
 	private String indication;
 	private int score;
+	private Tablero tablero;
 	private Dice manyDice;
 	private Dice appearDice;
 	private Step step;
@@ -16,20 +18,29 @@ public class Partida {
 	private MoveShootStep moveShootStep;
 	private SmashStep smashStep;
 	
-	public Partida(String player)
+	public Partida(String player, Tablero tablero)
 	{
 		this.player = player;
+		this.setTablero(tablero);
 		score = 0;
 		indication = "Prueba de indicación.";
 		manyDice = new Dice();
 		appearDice = new Dice();
-		prevStep = new PrevStep();
-		descendStep = new DescendStep();
-		placeStep = new PlaceStep();
-		moveShootStep = new MoveShootStep();
-		smashStep = new SmashStep();
+		prevStep = new PrevStep(this);
+		descendStep = new DescendStep(this);
+		placeStep = new PlaceStep(this);
+		moveShootStep = new MoveShootStep(this);
+		smashStep = new SmashStep(this);
 		
+		// Borramos el mensaje de inicio del tablero
+		tablero.setMessage("");
+		// Seteamos el step como el previo
 		step = prevStep;
+	}
+	
+	public void place()
+	{
+		step.place();
 	}
 
 	public int getManydiceResult()
@@ -155,6 +166,22 @@ public class Partida {
 	public void setIndication(String indication)
 	{
 		this.indication = indication;
+	}
+
+	/**
+	 * @return the tablero
+	 */
+	public Tablero getTablero()
+	{
+		return tablero;
+	}
+
+	/**
+	 * @param tablero the tablero to set
+	 */
+	public void setTablero(Tablero tablero)
+	{
+		this.tablero = tablero;
 	}
 
 }

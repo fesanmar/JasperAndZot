@@ -124,22 +124,31 @@ public class Home extends Frame
 		// Primero se pinta el tablero
 		// Empieza en la x = 0, y = 40. Anchura = 485, altura = 972
 		g.drawImage(tablero.getImage(), tablero.getX(), tablero.getY(), tablero.getWidth(), tablero.getHeight(), null);
-		Color defaultColor = g.getColor();
+		// Color defaultColor = g.getColor();
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 		
 		// Dibujamos la puntuación y las indicaciones
 		try
 		{
 			String score = String.valueOf(tablero.getScore());
-			g.setColor(Color.WHITE);
-			g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 			// Indicaciones
 			g.drawString(tablero.getPartida().getIndication(), 30, 65);
 			// Marcador
-			g.drawString(tablero.getPlayerName() + ": "+ score, 310, 65);
-			g.setColor(defaultColor);			
+			g.drawString(score, 400, 65);
+			// Nombre del jugador
+			g.drawString(tablero.getPlayerName(), 390, 1000);
+			
+			// g.setColor(defaultColor);			
 		}
 		catch (NullPointerException npe) {}
-
+		
+		// Dibujamos el mensaje del tablero
+		g.setFont(new Font("TimesRoman", Font.BOLD, 30));
+		g.drawString(tablero.getMessage(), 70, 480);
+		
+		// Dibujamos las casillas resaltadas
+		
 		// Sobre el tablero, se pintan los componenetes
 		// Primera casilla:
 		// posición x: 60 y: 230
