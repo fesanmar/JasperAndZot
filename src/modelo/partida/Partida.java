@@ -1,28 +1,44 @@
 package modelo.partida;
 
-import modelo.componentes.tablero.Tablero;
-import modelo.partida.steps.*;
+import java.util.ArrayList;
 
-public class Partida {
+import modelo.componentes.tablero.Tablero;
+import modelo.componentes.tokens.Token;
+import modelo.partida.steps.DescendStep;
+import modelo.partida.steps.MoveShootStep;
+import modelo.partida.steps.PlaceStep;
+import modelo.partida.steps.PrevStep;
+import modelo.partida.steps.SmashStep;
+import modelo.partida.steps.Step;
+import vista.Home;
+
+public class Partida
+{
 
 	private String player;
 	private String indication;
 	private int score;
 	private Tablero tablero;
+	private Token jasper;
 	private Dice manyDice;
 	private Dice appearDice;
+	private ArrayList<Token> tokens;
 	private Step step;
 	private PrevStep prevStep;
 	private DescendStep descendStep;
 	private PlaceStep placeStep;
 	private MoveShootStep moveShootStep;
 	private SmashStep smashStep;
-	
-	public Partida(String player, Tablero tablero)
+	private Home vistaHome;
+
+	public Partida(String player, Tablero tablero, Home vistaHome)
 	{
 		this.player = player;
 		this.setTablero(tablero);
+		this.vistaHome = vistaHome;
 		score = 0;
+		// Inicializamos los tokens. Al inicio, el tablero empieza vacío
+		tokens = new ArrayList<Token>();
 		indication = "Prueba de indicación.";
 		manyDice = new Dice();
 		appearDice = new Dice();
@@ -31,16 +47,51 @@ public class Partida {
 		placeStep = new PlaceStep(this);
 		moveShootStep = new MoveShootStep(this);
 		smashStep = new SmashStep(this);
-		
+
 		// Borramos el mensaje de inicio del tablero
 		tablero.setMessage("");
 		// Seteamos el step como el previo
 		step = prevStep;
 	}
 	
-	public void place()
+	public void repaintHome()
 	{
-		step.place();
+		vistaHome.repaint();
+	}
+	
+	public void repaintJasperArea()
+	{
+		vistaHome.repaint(50, 830, 485, 80);
+	}
+	
+	public void display()
+	{
+		step.display();
+	}
+
+	public void place(int x, int y)
+	{
+		step.place(x, y);
+	}
+	
+	public void addToken(Token token)
+	{
+		tokens.add(token);
+	}
+	
+	public void delToken(Token token)
+	{
+		tokens.remove(token);
+	}
+
+	public ArrayList<Token> getTokens()
+	{
+		return tokens;
+	}
+
+	public void setTokens(ArrayList<Token> tokens)
+	{
+		this.tokens = tokens;
 	}
 
 	public int getManydiceResult()
@@ -48,14 +99,14 @@ public class Partida {
 		manyDice.roll();
 		return manyDice.getResult();
 	}
-	
+
 	public int getAppearDiceResult()
 	{
 		appearDice.roll();
 		return appearDice.getResult();
 	}
-	
-	public String getPlayer() 
+
+	public String getPlayer()
 	{
 		return this.player;
 	}
@@ -64,23 +115,28 @@ public class Partida {
 	 * 
 	 * @param player
 	 */
-	public void setPlayer(String player) {
+	public void setPlayer(String player)
+	{
 		this.player = player;
 	}
 
-	public int getScore() {
+	public int getScore()
+	{
 		return this.score;
 	}
+	
 
 	/**
 	 * 
 	 * @param score
 	 */
-	public void setScore(int score) {
+	public void setScore(int score)
+	{
 		this.score = score;
 	}
 
-	public Step getStep() {
+	public Step getStep()
+	{
 		return this.step;
 	}
 
@@ -88,11 +144,13 @@ public class Partida {
 	 * 
 	 * @param step
 	 */
-	public void setStep(Step step) {
+	public void setStep(Step step)
+	{
 		this.step = step;
 	}
 
-	public PrevStep getPrevStep() {
+	public PrevStep getPrevStep()
+	{
 		return this.prevStep;
 	}
 
@@ -100,11 +158,13 @@ public class Partida {
 	 * 
 	 * @param prevStep
 	 */
-	public void setPrevStep(PrevStep prevStep) {
+	public void setPrevStep(PrevStep prevStep)
+	{
 		this.prevStep = prevStep;
 	}
 
-	public DescendStep getDescendStep() {
+	public DescendStep getDescendStep()
+	{
 		return this.descendStep;
 	}
 
@@ -112,11 +172,13 @@ public class Partida {
 	 * 
 	 * @param descendStep
 	 */
-	public void setDescendStep(DescendStep descendStep) {
+	public void setDescendStep(DescendStep descendStep)
+	{
 		this.descendStep = descendStep;
 	}
 
-	public PlaceStep getPlaceStep() {
+	public PlaceStep getPlaceStep()
+	{
 		return this.placeStep;
 	}
 
@@ -124,11 +186,13 @@ public class Partida {
 	 * 
 	 * @param placeStep
 	 */
-	public void setPlaceStep(PlaceStep placeStep) {
+	public void setPlaceStep(PlaceStep placeStep)
+	{
 		this.placeStep = placeStep;
 	}
 
-	public MoveShootStep getMoveShootStep() {
+	public MoveShootStep getMoveShootStep()
+	{
 		return this.moveShootStep;
 	}
 
@@ -136,11 +200,13 @@ public class Partida {
 	 * 
 	 * @param moveShootStep
 	 */
-	public void setMoveShootStep(MoveShootStep moveShootStep) {
+	public void setMoveShootStep(MoveShootStep moveShootStep)
+	{
 		this.moveShootStep = moveShootStep;
 	}
 
-	public SmashStep getSmashStep() {
+	public SmashStep getSmashStep()
+	{
 		return this.smashStep;
 	}
 
@@ -148,7 +214,8 @@ public class Partida {
 	 * 
 	 * @param smashStep
 	 */
-	public void setSmashStep(SmashStep smashStep) {
+	public void setSmashStep(SmashStep smashStep)
+	{
 		this.smashStep = smashStep;
 	}
 
@@ -182,6 +249,26 @@ public class Partida {
 	public void setTablero(Tablero tablero)
 	{
 		this.tablero = tablero;
+	}
+
+	/**
+	 * @return the jasper
+	 */
+	public Token getJasper()
+	{
+		return jasper;
+	}
+
+	/**
+	 * @param jasper the jasper to set
+	 */
+	public void setJasper(Token jasper)
+	{
+		if (this.jasper == null)
+		{
+			this.jasper = jasper;
+			addToken(this.jasper);
+		}
 	}
 
 }

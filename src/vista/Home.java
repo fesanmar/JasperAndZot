@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.BasicStroke;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dialog;
@@ -7,6 +8,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Label;
 import java.awt.Menu;
@@ -20,6 +22,7 @@ import javax.imageio.ImageIO;
 
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tablero.Tablero;
+import modelo.componentes.tokens.Token;
 
 public class Home extends Frame
 {
@@ -115,7 +118,73 @@ public class Home extends Frame
 		dlgJugador.add(txtDlgJugador);
 		dlgJugador.add(btnDlgJugador);
 	}
+	
+	@Override
+	public void update(Graphics g)
+	{
+		g.setPaintMode();
 
+		// Primero se pinta el tablero
+		// Empieza en la x = 0, y = 40. Anchura = 485, altura = 972
+		g.drawImage(tablero.getImage(), tablero.getX(), tablero.getY(), tablero.getWidth(), tablero.getHeight(), null);
+		// Color defaultColor = g.getColor();
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+		
+		// Dibujamos la puntuación y las indicaciones
+		try
+		{
+			String score = String.valueOf(tablero.getScore());
+			// Indicaciones
+			g.drawString(tablero.getPartida().getIndication(), 30, 65);
+			// Marcador
+			g.drawString(score, 400, 65);
+			// Nombre del jugador
+			g.drawString(tablero.getPlayerName(), 390, 1000);
+			
+			// g.setColor(defaultColor);			
+		}
+		catch (NullPointerException npe) {}
+		
+		// Dibujamos el mensaje del tablero
+		g.setFont(new Font("TimesRoman", Font.BOLD, 30));
+		g.drawString(tablero.getMessage(), 70, 480);
+		
+		// Dibujamos las casillas activas
+		for (Casilla[] row : tablero.getCasillas())
+		{
+			for (Casilla casilla : row)
+			{
+				if (casilla.isActive())
+				{
+					g.setColor(Color.CYAN);
+					Graphics2D g2d = (Graphics2D) g;
+					g2d.setStroke(new BasicStroke(3));
+					g2d.drawRoundRect(
+							casilla.getX(), casilla.getY(), 
+							casilla.getWidth(), casilla.getHeight(),
+							10, 10
+							);
+				}
+			}
+		}
+		
+		// Sobre el tablero, se pintan los componenetes
+		// Primera casilla:
+		// posición x: 60 y: 230
+		// Tamaño de la casilla: 60 x 60
+		try
+		{
+			for (Token token : tablero.getPartida().getTokens())
+			{
+				g.drawImage(token.getImage(), token.getX(), token.getY(), token.getWidth(), token.getHeight(), null);
+			}			
+		}
+		catch(NullPointerException npe) {}
+		paint(g);
+	}
+	
+	
 	public void paint(Graphics g)
 	{
 		super.paint(g);
@@ -147,18 +216,37 @@ public class Home extends Frame
 		g.setFont(new Font("TimesRoman", Font.BOLD, 30));
 		g.drawString(tablero.getMessage(), 70, 480);
 		
-		// Dibujamos las casillas resaltadas
+		// Dibujamos las casillas activas
+		for (Casilla[] row : tablero.getCasillas())
+		{
+			for (Casilla casilla : row)
+			{
+				if (casilla.isActive())
+				{
+					g.setColor(Color.CYAN);
+					Graphics2D g2d = (Graphics2D) g;
+					g2d.setStroke(new BasicStroke(3));
+					g2d.drawRoundRect(
+							casilla.getX(), casilla.getY(), 
+							casilla.getWidth(), casilla.getHeight(),
+							10, 10
+							);
+				}
+			}
+		}
 		
 		// Sobre el tablero, se pintan los componenetes
 		// Primera casilla:
 		// posición x: 60 y: 230
 		// Tamaño de la casilla: 60 x 60
-		// g.drawRect(62, 230, 58, 58);
-		// La de abajo es la casilla 2,3
-		// g.drawRect(60 + 120, 230 + 60, 60, 60);
-		// Prueba, suando para dibujar las casillas del tablero
-		Casilla casilla = tablero.getCasilla(1, 5);
-		g.drawRect(casilla.getX(), casilla.getY(), casilla.getWidth(), casilla.getHeight());
+		try
+		{
+			for (Token token : tablero.getPartida().getTokens())
+			{
+				g.drawImage(token.getImage(), token.getX(), token.getY(), token.getWidth(), token.getHeight(), null);
+			}			
+		}
+		catch(NullPointerException npe) {}
 	}
 
 }

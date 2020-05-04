@@ -16,7 +16,7 @@ public class PlaceStep implements Step {
 		throw new UnsupportedOperationException();
 	}
 
-	public void place() {
+	public void place(int x, int y) {
 		// TODO - implement PlaceStep.place
 		throw new UnsupportedOperationException();
 	}
@@ -29,6 +29,13 @@ public class PlaceStep implements Step {
 	public void Smash() {
 		// TODO - implement PlaceStep.Smash
 		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void display()
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }

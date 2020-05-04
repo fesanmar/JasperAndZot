@@ -5,40 +5,35 @@ import modelo.componentes.tablero.Casilla;
 
 public class Calabaza extends Componente implements Token
 {
+	Casilla casilla;
+	
+	public Calabaza(int x, int y)
+	{
+		super(x, y, SIDE, "./images/calabaza.jpeg");
+	}
 
 	@Override
 	public Casilla getCasilla()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return casilla;
 	}
 
 	@Override
 	public void setCasilla(Casilla casilla)
 	{
-		// TODO Auto-generated method stub
-
+		this.casilla = casilla;
 	}
 
 	@Override
-	public void move()
-	{
-		// TODO Auto-generated method stub
-
-	}
+	public void move() {}
 
 	@Override
-	public void atack()
-	{
-		// TODO Auto-generated method stub
-
-	}
+	public void atack() {}
 
 	@Override
 	public void die()
 	{
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }

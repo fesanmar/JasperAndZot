@@ -1,6 +1,9 @@
 package modelo.componentes.tablero;
 
+import java.util.ArrayList;
+
 import modelo.componentes.Elemento;
+import modelo.componentes.tokens.Token;
 
 public class CasillaReal extends Elemento implements Casilla {
 
@@ -8,15 +11,44 @@ public class CasillaReal extends Elemento implements Casilla {
 	private int row;
 	private int column;
 	private int number;
+	private boolean active;
+	private Tablero tablero;
 	
-	public CasillaReal(int x, int y, int row, int column)
+	public CasillaReal(Tablero tablero, int x, int y, int row, int column)
 	{
 		super(x, y, SIDE);
+		this.tablero = tablero;
 		this.row = row;
 		this.column = column;
 		this.number = 5 * row + row + column;
+		
+		this.active = false;
 	}
 
+	@Override
+	public boolean hasToken()
+	{
+		Token[] tokens = getTokens();
+		if (tokens.length > 0) return true;
+		else return false;
+		
+	}
+	
+	@Override
+	public Token[] getTokens()
+	{
+		ArrayList<Token> tokens = tablero.getPartida().getTokens();
+		ArrayList<Token> casillaTokens = new ArrayList<Token>();
+		for (Token token : tokens)
+		{
+			if (token.getCasilla().equals(this))
+			{
+				casillaTokens.add(token);
+			}
+		}
+		return (Token[]) casillaTokens.toArray();
+	}
+	
 	public int getRow() 
 	{
 		return this.row;
@@ -57,5 +89,61 @@ public class CasillaReal extends Elemento implements Casilla {
 	{
 		this.number = number;
 	}
+
+
+	/**
+	 * @return the tablero
+	 */
+	public Tablero getTablero()
+	{
+		return tablero;
+	}
+
+	@Override
+	public boolean isActive()
+	{
+		return active;
+	}
+
+	/**
+	 * @param active the active to set
+	 */
+	public void setActive(boolean active)
+	{
+		this.active = active;
+	}
+
+	@Override
+	public boolean isMe(int x, int y)
+	{
+		if (isInMyColumn(x) && isInMyRow(y))
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean isInMyColumn(int x)
+	{
+		if ((x > getX()) && (x < (getX() + getWidth())))
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean isInMyRow(int y)
+	{
+		if ((y > getY()) && (y < (getY() + getHeight())))
+		{
+			return true;
+		}
+		
+		return false;
+	}
+		
+		
 
 }

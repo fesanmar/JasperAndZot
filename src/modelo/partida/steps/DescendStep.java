@@ -16,11 +16,6 @@ public class DescendStep implements Step {
 		throw new UnsupportedOperationException();
 	}
 
-	public void place() {
-		// TODO - implement DescendStep.place
-		throw new UnsupportedOperationException();
-	}
-
 	public void moveAndShoot() {
 		// TODO - implement DescendStep.moveAndShoot
 		throw new UnsupportedOperationException();
@@ -29,6 +24,20 @@ public class DescendStep implements Step {
 	public void Smash() {
 		// TODO - implement DescendStep.Smash
 		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void display()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void place(int x, int y)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }

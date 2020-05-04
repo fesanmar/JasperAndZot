@@ -1,20 +1,22 @@
 package modelo.componentes.tablero;
 
-import java.util.ArrayList;
+import java.awt.Point;
 
 import modelo.componentes.Componente;
-import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
 
 public class Tablero extends Componente {
 
 	private final static String PATH_TABLERO = "./images/tablero.jpg";
-	private final static int ROWS = 11;
-	private final static int COLUMNS = 6;
-	private final static int FIRST_X = 60;
-	private final static int FIRST_Y = 230;
-	private CasillaReal[][] casillas;
-	private ArrayList<Token> tokens;
+	public final static int ROWS = 11;
+	public final static int COLUMNS = 6;
+	private final static int FIRST_X = 61;
+	private final static int FIRST_Y = 234;
+	public static final int JASPER_ROW = 10;
+	public static final int PUMPKIN_ROW = 9;
+	
+	private Casilla[][] casillas;
+	
 	private Partida partida;
 	private String message;
 	
@@ -24,10 +26,6 @@ public class Tablero extends Componente {
 		// El mensaje de inicio muestra que se inicie partida
 		message = "Comineza una nueva partida";
 		
-		// Inicializamos los tokens. Al inicio, el tablero empieza vacío
-		tokens = new ArrayList<Token>();
-		
-		
 		// Inicializamos las 66 casillas que tiene el tablero
 		casillas = new CasillaReal[ROWS][COLUMNS];
 		
@@ -36,6 +34,7 @@ public class Tablero extends Componente {
 			for (int j = 0; j < COLUMNS; j++)
 			{
 				casillas[i][j] = new CasillaReal(
+						this,
 						FIRST_X + j * CasillaReal.SIDE, 
 						FIRST_Y + i * CasillaReal.SIDE,
 						i, j);
@@ -43,25 +42,22 @@ public class Tablero extends Componente {
 		}
 	}
 	
-	public void addToken(Token token)
+	public Casilla[][] getCasillas()
 	{
-		tokens.add(token);
+		return casillas;
 	}
 	
-	public Token getToken(Casilla casilla)
+	public Casilla[] getRow(int row)
 	{
-		Token tempToken = null;
-		for (Token token : tokens)
+		Casilla[] rowCasillas = new Casilla[6];
+		
+		for (int i = 0; i < rowCasillas.length; i++)
 		{
-			if (token.getCasilla() == casilla)
-			{
-				tempToken = token;
-				break;
-			}
+			rowCasillas[i] = casillas[row][i];
 		}
-		return tempToken;
+		return rowCasillas;
 	}
-	
+
 	public int getScore()
 	{
 		return partida.getScore();
@@ -72,9 +68,23 @@ public class Tablero extends Componente {
 		return partida.getPlayer();
 	}
 	
-	public CasillaReal getCasilla(int row, int column) throws ArrayIndexOutOfBoundsException
+	public Casilla getCasilla(int row, int column) throws ArrayIndexOutOfBoundsException
 	{
 		return casillas[row][column];
+	}
+	
+	public Casilla getCasilla(Point punto)
+	{
+		Casilla casillaTemp = new CasillaNull();
+		for (Casilla[] fila : casillas)
+		{
+			for (Casilla casilla : fila)
+			{
+				if (casilla.isMe(punto.x, punto.y))
+					casillaTemp = casilla;
+			}
+		}
+		return casillaTemp;
 	}
 
 	/**

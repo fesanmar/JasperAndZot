@@ -19,7 +19,7 @@ public class Componente extends Elemento {
 	public Componente(int x, int y, int width, int height, String file)
 	{
 		super(x, y, width, height);
-		File pathImage = new File("./images/tablero.jpg");
+		File pathImage = new File(file);
 		try
 		{
 			this.image = ImageIO.read(pathImage);
@@ -32,7 +32,7 @@ public class Componente extends Elemento {
 	public Componente(int x, int y, int side, String file)
 	{
 		super(x, y, side);
-		File pathImage = new File("./images/tablero.jpg");
+		File pathImage = new File(file);
 		try
 		{
 			this.image = ImageIO.read(pathImage);

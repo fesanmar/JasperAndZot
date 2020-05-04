@@ -1,19 +1,21 @@
 package modelo.componentes.tablero;
 
+import modelo.componentes.tokens.Token;
+
 public class CasillaNull implements Casilla {
 	
 	public CasillaNull() {}
 
 	public int getRow() {
-		return 0;
+		return -1;
 	}
 
 	public int getColumn() {
-		return 0;
+		return -1;
 	}
 
 	public int getNumber() {
-		return 0;
+		return -1;
 	}
 
 	@Override
@@ -28,13 +30,13 @@ public class CasillaNull implements Casilla {
 	@Override
 	public int getX()
 	{
-		return 0;
+		return -1;
 	}
 
 	@Override
 	public int getY()
 	{
-		return 0;
+		return -1;
 	}
 
 	@Override
@@ -47,6 +49,41 @@ public class CasillaNull implements Casilla {
 	public int getHeight()
 	{
 		return 0;
+	}
+
+	@Override
+	public boolean hasToken()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Token[] getTokens()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isActive()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setActive(boolean active)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isMe(int x, int y)
+	{
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
