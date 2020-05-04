@@ -1,9 +1,9 @@
 package controlador;
 
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import modelo.partida.Partida;
 import vista.Home;
@@ -20,30 +20,21 @@ public class ControladorHome
 		//////////// Eventos de ventana ///////////////
 		this.vistaHome.addWindowListener(controladorVentana);
 		this.vistaHome.dlgJugador.addWindowListener(
-				new WindowListener()
-				{
-					
-					@Override
-					public void windowOpened(WindowEvent e) {}
-					
-					@Override
-					public void windowIconified(WindowEvent e) {}
-					
-					@Override
-					public void windowDeiconified(WindowEvent e) {}
-					
-					@Override
-					public void windowDeactivated(WindowEvent e) {}
-					
+				new WindowAdapter()
+				{	
 					@Override
 					public void windowClosing(WindowEvent e) { 
-						vistaHome.dlgJugador.setVisible(false); }
-					
+						vistaHome.dlgJugador.setVisible(false);
+						}
+				}
+				);
+		this.vistaHome.dlgSalir.addWindowListener(
+				new WindowAdapter()
+				{	
 					@Override
-					public void windowClosed(WindowEvent e){}
-					
-					@Override
-					public void windowActivated(WindowEvent e) {}
+					public void windowClosing(WindowEvent e) { 
+						vistaHome.dlgSalir.setVisible(false);
+						}
 				}
 				);
 		
@@ -63,26 +54,13 @@ public class ControladorHome
 				ale -> this.vistaHome.dlgSalir.setVisible(false)
 				);
 		this.vistaHome.btnDlgJugador.addActionListener(ale -> {
-			String player = this.vistaHome.txtDlgJugador.getText();
-			if (!player.trim().isEmpty())
-			{
-				this.vistaHome.tablero.setPartida(new Partida(player, vistaHome.tablero));
-				this.vistaHome.dlgJugador.setVisible(false);
-				this.vistaHome.txtDlgJugador.setText("");
-				this.vistaHome.validate();
-				this.vistaHome.tablero.getPartida().place();
-				this.vistaHome.repaint();
-			}
+			startGame();
 		});
 		
 		////////////  Eventos de TextFields  ///////////
 		this.vistaHome.txtDlgJugador.addKeyListener(
-				new KeyListener()
+				new KeyAdapter()
 				{
-					
-					@Override
-					public void keyTyped(KeyEvent arg0) {}
-					
 					@Override
 					public void keyReleased(KeyEvent arg0) 
 					{
@@ -98,63 +76,43 @@ public class ControladorHome
 					}
 					
 					@Override
-					public void keyPressed(KeyEvent e) {}
+					public void keyPressed(KeyEvent e) 
+					{
+						if(vistaHome.btnDlgJugador.isEnabled())
+						{
+							if (e.getKeyCode() == 10)
+							{
+								startGame();								
+							}
+							
+						}
+					}
 				}
 				);
 		
 		
 		this.vistaHome.setVisible(true);
 	}
-	
-	class ControladorVentana implements WindowListener
+
+	private void startGame()
 	{
-
-		@Override
-		public void windowActivated(WindowEvent e)
+		String player = this.vistaHome.txtDlgJugador.getText();
+		if (!player.trim().isEmpty())
 		{
-			// TODO Auto-generated method stub
-			
+			this.vistaHome.tablero.setPartida(new Partida(player, vistaHome.tablero));
+			this.vistaHome.dlgJugador.setVisible(false);
+			this.vistaHome.txtDlgJugador.setText("");
+			this.vistaHome.tablero.getPartida().place();
+			this.vistaHome.repaint();
 		}
-
-		@Override
-		public void windowClosed(WindowEvent e)
-		{
-			// TODO Auto-generated method stub
-			
-		}
-
+	}
+	
+	class ControladorVentana extends WindowAdapter
+	{
 		@Override
 		public void windowClosing(WindowEvent e)
 		{
 			vistaHome.dlgSalir.setVisible(true);
-		}
-
-		@Override
-		public void windowDeactivated(WindowEvent e)
-		{
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void windowDeiconified(WindowEvent e)
-		{
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void windowIconified(WindowEvent e)
-		{
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void windowOpened(WindowEvent e)
-		{
-			// TODO Auto-generated method stub
-			
 		}
 		
 	}
