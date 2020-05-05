@@ -8,8 +8,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import modelo.componentes.tablero.Casilla;
-import modelo.componentes.tablero.Tablero;
 import modelo.partida.Partida;
 import vista.Home;
 
@@ -104,31 +102,21 @@ public class ControladorHome
 		{
 			public void mouseMoved(MouseEvent e)
 			{
-
-				Casilla[] rowJasper = vistaHome.tablero.getRow(Tablero.JASPER_ROW);
-
-				if (
-						rowJasper[0].isMe(e.getX(), e.getY()) ||
-						rowJasper[1].isMe(e.getX(), e.getY()) ||
-						rowJasper[2].isMe(e.getX(), e.getY()) ||
-						rowJasper[3].isMe(e.getX(), e.getY()) ||
-						rowJasper[4].isMe(e.getX(), e.getY()) ||
-						rowJasper[5].isMe(e.getX(), e.getY())
-					)
+				try
 				{
-					Cursor cursorDedo = new Cursor(Cursor.HAND_CURSOR);
-					vistaHome.setCursor(cursorDedo);
-
-				} else
-				{
-					Cursor cursorDefaul = new Cursor(Cursor.DEFAULT_CURSOR);
-					vistaHome.setCursor(cursorDefaul);
+					if (vistaHome.tablero.getPartida().getStep().isSelectable(e.getX(), e.getY()))
+					{
+						Cursor cursorDedo = new Cursor(Cursor.HAND_CURSOR);
+						vistaHome.setCursor(cursorDedo);
+						
+					} else
+					{
+						Cursor cursorDefaul = new Cursor(Cursor.DEFAULT_CURSOR);
+						vistaHome.setCursor(cursorDefaul);
+					}					
 				}
+				catch (NullPointerException npe) {}
 
-//						Casilla casillaJasper = vistaHome.tablero.getCasilla(Tablero.JASPER_ROW, 0);
-//						if (e.getY() >= casillaJasper.getY())
-//						{
-//						}
 			}
 		});
 

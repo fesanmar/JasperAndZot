@@ -11,5 +11,7 @@ public interface Step {
 	abstract void moveAndShoot();
 
 	abstract void Smash();
+	
+	abstract boolean isSelectable(int x, int y);
 
 }

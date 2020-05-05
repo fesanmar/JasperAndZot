@@ -2,6 +2,7 @@ package modelo.componentes.tokens;
 
 import modelo.componentes.Componente;
 import modelo.componentes.tablero.Casilla;
+import modelo.componentes.tablero.CasillaNull;
 
 public class Calabaza extends Componente implements Token
 {
@@ -33,7 +34,7 @@ public class Calabaza extends Componente implements Token
 	@Override
 	public void die()
 	{
-		
+		setCasilla(new CasillaNull());
 	}
 
 }

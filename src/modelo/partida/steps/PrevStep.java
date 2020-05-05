@@ -1,5 +1,6 @@
 package modelo.partida.steps;
 
+import java.awt.Cursor;
 import java.awt.Point;
 
 import modelo.componentes.tablero.Casilla;
@@ -96,6 +97,28 @@ public class PrevStep implements Step, Runnable {
 				e.printStackTrace();
 			}
 			
+		}
+	}
+
+	@Override
+	public boolean isSelectable(int x, int y)
+	{
+		Casilla[] rowJasper = partida.getTablero().getRow(Tablero.JASPER_ROW);
+
+		if (
+				rowJasper[0].isMe(x, y) ||
+				rowJasper[1].isMe(x, y) ||
+				rowJasper[2].isMe(x, y) ||
+				rowJasper[3].isMe(x, y) ||
+				rowJasper[4].isMe(x, y) ||
+				rowJasper[5].isMe(x, y)
+			)
+		{
+			return true;
+
+		} else
+		{
+			return false;
 		}
 	}
 

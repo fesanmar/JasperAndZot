@@ -35,5 +35,11 @@ public class MoveShootStep implements Step {
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public boolean isSelectable(int x, int y)
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

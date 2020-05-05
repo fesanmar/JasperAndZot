@@ -40,4 +40,11 @@ public class DescendStep implements Step {
 		
 	}
 
+	@Override
+	public boolean isSelectable(int x, int y)
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
