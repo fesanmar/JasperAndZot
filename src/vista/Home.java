@@ -143,16 +143,18 @@ public class Home extends Frame
 		// Dibujamos la puntuación y las indicaciones
 		try
 		{
-			String score = String.valueOf(tablero.getScore());
+			int score = tablero.getScore();
+			String scoreBox = String.format("Marcador: %,8d", score);
 			// Marcador
-			g.drawString(score, 400, 65);
+			g.drawString(scoreBox, 300, 66);
+			
 			// Nombre del jugador
 			g.drawString(tablero.getPlayerName(), 390, 1000);
 			
 			// Si ya hay un player, la partida está andando
 			// y se pinta el texto de los dados
 			g.drawString("Tokens:", 25, 66);
-			g.drawString("Posición:", 125, 66);
+			g.drawString("Columna:", 125, 66);
 			
 			// g.setColor(defaultColor);			
 		}

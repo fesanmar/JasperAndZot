@@ -24,7 +24,6 @@ public class Dice extends Componente
 		for (int i = 0; i < diceImages.length; i++)
 		{
 			File pathImage = new File("./images/dices/" + (i + 1) +".jpeg");
-			System.out.println(pathImage.toString());
 			try
 			{
 				Image image = ImageIO.read(pathImage);
