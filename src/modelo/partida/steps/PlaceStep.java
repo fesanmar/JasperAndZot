@@ -1,6 +1,12 @@
 package modelo.partida.steps;
 
-import modelo.partida.*;
+import java.util.ArrayList;
+
+import modelo.componentes.tokens.EmptyBagException;
+import modelo.componentes.tokens.Token;
+import modelo.componentes.tokens.Zombi;
+import modelo.partida.Partida;
+import modelo.partida.assaults.NormalAssault;
 
 public class PlaceStep implements Step, Runnable {
 
@@ -20,11 +26,40 @@ public class PlaceStep implements Step, Runnable {
 		partida.getAppearDice().roll();
 		dicesRolled = true;
 		partida.repaintDiceArea();
+		
+		Token[] drawedTokens = new Token[partida.getManydice().getResult()];
+		for (int i = 0; i < drawedTokens.length; i++)
+		{
+			try
+			{
+				drawedTokens[i] = partida.getTokensBag().getToken();
+			} 
+			catch (EmptyBagException ebe)
+			{
+				if (partida.getAssault() instanceof NormalAssault)
+				{
+					partida.getTokensBag().refillBag();
+					partida.setAssault(partida.getAggravatedAssault());
+				}
+				else
+				{
+					partida.end();
+				}
+			}
+		}
+		
+		ArrayList<Token> normalTokens = new ArrayList<Token>();
+		ArrayList<Token> specialTokens = new ArrayList<Token>();
+		for (Token token : drawedTokens)
+		{
+			if(token instanceof Zombi) normalTokens.add(token);
+			else specialTokens.add(token);
+		}
+		partida.getAssault().placeZombies((Token[]) normalTokens.toArray());
 	}
 
-	public void place(int x, int y) {
-		// TODO - implement PlaceStep.place
-		throw new UnsupportedOperationException();
+	public void place(int x, int y) 
+	{
 	}
 
 	public void moveAndShoot() {

@@ -3,7 +3,12 @@ package modelo.partida;
 import java.util.ArrayList;
 
 import modelo.componentes.tablero.Tablero;
+import modelo.componentes.tokens.Bomba;
+import modelo.componentes.tokens.Multiplicador;
 import modelo.componentes.tokens.Token;
+import modelo.componentes.tokens.TokensBag;
+import modelo.componentes.tokens.Zombi;
+import modelo.componentes.tokens.ZombiArdiente;
 import modelo.partida.assaults.AggravatedAssault;
 import modelo.partida.assaults.Assault;
 import modelo.partida.assaults.NormalAssault;
@@ -23,6 +28,7 @@ public class Partida
 	private int turn;
 	private Tablero tablero;
 	private Token jasper;
+	private TokensBag tokensBag;
 	private Dice manyDice;
 	private Dice appearDice;
 	private ArrayList<Token> tokens;
@@ -63,9 +69,25 @@ public class Partida
 		step = prevStep;
 		
 		// Assaults
-		normalAssault = new NormalAssault();
-		aggravatedAssault = new AggravatedAssault();
+		normalAssault = new NormalAssault(this);
+		aggravatedAssault = new AggravatedAssault(this);
 		setAssault(normalAssault);
+		
+		// TokensBag:
+		// zombies: 24
+		// zombies ardientes: 8
+		// bombas: 4
+		// multiplicadores: 3
+		ArrayList<Token> intialTokens = new ArrayList<Token>();
+		for (int i = 0; i < 24; i++)
+		{
+			intialTokens.add(new Zombi());
+			if (i < 8) intialTokens.add(new ZombiArdiente());
+			if (i < 4) intialTokens.add(new Bomba());
+			if (i < 3) intialTokens.add(new Multiplicador());
+		}
+		this.tokensBag = new TokensBag(intialTokens);
+		System.out.println(intialTokens.size());
 	}
 	
 	public void repaintHome()
@@ -121,6 +143,14 @@ public class Partida
 	public void setTokens(ArrayList<Token> tokens)
 	{
 		this.tokens = tokens;
+	}
+
+	/**
+	 * @return the tokensBag
+	 */
+	public TokensBag getTokensBag()
+	{
+		return tokensBag;
 	}
 
 	public Dice getManydice()
@@ -282,6 +312,11 @@ public class Partida
 			this.jasper = jasper;
 			addToken(this.jasper);
 		}
+	}
+	
+	public void end()
+	{
+		
 	}
 
 }
