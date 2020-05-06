@@ -1,10 +1,7 @@
 package modelo.partida.steps;
 
-import java.util.ArrayList;
-
 import modelo.componentes.tokens.EmptyBagException;
 import modelo.componentes.tokens.Token;
-import modelo.componentes.tokens.Zombi;
 import modelo.partida.Partida;
 import modelo.partida.assaults.NormalAssault;
 
@@ -27,7 +24,8 @@ public class PlaceStep implements Step, Runnable {
 		dicesRolled = true;
 		partida.repaintDiceArea();
 		
-		Token[] drawedTokens = new Token[partida.getManydice().getResult()];
+		Token[] drawedTokens 
+			= new Token[partida.getAssault().getNumberOfTokensToDraw()];
 		for (int i = 0; i < drawedTokens.length; i++)
 		{
 			try
@@ -48,14 +46,7 @@ public class PlaceStep implements Step, Runnable {
 			}
 		}
 		
-		ArrayList<Token> normalTokens = new ArrayList<Token>();
-		ArrayList<Token> specialTokens = new ArrayList<Token>();
-		for (Token token : drawedTokens)
-		{
-			if(token instanceof Zombi) normalTokens.add(token);
-			else specialTokens.add(token);
-		}
-		partida.getAssault().placeZombies((Token[]) normalTokens.toArray());
+		partida.getAssault().placeTokens(drawedTokens);
 	}
 
 	public void place(int x, int y) 
