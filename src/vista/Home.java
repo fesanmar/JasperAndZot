@@ -4,8 +4,10 @@ import java.awt.BasicStroke;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dialog;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -148,7 +150,7 @@ public class Home extends Frame
 		
 		// Dibujamos el mensaje del tablero
 		g.setFont(new Font("TimesRoman", Font.BOLD, 30));
-		g.drawString(tablero.getMessage(), 70, 480);
+		drawMessage(tablero.getMessage(), g);
 		
 		// Dibujamos las casillas activas
 		for (Casilla[] row : tablero.getCasillas())
@@ -214,7 +216,7 @@ public class Home extends Frame
 		
 		// Dibujamos el mensaje del tablero
 		g.setFont(new Font("TimesRoman", Font.BOLD, 30));
-		g.drawString(tablero.getMessage(), 70, 480);
+		drawMessage(tablero.getMessage(), g);
 		
 		// Dibujamos las casillas activas
 		for (Casilla[] row : tablero.getCasillas())
@@ -247,6 +249,16 @@ public class Home extends Frame
 			}			
 		}
 		catch(NullPointerException npe) {}
+	}
+	
+	public void drawMessage(String message, Graphics g)
+	{
+		Dimension dim = this.getSize();
+		int width = (int) (dim.getWidth() - 1);
+		FontMetrics fm = g.getFontMetrics();
+		int x = (width - fm.stringWidth(message)) / 2;
+		g.drawString(message, x, 480);
+		
 	}
 
 }

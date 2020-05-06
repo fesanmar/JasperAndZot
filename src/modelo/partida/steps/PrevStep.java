@@ -1,6 +1,5 @@
 package modelo.partida.steps;
 
-import java.awt.Cursor;
 import java.awt.Point;
 
 import modelo.componentes.tablero.Casilla;
@@ -8,7 +7,7 @@ import modelo.componentes.tablero.Tablero;
 import modelo.componentes.tokens.Calabaza;
 import modelo.componentes.tokens.Jasper;
 import modelo.componentes.tokens.Token;
-import modelo.partida.*;
+import modelo.partida.Partida;
 
 public class PrevStep implements Step, Runnable {
 
@@ -38,6 +37,7 @@ public class PrevStep implements Step, Runnable {
 			partida.setJasper(jasper);
 			partida.setStep(partida.getDescendStep());
 			partida.repaintHome();
+			partida.display();
 		}
 	}
 

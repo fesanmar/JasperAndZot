@@ -18,6 +18,7 @@ public class Partida
 	private String player;
 	private String indication;
 	private int score;
+	private int turn;
 	private Tablero tablero;
 	private Token jasper;
 	private Dice manyDice;
@@ -37,6 +38,7 @@ public class Partida
 		this.setTablero(tablero);
 		this.vistaHome = vistaHome;
 		score = 0;
+		setTurn(1);
 		// Inicializamos los tokens. Al inicio, el tablero empieza vacío
 		tokens = new ArrayList<Token>();
 		indication = "Prueba de indicación.";
@@ -64,9 +66,19 @@ public class Partida
 		vistaHome.repaint(50, 830, 485, 80);
 	}
 	
+	public void repaintMessageArea()
+	{
+		vistaHome.repaint(30, 446, 415, 39);
+	}
+	
 	public void display()
 	{
 		step.display();
+	}
+	
+	public void descend()
+	{
+		step.descend();
 	}
 
 	public void place(int x, int y)
@@ -133,6 +145,27 @@ public class Partida
 	public void setScore(int score)
 	{
 		this.score = score;
+	}
+
+	/**
+	 * @return the turn
+	 */
+	public int getTurn()
+	{
+		return turn;
+	}
+
+	/**
+	 * @param turn the turn to set
+	 */
+	public void setTurn(int turn)
+	{
+		this.turn = turn;
+	}
+	
+	public void nextTurn()
+	{
+		setTurn(getTurn() + 1);
 	}
 
 	public Step getStep()

@@ -128,7 +128,7 @@ public class ControladorHome
 		String player = this.vistaHome.txtDlgJugador.getText();
 		if (!player.trim().isEmpty())
 		{
-			this.vistaHome.tablero.setPartida(new Partida(player, vistaHome.tablero, this.vistaHome));
+			this.vistaHome.tablero.setPartida(new Partida(player, this.vistaHome.tablero, this.vistaHome));
 			this.vistaHome.dlgJugador.setVisible(false);
 			this.vistaHome.txtDlgJugador.setText("");
 			this.vistaHome.tablero.getPartida().display();
