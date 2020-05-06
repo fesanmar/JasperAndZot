@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import modelo.componentes.tablero.Tablero;
 import modelo.componentes.tokens.Token;
+import modelo.partida.assaults.AggravatedAssault;
+import modelo.partida.assaults.Assault;
+import modelo.partida.assaults.NormalAssault;
 import modelo.partida.steps.DescendStep;
 import modelo.partida.steps.MoveShootStep;
 import modelo.partida.steps.PlaceStep;
@@ -23,12 +26,17 @@ public class Partida
 	private Dice manyDice;
 	private Dice appearDice;
 	private ArrayList<Token> tokens;
+	// Steps
 	private Step step;
-	private PrevStep prevStep;
-	private DescendStep descendStep;
-	private PlaceStep placeStep;
-	private MoveShootStep moveShootStep;
-	private SmashStep smashStep;
+	private Step prevStep;
+	private Step descendStep;
+	private Step placeStep;
+	private Step moveShootStep;
+	private Step smashStep;
+	// Assaults
+	private Assault assault;
+	private Assault normalAssault;
+	private Assault aggravatedAssault;
 	private Home vistaHome;
 
 	public Partida(String player, Tablero tablero, Home vistaHome)
@@ -42,6 +50,7 @@ public class Partida
 		tokens = new ArrayList<Token>();
 		manyDice = new Dice(90, 42);
 		appearDice = new Dice(200, 42);
+		// Steps
 		prevStep = new PrevStep(this);
 		descendStep = new DescendStep(this);
 		placeStep = new PlaceStep(this);
@@ -52,6 +61,11 @@ public class Partida
 		tablero.setMessage("");
 		// Seteamos el step como el previo
 		step = prevStep;
+		
+		// Assaults
+		normalAssault = new NormalAssault();
+		aggravatedAssault = new AggravatedAssault();
+		setAssault(normalAssault);
 	}
 	
 	public void repaintHome()
@@ -183,74 +197,55 @@ public class Partida
 		this.step = step;
 	}
 
-	public PrevStep getPrevStep()
+	public Step getPrevStep()
 	{
 		return this.prevStep;
 	}
 
-	/**
-	 * 
-	 * @param prevStep
-	 */
-	public void setPrevStep(PrevStep prevStep)
-	{
-		this.prevStep = prevStep;
-	}
-
-	public DescendStep getDescendStep()
+	public Step getDescendStep()
 	{
 		return this.descendStep;
 	}
 
-	/**
-	 * 
-	 * @param descendStep
-	 */
-	public void setDescendStep(DescendStep descendStep)
-	{
-		this.descendStep = descendStep;
-	}
-
-	public PlaceStep getPlaceStep()
+	public Step getPlaceStep()
 	{
 		return this.placeStep;
 	}
 
-	/**
-	 * 
-	 * @param placeStep
-	 */
-	public void setPlaceStep(PlaceStep placeStep)
-	{
-		this.placeStep = placeStep;
-	}
-
-	public MoveShootStep getMoveShootStep()
+	public Step getMoveShootStep()
 	{
 		return this.moveShootStep;
 	}
 
-	/**
-	 * 
-	 * @param moveShootStep
-	 */
-	public void setMoveShootStep(MoveShootStep moveShootStep)
-	{
-		this.moveShootStep = moveShootStep;
-	}
-
-	public SmashStep getSmashStep()
+	public Step getSmashStep()
 	{
 		return this.smashStep;
 	}
 
-	/**
-	 * 
-	 * @param smashStep
-	 */
-	public void setSmashStep(SmashStep smashStep)
+	public Assault getAssault()
 	{
-		this.smashStep = smashStep;
+		return assault;
+	}
+
+	/**
+	 * @param assault the assault to set
+	 */
+	public void setAssault(Assault assault)
+	{
+		this.assault = assault;
+	}
+
+	public Assault getNormalAssault()
+	{
+		return normalAssault;
+	}
+
+	/**
+	 * @return the aggravatedAssault
+	 */
+	public Assault getAggravatedAssault()
+	{
+		return aggravatedAssault;
 	}
 
 	/**

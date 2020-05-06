@@ -23,6 +23,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import modelo.componentes.Componente;
+import modelo.componentes.Elemento;
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tablero.Tablero;
 
@@ -132,7 +133,10 @@ public class Home extends Frame
 	{
 		super.paint(g);
 		g.setPaintMode();
-
+		
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setStroke(new BasicStroke(3));
+		
 		// Primero se pinta el tablero
 		// Empieza en la x = 0, y = 40. Anchura = 485, altura = 972
 		g.drawImage(tablero.getImage(), tablero.getX(), tablero.getY(), tablero.getWidth(), tablero.getHeight(), null);
@@ -140,9 +144,9 @@ public class Home extends Frame
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 		
-		// Dibujamos la puntuación y las indicaciones
 		try
 		{
+			// Dibujamos la puntuación
 			int score = tablero.getScore();
 			String scoreBox = String.format("Marcador: %,8d", score);
 			// Marcador
@@ -156,7 +160,15 @@ public class Home extends Frame
 			g.drawString("Tokens:", 25, 66);
 			g.drawString("Columna:", 125, 66);
 			
-			// g.setColor(defaultColor);			
+			// Y se dibuja el asalto
+			Elemento assault = (Elemento) tablero.getPartida().getAssault();
+			g.setColor(Color.GREEN);
+			g2d.drawRoundRect(
+					assault.getX(), assault.getY(),
+					assault.getWidth(), assault.getHeight(),
+					10, 10
+					);
+			g.setColor(Color.WHITE);
 		}
 		catch (NullPointerException npe) {}
 		
@@ -172,7 +184,6 @@ public class Home extends Frame
 				if (casilla.isActive())
 				{
 					g.setColor(Color.CYAN);
-					Graphics2D g2d = (Graphics2D) g;
 					g2d.setStroke(new BasicStroke(3));
 					g2d.drawRoundRect(
 							casilla.getX(), casilla.getY(), 
