@@ -2,15 +2,18 @@ package modelo.componentes.tokens;
 
 import modelo.componentes.Componente;
 import modelo.componentes.tablero.Casilla;
+import modelo.partida.Partida;
 
 public class Jasper extends Componente implements Token 
 {
 	Casilla casilla;
+	Partida partida;
 	
-	public Jasper(Casilla casilla)
+	public Jasper(Casilla casilla, Partida partida)
 	{
 		super(casilla.getX(), casilla.getY(), SIDE, "./images/jasper.jpeg");
 		this.casilla = casilla;
+		this.partida = partida;
 	}
 
 	public Casilla getCasilla() 
@@ -39,9 +42,9 @@ public class Jasper extends Componente implements Token
 		throw new UnsupportedOperationException();
 	}
 
-	public void die() {
-		// TODO - implement Jasper.die
-		throw new UnsupportedOperationException();
+	public void die() 
+	{
+		partida.gameOver();
 	}
 
 }
