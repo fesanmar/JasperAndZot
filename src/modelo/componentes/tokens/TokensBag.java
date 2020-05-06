@@ -3,15 +3,17 @@ package modelo.componentes.tokens;
 import java.util.ArrayList;
 import java.util.Random;
 
+import modelo.partida.Partida;
+
 public class TokensBag
 {
 	ArrayList<Token> tokensBag;
-	final ArrayList<Token> initialTokensBag;
 	Random random;
+	Partida partida;
 	
-	public TokensBag(ArrayList<Token> initialTokens)
+	public TokensBag(ArrayList<Token> initialTokens, Partida partida)
 	{
-		initialTokensBag = initialTokens;
+		this.partida = partida;
 		tokensBag = new ArrayList<Token>(initialTokens);
 		random = new Random();
 		
@@ -28,7 +30,8 @@ public class TokensBag
 	
 	public void refillBag()
 	{
-		tokensBag = initialTokensBag;
+		tokensBag = partida.getDiscardPile();
+		partida.emptyDiscardPile();
 	}
 	
 	public boolean isEmpty()

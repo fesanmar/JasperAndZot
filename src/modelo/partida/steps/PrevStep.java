@@ -32,7 +32,7 @@ public class PrevStep implements Step, Runnable {
 		{
 			isSelected = true;
 			partida.getTablero().setMessage("");
-			Token jasper = new Jasper(casilla);
+			Token jasper = new Jasper(casilla, partida);
 			partida.setJasper(jasper);
 			partida.setStep(partida.getDescendStep());
 			partida.repaintHome();
@@ -53,7 +53,9 @@ public class PrevStep implements Step, Runnable {
 		{
 			Casilla casillaCalabaza 
 				= partida.getTablero().getCasilla(Tablero.PUMPKIN_ROW, i);
-			Token calabaza = new Calabaza(casillaCalabaza.getX(), casillaCalabaza.getY());
+			Token calabaza = new Calabaza(
+					casillaCalabaza.getX(), casillaCalabaza.getY(), partida
+					);
 			partida.addToken(calabaza);
 		}
 		

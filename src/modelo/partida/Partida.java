@@ -32,6 +32,7 @@ public class Partida
 	private Dice manyDice;
 	private Dice appearDice;
 	private ArrayList<Token> tokens;
+	private ArrayList<Token> discardPile;
 	// Steps
 	private Step step;
 	private Step prevStep;
@@ -54,6 +55,7 @@ public class Partida
 		setTurn(1);
 		// Inicializamos los tokens. Al inicio, el tablero empieza vacío
 		tokens = new ArrayList<Token>();
+		discardPile = new ArrayList<Token>();
 		manyDice = new Dice(90, 42);
 		appearDice = new Dice(200, 42);
 		// Steps
@@ -81,12 +83,12 @@ public class Partida
 		ArrayList<Token> intialTokens = new ArrayList<Token>();
 		for (int i = 0; i < 24; i++)
 		{
-			intialTokens.add(new Zombi());
+			intialTokens.add(new Zombi(this));
 			if (i < 8) intialTokens.add(new ZombiArdiente());
 			if (i < 4) intialTokens.add(new Bomba());
 			if (i < 3) intialTokens.add(new Multiplicador());
 		}
-		this.tokensBag = new TokensBag(intialTokens);
+		this.tokensBag = new TokensBag(intialTokens, this);
 		System.out.println(intialTokens.size());
 	}
 	
@@ -134,6 +136,12 @@ public class Partida
 	{
 		tokens.remove(token);
 	}
+	
+	public void discard(Token token)
+	{
+		tokens.remove(token);
+		discardPile.add(token);
+	}
 
 	public ArrayList<Token> getTokens()
 	{
@@ -151,6 +159,19 @@ public class Partida
 	public TokensBag getTokensBag()
 	{
 		return tokensBag;
+	}
+
+	/**
+	 * @return the discardPile
+	 */
+	public ArrayList<Token> getDiscardPile()
+	{
+		return discardPile;
+	}
+	
+	public void emptyDiscardPile()
+	{
+		discardPile.removeAll(tokens);
 	}
 
 	public Dice getManydice()
@@ -316,7 +337,12 @@ public class Partida
 	
 	public void end()
 	{
-		
+		// TODO
+	}
+	
+	public void gameOver() 
+	{
+		// TODO
 	}
 
 }
