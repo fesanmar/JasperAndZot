@@ -16,7 +16,6 @@ public class Partida
 {
 
 	private String player;
-	private String indication;
 	private int score;
 	private int turn;
 	private Tablero tablero;
@@ -41,9 +40,8 @@ public class Partida
 		setTurn(1);
 		// Inicializamos los tokens. Al inicio, el tablero empieza vacío
 		tokens = new ArrayList<Token>();
-		indication = "Prueba de indicación.";
-		manyDice = new Dice();
-		appearDice = new Dice();
+		manyDice = new Dice(90, 42);
+		appearDice = new Dice(200, 42);
 		prevStep = new PrevStep(this);
 		descendStep = new DescendStep(this);
 		placeStep = new PlaceStep(this);
@@ -69,6 +67,11 @@ public class Partida
 	public void repaintMessageArea()
 	{
 		vistaHome.repaint(30, 446, 415, 39);
+	}
+	
+	public void repaintDiceArea()
+	{
+		vistaHome.repaint(25, 42, 235, 28);
 	}
 	
 	public void display()
@@ -106,16 +109,14 @@ public class Partida
 		this.tokens = tokens;
 	}
 
-	public int getManydiceResult()
+	public Dice getManydice()
 	{
-		manyDice.roll();
-		return manyDice.getResult();
+		return manyDice;
 	}
 
-	public int getAppearDiceResult()
+	public Dice getAppearDice()
 	{
-		appearDice.roll();
-		return appearDice.getResult();
+		return appearDice;
 	}
 
 	public String getPlayer()
@@ -250,22 +251,6 @@ public class Partida
 	public void setSmashStep(SmashStep smashStep)
 	{
 		this.smashStep = smashStep;
-	}
-
-	/**
-	 * @return the indication
-	 */
-	public String getIndication()
-	{
-		return indication;
-	}
-
-	/**
-	 * @param indication the indication to set
-	 */
-	public void setIndication(String indication)
-	{
-		this.indication = indication;
 	}
 
 	/**

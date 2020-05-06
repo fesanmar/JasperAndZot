@@ -41,6 +41,29 @@ public class Componente extends Elemento {
 			e.printStackTrace();
 		}
 	}
+	
+	public Componente(int side, String file)
+	{
+		super(0, 0, side);
+		File pathImage = new File(file);
+		try
+		{
+			this.image = ImageIO.read(pathImage);
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public Componente(int side)
+	{
+		super(0, 0, side);
+	}
+	
+	public Componente(int x, int y, int side)
+	{
+		super(x, y, side);
+	}
 
 	public Image getImage() {
 		return this.image;

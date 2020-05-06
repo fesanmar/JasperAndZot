@@ -2,18 +2,24 @@ package modelo.partida.steps;
 
 import modelo.partida.*;
 
-public class PlaceStep implements Step {
+public class PlaceStep implements Step, Runnable {
 
 	private Partida partida;
+	private Thread thread;
+	private boolean dicesRolled = false;
 
 	public PlaceStep(Partida partida)
 	{
 		this.partida = partida;
+		thread = new Thread(this, "PlaceStep thread");
 	}
 	
-	public void descend() {
-		// TODO - implement PlaceStep.descend
-		throw new UnsupportedOperationException();
+	public void descend() 
+	{
+		partida.getManydice().roll();
+		partida.getAppearDice().roll();
+		dicesRolled = true;
+		partida.repaintDiceArea();
 	}
 
 	public void place(int x, int y) {
@@ -34,8 +40,9 @@ public class PlaceStep implements Step {
 	@Override
 	public void display()
 	{
-		// TODO Auto-generated method stub
-		
+		partida.getTablero().setMessage("Lanzando los dados");
+		partida.repaintMessageArea();
+		thread.start();
 	}
 
 	@Override
@@ -43,6 +50,24 @@ public class PlaceStep implements Step {
 	{
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void run()
+	{
+		if (dicesRolled == false)
+		{
+			try
+			{
+				Thread.sleep(3000);
+				partida.getTablero().setMessage("");
+				partida.repaintMessageArea();
+				descend();
+			} catch (InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

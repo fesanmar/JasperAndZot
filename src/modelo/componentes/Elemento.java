@@ -24,6 +24,11 @@ public class Elemento {
 	{
 		this(x, y, side, side);
 	}
+	
+	public Elemento(int side)
+	{
+		this(0, 0, side, side);
+	}
 
 	public int getX() {
 		return this.x;

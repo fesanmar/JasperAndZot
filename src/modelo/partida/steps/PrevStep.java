@@ -31,9 +31,8 @@ public class PrevStep implements Step, Runnable {
 		if (casilla.getRow() == Tablero.JASPER_ROW)
 		{
 			isSelected = true;
-			partida.setIndication("");
-			Token jasper = new Jasper(casilla.getX(), casilla.getY());
-			jasper.setCasilla(casilla);
+			partida.getTablero().setMessage("");
+			Token jasper = new Jasper(casilla);
 			partida.setJasper(jasper);
 			partida.setStep(partida.getDescendStep());
 			partida.repaintHome();
@@ -48,7 +47,7 @@ public class PrevStep implements Step, Runnable {
 	@Override
 	public void display()
 	{
-		partida.setIndication("Elige una casilla para colocar a Jasper");
+		partida.getTablero().setMessage("Coloca a Jasper");
 		
 		for (int i = 0; i < 6; i++)
 		{

@@ -7,9 +7,10 @@ public class Jasper extends Componente implements Token
 {
 	Casilla casilla;
 	
-	public Jasper(int x, int y)
+	public Jasper(Casilla casilla)
 	{
-		super(x, y, SIDE, "./images/jasper.jpeg");
+		super(casilla.getX(), casilla.getY(), SIDE, "./images/jasper.jpeg");
+		this.casilla = casilla;
 	}
 
 	public Casilla getCasilla() 
@@ -23,6 +24,8 @@ public class Jasper extends Componente implements Token
 	 */
 	public void setCasilla(Casilla casilla) 
 	{
+		setX(casilla.getX());
+		setY(casilla.getY());
 		this.casilla = casilla;
 	}
 

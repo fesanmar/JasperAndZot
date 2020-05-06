@@ -1,8 +1,10 @@
 package modelo.componentes.tablero;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 import modelo.componentes.Componente;
+import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
 
 public class Tablero extends Componente {
@@ -56,6 +58,19 @@ public class Tablero extends Componente {
 			rowCasillas[i] = casillas[row][i];
 		}
 		return rowCasillas;
+	}
+	
+	public ArrayList<Componente> getComponentes()
+	{
+		ArrayList<Componente> componentes = new ArrayList<Componente>();
+		for(Token token : partida.getTokens())
+		{
+			componentes.add((Componente) token);
+		}
+		componentes.add(partida.getManydice());
+		componentes.add(partida.getAppearDice());
+		
+		return componentes;
 	}
 
 	public int getScore()
