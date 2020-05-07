@@ -2,21 +2,33 @@ package modelo.componentes.tokens;
 
 import modelo.componentes.Componente;
 import modelo.componentes.tablero.Casilla;
+import modelo.partida.Partida;
 
 public class Multiplicador extends Componente implements Token {
 
-	public Casilla getCasilla() {
-		// TODO - implement Multiplicador.getCasilla
-		throw new UnsupportedOperationException();
+	private Partida partida;
+	private Casilla casilla;
+
+	public Multiplicador(Partida partida)
+	{
+		super(SIDE, "./images/pordos.jpeg");
+		this.partida = partida;
+	}
+	
+	public Casilla getCasilla() 
+	{
+		return casilla;
 	}
 
 	/**
 	 * 
 	 * @param casilla
 	 */
-	public void setCasilla(Casilla casilla) {
-		// TODO - implement Multiplicador.setCasilla
-		throw new UnsupportedOperationException();
+	public void setCasilla(Casilla casilla) 
+	{
+		setX(casilla.getX());
+		setY(casilla.getY());
+		this.casilla = casilla;
 	}
 
 	public void move() {
@@ -29,9 +41,9 @@ public class Multiplicador extends Componente implements Token {
 		throw new UnsupportedOperationException();
 	}
 
-	public void die() {
-		// TODO - implement Multiplicador.die
-		throw new UnsupportedOperationException();
+	public void die() 
+	{
+		partida.discard(this);
 	}
 
 }

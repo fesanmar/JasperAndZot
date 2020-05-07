@@ -47,6 +47,7 @@ public class PlaceStep implements Step, Runnable {
 		}
 		
 		partida.getAssault().placeTokens(drawedTokens);
+		partida.repaintHome();
 	}
 
 	public void place(int x, int y) 

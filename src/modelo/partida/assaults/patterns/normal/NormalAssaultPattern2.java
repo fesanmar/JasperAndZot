@@ -18,11 +18,22 @@ public class NormalAssaultPattern2 implements AssaultPattern
 	@Override
 	public void placeTokens(Token... tokens) throws WrongNumberOfTokensException
 	{
+		// XX
 		if (tokens.length != 2)
 			throw new WrongNumberOfTokensException();
 
-		Casilla casilla1 = partida.getTablero().getCasilla(0, partida.getAppearDice().getResult() - 1);
-		Casilla casilla2 = partida.getTablero().getCasilla(0, partida.getAppearDice().getResult());
+		Casilla casilla1; 
+		Casilla casilla2;
+		try
+		{
+			casilla1 = partida.getTablero().getCasilla(0, partida.getAppearDice().getResult() - 1);
+			casilla2 = partida.getTablero().getCasilla(0, partida.getAppearDice().getResult());	
+		}
+		catch (ArrayIndexOutOfBoundsException aiofe)
+		{
+			casilla1 = partida.getTablero().getCasilla(0, partida.getAppearDice().getResult() - 2);
+			casilla2 = partida.getTablero().getCasilla(0, partida.getAppearDice().getResult()- 1);	
+		}
 		tokens[0].setCasilla(casilla1);
 		tokens[1].setCasilla(casilla2);
 		partida.addToken(tokens[0]);

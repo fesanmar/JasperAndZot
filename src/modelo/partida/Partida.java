@@ -84,9 +84,9 @@ public class Partida
 		for (int i = 0; i < 24; i++)
 		{
 			intialTokens.add(new Zombi(this));
-			if (i < 8) intialTokens.add(new ZombiArdiente());
-			if (i < 4) intialTokens.add(new Bomba());
-			if (i < 3) intialTokens.add(new Multiplicador());
+			if (i < 8) intialTokens.add(new ZombiArdiente(this));
+			if (i < 4) intialTokens.add(new Bomba(this));
+			if (i < 3) intialTokens.add(new Multiplicador(this));
 		}
 		this.tokensBag = new TokensBag(intialTokens, this);
 		System.out.println(intialTokens.size());

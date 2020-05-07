@@ -6,8 +6,8 @@ import modelo.partida.Partida;
 
 public class Zombi extends Componente implements Token 
 {
-	Partida partida;
-	Casilla casilla;
+	private Partida partida;
+	private Casilla casilla;
 
 	public Zombi(Partida partida)
 	{
