@@ -1,34 +1,16 @@
 package modelo.partida.assaults;
 
-import modelo.componentes.Elemento;
-import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
 import modelo.partida.assaults.patterns.AssaultPattern;
-import modelo.partida.assaults.patterns.WrongNumberOfTokensException;
 import modelo.partida.assaults.patterns.normal.NormalAssaultPattern1;
 import modelo.partida.assaults.patterns.normal.NormalAssaultPattern2;
 
-public class NormalAssault extends Elemento implements Assault
+public class NormalAssault extends Assault
 {
-	Partida partida;
 	
 	public NormalAssault(Partida partida)
 	{
-		super(29, 68, 189, 73);
-		this.partida = partida;
-	}
-
-	@Override
-	public void placeTokens(Token... tokens)
-	{
-		AssaultPattern assaultPattern = createAssaultPattern(partida);
-		try
-		{
-			assaultPattern.placeTokens(tokens);
-		} catch (WrongNumberOfTokensException e)
-		{
-			e.printStackTrace();
-		}
+		super(29, 68, 189, 73, partida);
 	}
 
 	@Override
