@@ -14,7 +14,7 @@ public class AggravatedAssault extends Assault
 	
 	public AggravatedAssault(Partida partida)
 	{
-		super(222, 69, 229, 69, partida);
+		super(222, 68, 229, 73, partida);
 	}
 
 	@Override

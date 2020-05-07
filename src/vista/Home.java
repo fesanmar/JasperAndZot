@@ -26,6 +26,7 @@ import modelo.componentes.Componente;
 import modelo.componentes.Elemento;
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tablero.Tablero;
+import modelo.componentes.tokens.Jasper;
 
 public class Home extends Frame
 {
@@ -202,7 +203,13 @@ public class Home extends Frame
 		{
 			for (Componente componente : tablero.getComponentes())
 			{
-				g.drawImage(componente.getImage(), componente.getX(), componente.getY(), componente.getWidth(), componente.getHeight(), null);
+				// A Jasper se le dibuja 4 px más abajo que el resto, porque no cuadra
+				// bien en su casilla
+				g.drawImage(
+						componente.getImage(), 
+						componente.getX(), 
+						(componente instanceof Jasper) ? (componente.getY() + 4) : componente.getY(), 
+						componente.getWidth(), componente.getHeight(), null);
 			}			
 		}
 		catch(NullPointerException npe) {}

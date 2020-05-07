@@ -13,7 +13,7 @@ public class Tablero extends Componente {
 	public final static int ROWS = 11;
 	public final static int COLUMNS = 6;
 	private final static int FIRST_X = 61;
-	private final static int FIRST_Y = 234;
+	private final static int FIRST_Y = 230;
 	public static final int JASPER_ROW = 10;
 	public static final int PUMPKIN_ROW = 9;
 	
