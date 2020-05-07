@@ -40,7 +40,7 @@ public class PrevStep implements Step, Runnable {
 		}
 	}
 
-	public void moveAndShoot() {}
+	public void shoot() {}
 
 	public void Smash() {}
 

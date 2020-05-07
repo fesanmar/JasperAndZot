@@ -21,7 +21,7 @@ public class SmashStep implements Step {
 		throw new UnsupportedOperationException();
 	}
 
-	public void moveAndShoot() {
+	public void shoot() {
 		// TODO - implement SmashStep.moveAndShoot
 		throw new UnsupportedOperationException();
 	}

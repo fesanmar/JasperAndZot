@@ -20,7 +20,7 @@ public class DescendStep implements Step, Runnable {
 		partida.display();
 	}
 
-	public void moveAndShoot() {}
+	public void shoot() {}
 
 	public void Smash() {}
 

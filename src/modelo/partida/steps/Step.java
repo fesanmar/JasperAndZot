@@ -8,7 +8,7 @@ public interface Step {
 
 	abstract void place(int x, int y);
 
-	abstract void moveAndShoot();
+	abstract void shoot();
 
 	abstract void Smash();
 	

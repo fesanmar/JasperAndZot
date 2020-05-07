@@ -52,7 +52,7 @@ public class PlaceStep implements Step, Runnable
 	{
 	}
 
-	public void moveAndShoot()
+	public void shoot()
 	{
 		// TODO - implement PlaceStep.moveAndShoot
 		throw new UnsupportedOperationException();
