@@ -23,7 +23,7 @@ public class NormalAssaultPattern1 implements AssaultPattern
 			throw new WrongNumberOfTokensException();
 		
 		Casilla casilla = 
-				partida.getTablero().getCasilla(0, partida.getAppearDice().getResult());
+				partida.getTablero().getCasilla(0, partida.getAppearDice().getResult() - 1);
 		tokens[0].setCasilla(casilla);
 		partida.addToken(tokens[0]);
 	}

@@ -6,11 +6,12 @@ import modelo.partida.Partida;
 import modelo.partida.assaults.patterns.AssaultPattern;
 import modelo.partida.assaults.patterns.WrongNumberOfTokensException;
 
-public class NormalAssaultPattern2 implements AssaultPattern
+public class NormalAssaultPattern3 implements AssaultPattern
 {
-	Partida partida;
 
-	public NormalAssaultPattern2(Partida partida)
+	private Partida partida;
+	
+	public NormalAssaultPattern3(Partida partida)
 	{
 		this.partida = partida;
 	}
@@ -22,7 +23,7 @@ public class NormalAssaultPattern2 implements AssaultPattern
 			throw new WrongNumberOfTokensException();
 
 		Casilla casilla1 = partida.getTablero().getCasilla(0, partida.getAppearDice().getResult() - 1);
-		Casilla casilla2 = partida.getTablero().getCasilla(0, partida.getAppearDice().getResult());
+		Casilla casilla2 = partida.getTablero().getCasilla(1, partida.getAppearDice().getResult() - 1);
 		tokens[0].setCasilla(casilla1);
 		tokens[1].setCasilla(casilla2);
 		partida.addToken(tokens[0]);
