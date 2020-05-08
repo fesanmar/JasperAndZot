@@ -84,4 +84,11 @@ public class DescendStep implements Step, Runnable {
 		descend();
 	}
 
+	@Override
+	public void stopThread()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
 }

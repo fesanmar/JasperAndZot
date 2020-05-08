@@ -12,6 +12,7 @@ import modelo.partida.Partida;
 public class PrevStep implements Step, Runnable {
 
 	private Partida partida;
+	private boolean running;
 	
 	volatile private boolean isSelected = false;
 	private Thread thread;
@@ -19,6 +20,7 @@ public class PrevStep implements Step, Runnable {
 	public PrevStep(Partida partida)
 	{
 		this.partida = partida;
+		running = false;
 		thread = new Thread(this, "Blink Zot area");
 		
 	}
@@ -68,7 +70,8 @@ public class PrevStep implements Step, Runnable {
 	@Override
 	public void run()
 	{
-		while (isSelected == false)
+		running = true;
+		while (isSelected == false && running == true)
 		{
 			// Activa las casillas de la fila de Zot
 			for (int i = 0; i < Tablero.COLUMNS; i++)
@@ -121,6 +124,12 @@ public class PrevStep implements Step, Runnable {
 		{
 			return false;
 		}
+	}
+
+	@Override
+	public void stopThread()
+	{
+		running = false;
 	}
 
 }

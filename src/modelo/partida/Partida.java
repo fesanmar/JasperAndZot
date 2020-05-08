@@ -344,5 +344,14 @@ public class Partida
 	{
 		// TODO
 	}
+	
+	public void quitPartida()
+	{
+		prevStep.stopThread();
+		descendStep.stopThread();
+		placeStep.stopThread();
+		moveShootStep.stopThread();
+		smashStep.stopThread();
+	}
 
 }

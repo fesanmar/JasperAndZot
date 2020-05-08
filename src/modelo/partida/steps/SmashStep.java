@@ -45,4 +45,11 @@ public class SmashStep implements Step {
 		return false;
 	}
 
+	@Override
+	public void stopThread()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
 }

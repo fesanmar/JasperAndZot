@@ -125,6 +125,11 @@ public class ControladorHome
 
 	private void startGame()
 	{
+		if(vistaHome.tablero.getPartida() != null)
+		{
+			vistaHome.tablero.getPartida().quitPartida();
+						
+		}
 		String player = this.vistaHome.txtDlgJugador.getText();
 		if (!player.trim().isEmpty())
 		{

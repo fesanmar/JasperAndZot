@@ -13,5 +13,7 @@ public interface Step {
 	abstract void Smash();
 	
 	abstract boolean isSelectable(int x, int y);
+	
+	abstract void stopThread();
 
 }

@@ -7,9 +7,7 @@ import com.mysql.cj.exceptions.WrongArgumentException;
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tablero.CasillaNull;
 import modelo.componentes.tablero.Tablero;
-import modelo.componentes.tokens.Calabaza;
-import modelo.componentes.tokens.Token;
-import modelo.partida.*;
+import modelo.partida.Partida;
 
 public class MoveShootStep implements Step, Runnable
 {
@@ -18,11 +16,14 @@ public class MoveShootStep implements Step, Runnable
 	private Thread thread;
 	private boolean hasMoved;
 	private boolean hasShooted;
+	private boolean running;
 
 	public MoveShootStep(Partida partida)
 	{
 		this.partida = partida;
+		running = false;
 		thread = new Thread(this, "MoveAndShot thread");
+		
 	}
 
 	public void descend()
@@ -50,6 +51,12 @@ public class MoveShootStep implements Step, Runnable
 	public void shoot()
 	{
 		// TODO - implement MoveShootStep.moveAndShoot
+		// Cuando se dispara, si el disparo choca con algún token
+		// se instanciará una cadena FireChain o FlowerChain, en la que 
+		// se irán metiendo todos los tokens afectados. Luego, en esta
+		// clase, se llamará al método die() o cast() de cada token (tengo
+		// que cambiar esto en la interfaz Token.
+		// Quizás shoot deberá recibir por parámetro la una interfaz Chain.
 		throw new UnsupportedOperationException();
 	}
 
@@ -123,7 +130,8 @@ public class MoveShootStep implements Step, Runnable
 	@Override
 	public void run()
 	{
-		while (hasMoved == false)
+		running = true;
+		while (hasMoved == false && running == true)
 		{
 			// Activa las casillas de la fila de Zot
 			for (int i = 0; i < Tablero.COLUMNS; i++)
@@ -158,6 +166,12 @@ public class MoveShootStep implements Step, Runnable
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public void stopThread()
+	{
+		running = false;
 	}
 
 }

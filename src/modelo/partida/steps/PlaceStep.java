@@ -95,4 +95,7 @@ public class PlaceStep implements Step, Runnable
 
 	}
 
+	@Override
+	public void stopThread() {}
+
 }
