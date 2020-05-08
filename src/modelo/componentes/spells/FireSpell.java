@@ -1,5 +1,7 @@
 package modelo.componentes.spells;
 
+import modelo.componentes.tokens.Flores;
+import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
 
 public class FireSpell extends Spell
@@ -12,6 +14,13 @@ public class FireSpell extends Spell
 	@Override
 	public void cast()
 	{
-		System.out.println("Se disparón el hechzo de fuego");
+		Token[] affectedTokens = getFirstAffectedTokens();
+		for (Token token : affectedTokens)
+		{
+			if (token instanceof Flores)
+			{
+				// TODO: Comienza la cadena
+			}
+		}
 	}
 }

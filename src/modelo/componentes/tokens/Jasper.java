@@ -47,4 +47,11 @@ public class Jasper extends Componente implements Token
 		partida.gameOver();
 	}
 
+	@Override
+	public void casted()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
 }

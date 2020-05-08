@@ -10,10 +10,11 @@ public class Calabaza extends Componente implements Token
 	Casilla casilla;
 	Partida partida;
 	
-	public Calabaza(int x, int y, Partida partida)
+	public Calabaza(Casilla casilla, Partida partida)
 	{
-		super(x, y, SIDE, "./images/calabaza.jpeg");
+		super(SIDE, "./images/calabaza.jpeg");
 		this.partida = partida;
+		setCasilla(casilla);
 	}
 
 	@Override
@@ -25,6 +26,8 @@ public class Calabaza extends Componente implements Token
 	@Override
 	public void setCasilla(Casilla casilla)
 	{
+		setX(casilla.getX());
+		setY(casilla.getY());
 		this.casilla = casilla;
 	}
 
@@ -50,6 +53,13 @@ public class Calabaza extends Componente implements Token
 			}
 		}
 		if (numberOfPumkins == 0) partida.gameOver();;
+	}
+
+	@Override
+	public void casted()
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }

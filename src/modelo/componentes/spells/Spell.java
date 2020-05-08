@@ -18,6 +18,11 @@ public abstract class Spell extends Componente
 		this.partida = partida;
 	}
 	
+	/***
+	 * Devuelve los tokens que hay sobre la primera casilla con
+	 * tokens golpeados por el hechizo.
+	 * @return array con los tokens afectados por el hechizo
+	 */
 	protected Token[] getFirstAffectedTokens()
 	{
 		int jasperColumn = partida.getJasper().getCasilla().getColumn();
@@ -32,6 +37,8 @@ public abstract class Spell extends Componente
 				casillasAffected.add(casilla);
 			}
 		}
+		// Ordena las casillas de manera que la casilla con el token más 
+		// cercano a Jasper quede en la posición 0
 		casillasAffected.sort(
 				(c1, c2) -> c2.getNumber() - c1.getNumber() 
 				);

@@ -46,4 +46,11 @@ public class Multiplicador extends Componente implements Token {
 		partida.discard(this);
 	}
 
+	@Override
+	public void casted()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -4,7 +4,6 @@ import java.awt.Point;
 
 import com.mysql.cj.exceptions.WrongArgumentException;
 
-import modelo.componentes.spells.FireSpell;
 import modelo.componentes.spells.Spell;
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tablero.CasillaNull;
@@ -61,9 +60,8 @@ public class MoveShootStep implements Step, Runnable
 		// Cuando se dispara, si el disparo choca con algún token
 		// se instanciará una cadena FireChain o FlowerChain, en la que 
 		// se irán metiendo todos los tokens afectados. Luego, en esta
-		// clase, se llamará al método die() o cast() de cada token (tengo
+		// clase, se llamará al método die() o casted() de cada token (tengo
 		// que cambiar esto en la interfaz Token.
-		// Quizás shoot deberá recibir por parámetro la una interfaz Chain.
 		if (hasShooted == false)
 		{
 			hasMoved = true;

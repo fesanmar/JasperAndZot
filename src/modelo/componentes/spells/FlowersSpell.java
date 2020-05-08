@@ -1,6 +1,8 @@
 package modelo.componentes.spells;
 
 import modelo.componentes.tokens.Token;
+import modelo.componentes.tokens.Zombi;
+import modelo.componentes.tokens.ZombiArdiente;
 import modelo.partida.Partida;
 
 public class FlowersSpell extends Spell
@@ -14,7 +16,13 @@ public class FlowersSpell extends Spell
 	public void cast()
 	{
 		Token[] affectedTokens = getFirstAffectedTokens();
-		System.out.println(affectedTokens);
+		for (Token token : affectedTokens)
+		{
+			if (token instanceof Zombi || token instanceof ZombiArdiente)
+			{
+				// TODO: Comienza la cadena
+			}
+		}
 		
 	}
 }

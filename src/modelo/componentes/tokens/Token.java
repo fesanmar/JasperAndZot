@@ -29,6 +29,8 @@ public interface Token {
 	abstract void move();
 
 	abstract void atack();
+	
+	abstract void casted();
 
 	abstract void die();
 

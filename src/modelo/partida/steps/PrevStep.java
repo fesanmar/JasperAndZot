@@ -55,10 +55,7 @@ public class PrevStep implements Step, Runnable {
 		{
 			Casilla casillaCalabaza 
 				= partida.getTablero().getCasilla(Tablero.PUMPKIN_ROW, i);
-			Token calabaza = new Calabaza(
-					casillaCalabaza.getX(), casillaCalabaza.getY(), partida
-					);
-			calabaza.setCasilla(casillaCalabaza);
+			Token calabaza = new Calabaza(casillaCalabaza, partida);
 			partida.addToken(calabaza);
 		}
 		

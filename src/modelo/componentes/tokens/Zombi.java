@@ -47,4 +47,11 @@ public class Zombi extends Componente implements Token
 		
 	}
 
+	@Override
+	public void casted()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
 }

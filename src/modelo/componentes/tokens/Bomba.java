@@ -40,5 +40,11 @@ public class Bomba extends Componente implements Token {
 	{
 		partida.discard(this);
 	}
+	@Override
+	public void casted()
+	{
+		// TODO Auto-generated method stub
+		
+	}
 
 }
