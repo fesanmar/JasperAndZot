@@ -14,6 +14,7 @@ public class Bomba extends Componente implements Token {
 		super(SIDE, "./images/bomba.jpeg");
 		this.partida = partida;
 	}
+	
 	public Casilla getCasilla() 
 	{
 		return casilla;
@@ -31,20 +32,34 @@ public class Bomba extends Componente implements Token {
 		throw new UnsupportedOperationException();
 	}
 
-	public void atack() {
-		// TODO - implement Bomba.atack
-		throw new UnsupportedOperationException();
+	public void atack() 
+	{
+		// Explota su casilla con todos los tokens
+		Casilla casilla = this.getCasilla();
+		casilla.explote();
+		
+		Casilla rightCasilla = casilla.getRightCasilla();
+		rightCasilla.explote();
+				
+		Casilla leftCasilla = casilla.getLeftCasilla();
+		leftCasilla.explote();
+		
+		 Casilla upCasilla = casilla.getAboveCasilla();
+		upCasilla.explote();
+		
+		Casilla downCasilla = casilla.getBottomCasilla();
+		downCasilla.explote();
 	}
 
-	public void die() 
+	public int die() 
 	{
 		partida.discard(this);
+		return 0;
 	}
 	@Override
 	public void casted()
 	{
-		// TODO Auto-generated method stub
-		
+		atack();
 	}
 
 }

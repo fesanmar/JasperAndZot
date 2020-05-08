@@ -31,25 +31,21 @@ public class Multiplicador extends Componente implements Token {
 		this.casilla = casilla;
 	}
 
-	public void move() {
-		// TODO - implement Multiplicador.move
-		throw new UnsupportedOperationException();
-	}
+	public void move() {}
 
-	public void atack() {
-		// TODO - implement Multiplicador.atack
-		throw new UnsupportedOperationException();
-	}
+	public void atack() {}
 
-	public void die() 
+	public int die() 
 	{
 		partida.discard(this);
+		return 1;
 	}
 
 	@Override
 	public void casted()
 	{
-		// TODO Auto-generated method stub
+		partida.addToken(new Flores(this.getCasilla(), partida));
+		partida.discard(this);
 		
 	}
 

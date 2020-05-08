@@ -42,16 +42,13 @@ public class Jasper extends Componente implements Token
 		throw new UnsupportedOperationException();
 	}
 
-	public void die() 
+	public int die() 
 	{
 		partida.gameOver();
+		return 0;
 	}
 
 	@Override
-	public void casted()
-	{
-		// TODO Auto-generated method stub
-		
-	}
+	public void casted() {}
 
 }

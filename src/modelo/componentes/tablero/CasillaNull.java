@@ -54,15 +54,13 @@ public class CasillaNull implements Casilla {
 	@Override
 	public boolean hasToken()
 	{
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public Token[] getTokens()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new Token[0];
 	}
 
 	@Override
@@ -85,5 +83,32 @@ public class CasillaNull implements Casilla {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public Casilla getRightCasilla()
+	{
+		return new CasillaNull();
+	}
+
+	@Override
+	public Casilla getLeftCasilla()
+	{
+		return new CasillaNull();
+	}
+
+	@Override
+	public Casilla getAboveCasilla()
+	{
+		return new CasillaNull();
+	}
+
+	@Override
+	public Casilla getBottomCasilla()
+	{
+		return new CasillaNull();
+	}
+
+	@Override
+	public void explote() {}
 
 }

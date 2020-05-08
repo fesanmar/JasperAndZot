@@ -7,9 +7,12 @@ import modelo.partida.Partida;
 
 public class FlowersSpell extends Spell
 {
+	
 	public FlowersSpell(Partida partida)
 	{
 		super(185, 910, "./images/earth.jpeg", partida);
+		spellChain = new FlowerSpellChain(partida);
+		
 	}
 	
 	@Override
@@ -20,7 +23,9 @@ public class FlowersSpell extends Spell
 		{
 			if (token instanceof Zombi || token instanceof ZombiArdiente)
 			{
-				// TODO: Comienza la cadena
+				spellChain.createChain(affectedTokens);
+				spellChain.updateScore();
+				break;
 			}
 		}
 		

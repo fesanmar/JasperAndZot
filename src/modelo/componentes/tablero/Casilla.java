@@ -34,5 +34,15 @@ public interface Casilla {
 	
 	abstract void setNumber(int number);
 	
+	abstract Casilla getRightCasilla();
+	
+	abstract Casilla getLeftCasilla();
+	
+	abstract Casilla getAboveCasilla();
+	
+	abstract Casilla getBottomCasilla();
+	
+	abstract void explote();
+	
 
 }

@@ -148,6 +148,77 @@ public class CasillaReal extends Elemento implements Casilla {
 		
 		return false;
 	}
+
+	@Override
+	public Casilla getRightCasilla()
+	{
+		try
+		{
+			return tablero.getCasilla(this.getRow(), this.getColumn() + 1);
+			
+		}
+		catch(ArrayIndexOutOfBoundsException aiobe)
+		{
+			return new CasillaNull();
+		}
+	}
+
+	@Override
+	public Casilla getLeftCasilla()
+	{
+		try
+		{
+			return tablero.getCasilla(this.getRow(), this.getColumn() - 1);
+			
+		}
+		catch(ArrayIndexOutOfBoundsException aiobe)
+		{
+			return new CasillaNull();
+		}
+	}
+
+	@Override
+	public Casilla getAboveCasilla()
+	{
+		try
+		{
+			return tablero.getCasilla(this.getRow() - 1, this.getColumn());
+			
+		}
+		catch(ArrayIndexOutOfBoundsException aiobe)
+		{
+			return new CasillaNull();
+		}
+	}
+
+	@Override
+	public Casilla getBottomCasilla()
+	{
+		try
+		{
+			if (this.getColumn() + 1 == Tablero.JASPER_ROW)
+				throw new ArrayIndexOutOfBoundsException();
+			
+			return tablero.getCasilla(this.getRow() + 1, this.getColumn());
+			
+		}
+		catch(ArrayIndexOutOfBoundsException aiobe)
+		{
+			return new CasillaNull();
+		}
+	}
+
+	@Override
+	public void explote()
+	{
+		Token[] tokens = this.getTokens();
+		
+		for (Token token : tokens)
+		{
+			// Se descarta, en vez de matarlo, para que no puntúe.
+			tablero.getPartida().discard(token);
+		}
+	}
 		
 		
 

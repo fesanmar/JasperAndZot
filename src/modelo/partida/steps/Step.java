@@ -10,7 +10,7 @@ public interface Step {
 
 	abstract void shoot();
 
-	abstract void Smash();
+	abstract void smash();
 	
 	abstract boolean isSelectable(int x, int y);
 	

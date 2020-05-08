@@ -41,16 +41,17 @@ public class ZombiArdiente extends Componente implements Token {
 		throw new UnsupportedOperationException();
 	}
 
-	public void die() 
+	public int die() 
 	{
 		partida.discard(this);
+		return 2;
 	}
 
 	@Override
 	public void casted()
 	{
-		// TODO Auto-generated method stub
-		
+		partida.addToken(new Flores(this.getCasilla(), partida));
+		partida.discard(this);		
 	}
 
 }

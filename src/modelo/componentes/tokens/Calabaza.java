@@ -38,7 +38,7 @@ public class Calabaza extends Componente implements Token
 	public void atack() {}
 
 	@Override
-	public void die()
+	public int die()
 	{
 		setCasilla(new CasillaNull());
 		partida.delToken(this);
@@ -52,14 +52,15 @@ public class Calabaza extends Componente implements Token
 				numberOfPumkins++;
 			}
 		}
-		if (numberOfPumkins == 0) partida.gameOver();;
+		if (numberOfPumkins == 0)
+		{
+			partida.setScore(partida.getScore() - 10);
+			partida.gameOver();
+		}
+		return -10;
 	}
 
 	@Override
-	public void casted()
-	{
-		// TODO Auto-generated method stub
-		
-	}
+	public void casted() {}
 
 }

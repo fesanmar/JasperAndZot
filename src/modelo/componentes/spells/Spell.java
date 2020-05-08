@@ -10,7 +10,8 @@ import modelo.partida.Partida;
 
 public abstract class Spell extends Componente
 {
-	Partida partida;
+	private Partida partida;
+	protected SpellChain spellChain;
 	
 	public Spell(int x, int y, String file, Partida partida)
 	{

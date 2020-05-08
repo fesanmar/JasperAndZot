@@ -19,7 +19,9 @@ public class FireSpell extends Spell
 		{
 			if (token instanceof Flores)
 			{
-				// TODO: Comienza la cadena
+				spellChain.createChain(affectedTokens);
+				spellChain.updateScore();
+				break;
 			}
 		}
 	}

@@ -22,7 +22,7 @@ public class DescendStep implements Step, Runnable {
 
 	public void shoot() {}
 
-	public void Smash() {}
+	public void smash() {}
 
 	@Override
 	public void display()
@@ -31,7 +31,7 @@ public class DescendStep implements Step, Runnable {
 		{
 			partida.getTablero().setMessage("Comineza el descenso");
 			partida.repaintMessageArea();
-			thread.start();			
+			thread.start();	
 		}
 		else
 		{
@@ -50,23 +50,24 @@ public class DescendStep implements Step, Runnable {
 	@Override
 	public boolean isSelectable(int x, int y)
 	{
-		Casilla[] firsRow = partida.getTablero().getRow(0);
-
-		if (
-				(firsRow[0].isMe(x, y) && !firsRow[0].hasToken())||
-				(firsRow[1].isMe(x, y) && !firsRow[1].hasToken())||
-				(firsRow[2].isMe(x, y) && !firsRow[2].hasToken())||
-				(firsRow[3].isMe(x, y) && !firsRow[3].hasToken())||
-				(firsRow[4].isMe(x, y) && !firsRow[4].hasToken())||
-				(firsRow[5].isMe(x, y) && !firsRow[5].hasToken())
-			)
-		{
-			return true;
-
-		} else
-		{
-			return false;
-		}
+//		Casilla[] firsRow = partida.getTablero().getRow(0);
+//
+//		if (
+//				(firsRow[0].isMe(x, y) && !firsRow[0].hasToken())||
+//				(firsRow[1].isMe(x, y) && !firsRow[1].hasToken())||
+//				(firsRow[2].isMe(x, y) && !firsRow[2].hasToken())||
+//				(firsRow[3].isMe(x, y) && !firsRow[3].hasToken())||
+//				(firsRow[4].isMe(x, y) && !firsRow[4].hasToken())||
+//				(firsRow[5].isMe(x, y) && !firsRow[5].hasToken())
+//			)
+//		{
+//			return true;
+//
+//		} else
+//		{
+//			return false;
+//		}
+		return false;
 	}
 
 	@Override

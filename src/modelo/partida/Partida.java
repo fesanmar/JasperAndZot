@@ -152,6 +152,11 @@ public class Partida
 		tokens.remove(token);
 		discardPile.add(token);
 	}
+	
+	public void removeFromTheGame(Token token)
+	{
+		tokens.remove(token);
+	}
 
 	public ArrayList<Token> getTokens()
 	{

@@ -56,23 +56,21 @@ public class MoveShootStep implements Step, Runnable
 
 	public void shoot()
 	{
-		// TODO - implement MoveShootStep.moveAndShoot
-		// Cuando se dispara, si el disparo choca con algún token
-		// se instanciará una cadena FireChain o FlowerChain, en la que 
-		// se irán metiendo todos los tokens afectados. Luego, en esta
-		// clase, se llamará al método die() o casted() de cada token (tengo
-		// que cambiar esto en la interfaz Token.
 		if (hasShooted == false)
 		{
 			hasMoved = true;
 			hasShooted = true;
 			partida.getTablero().setMessage("");
 			partida.repaintMessageArea();
-			spell.cast();			
+			spell.cast();
+			partida.removeSpellsFromGame();
+			partida.repaintHome();
+			partida.setStep(partida.getSmashStep());
+			partida.getStep().display();
 		}
 	}
 
-	public void Smash()	{}
+	public void smash()	{}
 
 	@Override
 	public void display()

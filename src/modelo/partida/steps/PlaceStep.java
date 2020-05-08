@@ -58,7 +58,7 @@ public class PlaceStep implements Step, Runnable
 		throw new UnsupportedOperationException();
 	}
 
-	public void Smash()
+	public void smash()
 	{
 		// TODO - implement PlaceStep.Smash
 		throw new UnsupportedOperationException();

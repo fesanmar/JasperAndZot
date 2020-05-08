@@ -44,7 +44,7 @@ public class PrevStep implements Step, Runnable {
 
 	public void shoot() {}
 
-	public void Smash() {}
+	public void smash() {}
 
 	@Override
 	public void display()

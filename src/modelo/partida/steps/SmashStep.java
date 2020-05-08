@@ -26,22 +26,27 @@ public class SmashStep implements Step {
 		throw new UnsupportedOperationException();
 	}
 
-	public void Smash() {
-		// TODO - implement SmashStep.Smash
-		throw new UnsupportedOperationException();
+	public void smash() 
+	{
+		// TODO: Aquí se implementa el aplasatado
+		
+		partida.setStep(partida.getDescendStep());
+		partida.nextTurn();
+		partida.getStep().display();
 	}
 
 	@Override
 	public void display()
 	{
-		// TODO Auto-generated method stub
 		
+		partida.getTablero().setMessage("¡Cuidado con tus calabazas!");
+		partida.repaintHome();
+		smash();
 	}
 
 	@Override
 	public boolean isSelectable(int x, int y)
 	{
-		// TODO Auto-generated method stub
 		return false;
 	}
 

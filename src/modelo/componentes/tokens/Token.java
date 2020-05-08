@@ -32,6 +32,6 @@ public interface Token {
 	
 	abstract void casted();
 
-	abstract void die();
+	abstract int die();
 
 }
