@@ -14,7 +14,6 @@ public class PlaceStep implements Step, Runnable
 	public PlaceStep(Partida partida)
 	{
 		this.partida = partida;
-		thread = new Thread(this, "PlaceStep thread");
 	}
 
 	public void descend()
@@ -69,6 +68,7 @@ public class PlaceStep implements Step, Runnable
 	{
 		partida.getTablero().setMessage("Lanzando los dados");
 		partida.repaintMessageArea();
+		thread = new Thread(this, "PlaceStep thread" + partida.getTurn());
 		thread.start();
 	}
 

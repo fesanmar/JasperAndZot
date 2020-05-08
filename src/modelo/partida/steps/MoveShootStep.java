@@ -24,8 +24,6 @@ public class MoveShootStep implements Step, Runnable
 	{
 		this.partida = partida;
 		running = false;
-		thread = new Thread(this, "MoveAndShot thread");
-		
 	}
 
 	public void descend()
@@ -81,6 +79,7 @@ public class MoveShootStep implements Step, Runnable
 		partida.getTablero().setMessage("Mueve a Jasper y/o dispara");
 		partida.addSpellsToGame();
 		partida.repaintHome();
+		thread = new Thread(this, "MoveAndShot thread" + partida.getTurn());
 		thread.start();
 	}
 

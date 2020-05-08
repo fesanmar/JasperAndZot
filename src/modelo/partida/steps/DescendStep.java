@@ -1,6 +1,5 @@
 package modelo.partida.steps;
 
-import modelo.componentes.tablero.Casilla;
 import modelo.partida.Partida;
 
 public class DescendStep implements Step, Runnable {
@@ -11,7 +10,6 @@ public class DescendStep implements Step, Runnable {
 	public DescendStep(Partida partida)
 	{
 		this.partida = partida;
-		thread = new Thread(this, "Descend thread");
 	}
 
 	public void descend() 
@@ -31,6 +29,7 @@ public class DescendStep implements Step, Runnable {
 		{
 			partida.getTablero().setMessage("Comineza el descenso");
 			partida.repaintMessageArea();
+			thread = new Thread(this, "Descend thread" + partida.getTurn());
 			thread.start();	
 		}
 		else
