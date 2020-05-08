@@ -27,6 +27,7 @@ import modelo.componentes.Elemento;
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tablero.Tablero;
 import modelo.componentes.tokens.Jasper;
+import modelo.componentes.tokens.Token;
 
 public class Home extends Frame
 {
@@ -203,12 +204,23 @@ public class Home extends Frame
 		{
 			for (Componente componente : tablero.getComponentes())
 			{
+				if (componente instanceof Token)
+				{
+					// Se dibuja el marco del Token
+					g2d.setColor(Color.DARK_GRAY);
+					g2d.drawRect(
+							componente.getX(), 
+							(componente instanceof Jasper) ? 
+									(componente.getY() + 3) : componente.getY(), 
+							componente.getWidth(), componente.getHeight());
+				}
 				// A Jasper se le dibuja 4 px más abajo que el resto, porque no cuadra
 				// bien en su casilla
 				g.drawImage(
 						componente.getImage(), 
 						componente.getX(), 
-						(componente instanceof Jasper) ? (componente.getY() + 4) : componente.getY(), 
+						(componente instanceof Jasper) ? 
+								(componente.getY() + 4) : componente.getY(), 
 						componente.getWidth(), componente.getHeight(), null);
 			}			
 		}
