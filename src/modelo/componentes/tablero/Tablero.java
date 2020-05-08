@@ -16,6 +16,7 @@ public class Tablero extends Componente {
 	private final static int FIRST_Y = 230;
 	public static final int JASPER_ROW = 10;
 	public static final int PUMPKIN_ROW = 9;
+	public static final int FENCE_ROW = 9;
 	
 	private Casilla[][] casillas;
 	

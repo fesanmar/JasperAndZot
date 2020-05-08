@@ -1,12 +1,17 @@
 package modelo.componentes.spells;
 
-import modelo.componentes.Componente;
-import modelo.componentes.tokens.Token;
+import modelo.partida.Partida;
 
-public class FireSpell extends Componente
+public class FireSpell extends Spell
 {
-	public FireSpell()
+	public FireSpell(Partida partida)
 	{
-		super(255, 910, Token.SIDE, "./images/fire.jpeg");
+		super(255, 910, "./images/fire.jpeg", partida);
+	}
+
+	@Override
+	public void cast()
+	{
+		System.out.println("Se disparón el hechzo de fuego");
 	}
 }

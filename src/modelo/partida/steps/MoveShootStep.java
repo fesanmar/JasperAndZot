@@ -4,6 +4,8 @@ import java.awt.Point;
 
 import com.mysql.cj.exceptions.WrongArgumentException;
 
+import modelo.componentes.spells.FireSpell;
+import modelo.componentes.spells.Spell;
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tablero.CasillaNull;
 import modelo.componentes.tablero.Tablero;
@@ -16,6 +18,7 @@ public class MoveShootStep implements Step, Runnable
 	private Thread thread;
 	private boolean hasMoved;
 	private boolean hasShooted;
+	private Spell spell;
 	private boolean running;
 
 	public MoveShootStep(Partida partida)
@@ -45,6 +48,8 @@ public class MoveShootStep implements Step, Runnable
 		{
 			if (isSpell(x, y))
 			{
+				spell = (partida.getFireSpell().isMe(x, y)) ?
+						partida.getFireSpell() : partida.getFlowersSpell();
 				shoot();
 			}
 		}
@@ -59,8 +64,14 @@ public class MoveShootStep implements Step, Runnable
 		// clase, se llamará al método die() o cast() de cada token (tengo
 		// que cambiar esto en la interfaz Token.
 		// Quizás shoot deberá recibir por parámetro la una interfaz Chain.
-		hasMoved = true;
-		hasShooted = true;
+		if (hasShooted == false)
+		{
+			hasMoved = true;
+			hasShooted = true;
+			partida.getTablero().setMessage("");
+			partida.repaintMessageArea();
+			spell.cast();			
+		}
 	}
 
 	public void Smash()	{}

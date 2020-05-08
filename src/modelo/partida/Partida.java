@@ -2,7 +2,6 @@ package modelo.partida;
 
 import java.util.ArrayList;
 
-import modelo.componentes.Componente;
 import modelo.componentes.spells.FireSpell;
 import modelo.componentes.spells.FlowersSpell;
 import modelo.componentes.tablero.Tablero;
@@ -99,8 +98,8 @@ public class Partida
 		this.tokensBag = new TokensBag(intialTokens, this);
 		
 		// Spells
-		fireSpell = new FireSpell();
-		flowersSpell = new FlowersSpell();
+		fireSpell = new FireSpell(this);
+		flowersSpell = new FlowersSpell(this);
 	}
 	
 	public void repaintHome()

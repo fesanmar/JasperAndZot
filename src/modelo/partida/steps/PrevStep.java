@@ -58,6 +58,7 @@ public class PrevStep implements Step, Runnable {
 			Token calabaza = new Calabaza(
 					casillaCalabaza.getX(), casillaCalabaza.getY(), partida
 					);
+			calabaza.setCasilla(casillaCalabaza);
 			partida.addToken(calabaza);
 		}
 		

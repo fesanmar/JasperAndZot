@@ -46,7 +46,12 @@ public class CasillaReal extends Elemento implements Casilla {
 				casillaTokens.add(token);
 			}
 		}
-		return (Token[]) casillaTokens.toArray();
+		Token[] arrayTokens = new Token[casillaTokens.size()];
+		for (int i = 0; i < arrayTokens.length; i++)
+		{
+			arrayTokens[i] = casillaTokens.get(i);
+		}
+		return arrayTokens;
 	}
 	
 	public int getRow() 
