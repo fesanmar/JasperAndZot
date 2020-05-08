@@ -2,6 +2,9 @@ package modelo.partida;
 
 import java.util.ArrayList;
 
+import modelo.componentes.Componente;
+import modelo.componentes.spells.FireSpell;
+import modelo.componentes.spells.FlowersSpell;
 import modelo.componentes.tablero.Tablero;
 import modelo.componentes.tokens.Bomba;
 import modelo.componentes.tokens.Multiplicador;
@@ -27,10 +30,15 @@ public class Partida
 	private int score;
 	private int turn;
 	private Tablero tablero;
+	// Componentes
 	private Token jasper;
 	private TokensBag tokensBag;
 	private Dice manyDice;
 	private Dice appearDice;
+	// Spels
+	private FireSpell fireSpell;
+	private FlowersSpell flowersSpell;
+	
 	private ArrayList<Token> tokens;
 	private ArrayList<Token> discardPile;
 	// Steps
@@ -89,7 +97,10 @@ public class Partida
 			if (i < 3) intialTokens.add(new Multiplicador(this));
 		}
 		this.tokensBag = new TokensBag(intialTokens, this);
-		System.out.println(intialTokens.size());
+		
+		// Spells
+		fireSpell = new FireSpell();
+		flowersSpell = new FlowersSpell();
 	}
 	
 	public void repaintHome()
@@ -187,6 +198,16 @@ public class Partida
 	public String getPlayer()
 	{
 		return this.player;
+	}
+
+	public FireSpell getFireSpell()
+	{
+		return fireSpell;
+	}
+
+	public FlowersSpell getFlowersSpell()
+	{
+		return flowersSpell;
 	}
 
 	/**
@@ -333,6 +354,18 @@ public class Partida
 			this.jasper = jasper;
 			addToken(this.jasper);
 		}
+	}
+	
+	public void addSpellsToGame()
+	{
+		tablero.addVolatileComponents(fireSpell);
+		tablero.addVolatileComponents(flowersSpell);
+	}
+	
+	public void removeSpellsFromGame()
+	{
+		tablero.removeVolatileComponents(fireSpell);
+		tablero.removeVolatileComponents(flowersSpell);
 	}
 	
 	public void end()

@@ -43,8 +43,10 @@ public class MoveShootStep implements Step, Runnable
 		}
 		catch (WrongArgumentException wae) 
 		{
-			// Aquí va el código para disparar. Ya que, si la casilla no es válida
-			// comprobamos si es un hechizo. En tal caso, llamamos a shoot.
+			if (isSpell(x, y))
+			{
+				shoot();
+			}
 		}
 	}
 
@@ -57,7 +59,8 @@ public class MoveShootStep implements Step, Runnable
 		// clase, se llamará al método die() o cast() de cada token (tengo
 		// que cambiar esto en la interfaz Token.
 		// Quizás shoot deberá recibir por parámetro la una interfaz Chain.
-		throw new UnsupportedOperationException();
+		hasMoved = true;
+		hasShooted = true;
 	}
 
 	public void Smash()	{}
@@ -69,6 +72,7 @@ public class MoveShootStep implements Step, Runnable
 		hasShooted = false;
 		
 		partida.getTablero().setMessage("Mueve a Jasper y/o dispara");
+		partida.addSpellsToGame();
 		partida.repaintHome();
 		thread.start();
 	}
@@ -79,6 +83,10 @@ public class MoveShootStep implements Step, Runnable
 		Point point = new Point(x, y);
 		Casilla casilla = partida.getTablero().getCasilla(point);
 		if (!(casilla instanceof CasillaNull) && isAValidMovement(casilla.getRow(), casilla.getColumn()))
+		{
+			return true;
+		}
+		else if (isSpell(x, y))
 		{
 			return true;
 		}
@@ -125,6 +133,15 @@ public class MoveShootStep implements Step, Runnable
 		{
 			return false;
 		}
+	}
+	
+	private boolean isSpell(int x, int y)
+	{
+		if (partida.getFireSpell().isMe(x, y) || partida.getFlowersSpell().isMe(x, y))
+		{
+			return true;
+		}
+		return false;
 	}
 
 	@Override

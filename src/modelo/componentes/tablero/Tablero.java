@@ -22,6 +22,8 @@ public class Tablero extends Componente {
 	private Partida partida;
 	private String message;
 	
+	private ArrayList<Componente> volatileComponents;
+	
 	public Tablero()
 	{
 		super(0, 40, 485, 972, PATH_TABLERO);
@@ -30,6 +32,7 @@ public class Tablero extends Componente {
 		
 		// Inicializamos las 66 casillas que tiene el tablero
 		casillas = new CasillaReal[ROWS][COLUMNS];
+		volatileComponents = new ArrayList<Componente>();
 		
 		for (int i = 0; i < ROWS; i++)
 		{
@@ -62,7 +65,8 @@ public class Tablero extends Componente {
 	
 	public ArrayList<Componente> getComponentes()
 	{
-		ArrayList<Componente> componentes = new ArrayList<Componente>();
+		ArrayList<Componente> componentes = 
+				new ArrayList<Componente>(volatileComponents);
 		for(Token token : partida.getTokens())
 		{
 			componentes.add((Componente) token);
@@ -132,6 +136,21 @@ public class Tablero extends Componente {
 	public void setMessage(String message)
 	{
 		this.message = message;
+	}
+	
+	public void addVolatileComponents(Componente component)
+	{
+		volatileComponents.add(component);
+	}
+	
+	public void removeVolatileComponents(Componente component)
+	{
+		volatileComponents.remove(component);
+	}
+	
+	public void clearVolatileComponents()
+	{
+		volatileComponents.clear();
 	}
 
 }

@@ -76,5 +76,18 @@ public class Componente extends Elemento {
 	public void setImage(Image image) {
 		this.image = image;
 	}
+	
+	public boolean isMe(int x, int y)
+	{
+		if (
+				(x > getX() && x < (getX() + getWidth()))
+				&&
+				(y > getY() && y < (getY() + getHeight()))
+				)
+		{
+			return true;
+		}
+		return false;
+	}
 
 }
