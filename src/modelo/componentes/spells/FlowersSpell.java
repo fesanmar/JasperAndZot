@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tablero.Tablero;
 import modelo.componentes.tokens.Calabaza;
+import modelo.componentes.tokens.Flores;
 import modelo.componentes.tokens.Token;
 import modelo.componentes.tokens.Zombi;
 import modelo.componentes.tokens.ZombiArdiente;
@@ -48,7 +49,8 @@ public class FlowersSpell extends Spell
 			if (casilla.getColumn() == jasperColumn 
 					&& casilla.getRow() >= Tablero.FENCE_ROW
 					&& casilla.getRow() < Tablero.JASPER_ROW
-					&& !(token instanceof Calabaza))
+					&& !(token instanceof Calabaza)
+					&& !(token instanceof Flores))
 			{
 				casillasAffected.add(casilla);
 			}

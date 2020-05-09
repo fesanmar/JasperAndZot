@@ -1,11 +1,6 @@
 package modelo.componentes.spells;
 
-import java.util.ArrayList;
-
 import modelo.componentes.Componente;
-import modelo.componentes.tablero.Casilla;
-import modelo.componentes.tablero.Tablero;
-import modelo.componentes.tokens.Calabaza;
 import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
 
