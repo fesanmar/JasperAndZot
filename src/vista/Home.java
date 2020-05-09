@@ -174,10 +174,6 @@ public class Home extends Frame
 		}
 		catch (NullPointerException npe) {}
 		
-		// Dibujamos el mensaje del tablero
-		g.setFont(new Font("TimesRoman", Font.BOLD, 30));
-		drawMessage(tablero.getMessage(), g);
-		
 		// Dibujamos las casillas activas
 		for (Casilla[] row : tablero.getCasillas())
 		{
@@ -225,6 +221,11 @@ public class Home extends Frame
 			}			
 		}
 		catch(NullPointerException npe) {}
+		
+		// Dibujamos el mensaje del tablero
+		g.setFont(new Font("TimesRoman", Font.BOLD, 30));
+		g.setColor(new Color(255, 255, 255, 200));
+		drawMessage(tablero.getMessage(), g);
 	}
 	
 	public void drawMessage(String message, Graphics g)

@@ -31,9 +31,9 @@ public class Zombi extends Componente implements Token
 		this.casilla = casilla;
 	}
 
-	public void move() {
-		// TODO - implement Zombi.move
-		throw new UnsupportedOperationException();
+	public void move() 
+	{
+		partida.moveToken(this);
 	}
 
 	public void atack() {

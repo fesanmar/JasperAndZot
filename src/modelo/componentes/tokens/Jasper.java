@@ -32,10 +32,7 @@ public class Jasper extends Componente implements Token
 		this.casilla = casilla;
 	}
 
-	public void move() {
-		// TODO - implement Jasper.move
-		throw new UnsupportedOperationException();
-	}
+	public void move() {}
 
 	public void atack() {
 		// TODO - implement Jasper.atack

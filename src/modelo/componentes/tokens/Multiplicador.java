@@ -31,7 +31,10 @@ public class Multiplicador extends Componente implements Token {
 		this.casilla = casilla;
 	}
 
-	public void move() {}
+	public void move() 
+	{
+		partida.moveToken(this);
+	}
 
 	public void atack() {}
 

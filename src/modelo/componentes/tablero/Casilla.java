@@ -24,6 +24,10 @@ public interface Casilla {
 	
 	abstract boolean hasToken();
 	
+	abstract boolean hasFlowers();
+	
+	abstract boolean hasPumpkin();
+	
 	abstract boolean isMe(int x, int y);
 	
 	abstract Token[] getTokens();

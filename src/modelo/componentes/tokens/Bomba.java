@@ -27,9 +27,9 @@ public class Bomba extends Componente implements Token {
 		this.casilla = casilla;
 	}
 
-	public void move() {
-		// TODO - implement Bomba.move
-		throw new UnsupportedOperationException();
+	public void move() 
+	{
+		partida.moveToken(this);
 	}
 
 	public void atack() 

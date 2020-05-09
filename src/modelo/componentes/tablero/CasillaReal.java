@@ -3,6 +3,8 @@ package modelo.componentes.tablero;
 import java.util.ArrayList;
 
 import modelo.componentes.Elemento;
+import modelo.componentes.tokens.Calabaza;
+import modelo.componentes.tokens.Flores;
 import modelo.componentes.tokens.Token;
 
 public class CasillaReal extends Elemento implements Casilla {
@@ -218,6 +220,32 @@ public class CasillaReal extends Elemento implements Casilla {
 			// Se descarta, en vez de matarlo, para que no puntúe.
 			tablero.getPartida().discard(token);
 		}
+	}
+
+	@Override
+	public boolean hasFlowers()
+	{
+		for (Token token : getTokens())
+		{
+			if (token instanceof Flores)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean hasPumpkin()
+	{
+		for (Token token : getTokens())
+		{
+			if (token instanceof Calabaza)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 		
 		

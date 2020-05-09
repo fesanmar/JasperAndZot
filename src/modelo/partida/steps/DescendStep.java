@@ -1,5 +1,6 @@
 package modelo.partida.steps;
 
+import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
 
 public class DescendStep implements Step, Runnable {
@@ -14,6 +15,11 @@ public class DescendStep implements Step, Runnable {
 
 	public void descend() 
 	{
+		for (Token token : partida.getTokens())
+		{
+			token.move();
+			partida.repaintHome();
+		}
 		partida.setStep(partida.getPlaceStep());
 		partida.display();
 	}
@@ -40,32 +46,11 @@ public class DescendStep implements Step, Runnable {
 	}
 
 	@Override
-	public void place(int x, int y)
-	{
-		// TODO Auto-generated method stub
-		
-	}
+	public void place(int x, int y) {}
 
 	@Override
 	public boolean isSelectable(int x, int y)
 	{
-//		Casilla[] firsRow = partida.getTablero().getRow(0);
-//
-//		if (
-//				(firsRow[0].isMe(x, y) && !firsRow[0].hasToken())||
-//				(firsRow[1].isMe(x, y) && !firsRow[1].hasToken())||
-//				(firsRow[2].isMe(x, y) && !firsRow[2].hasToken())||
-//				(firsRow[3].isMe(x, y) && !firsRow[3].hasToken())||
-//				(firsRow[4].isMe(x, y) && !firsRow[4].hasToken())||
-//				(firsRow[5].isMe(x, y) && !firsRow[5].hasToken())
-//			)
-//		{
-//			return true;
-//
-//		} else
-//		{
-//			return false;
-//		}
 		return false;
 	}
 

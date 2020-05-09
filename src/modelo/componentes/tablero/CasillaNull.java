@@ -111,4 +111,16 @@ public class CasillaNull implements Casilla {
 	@Override
 	public void explote() {}
 
+	@Override
+	public boolean hasFlowers()
+	{
+		return false;
+	}
+
+	@Override
+	public boolean hasPumpkin()
+	{
+		return false;
+	}
+
 }

@@ -38,8 +38,7 @@ public class MoveShootStep implements Step, Runnable
 			partida.getJasper().setCasilla(newCasillaForJasper);
 			hasMoved = true;
 			partida.getTablero().setMessage("¡Dispara!");
-			partida.repaintMessageArea();
-			partida.repaintJasperArea();
+			partida.repaintHome();
 		}
 		catch (WrongArgumentException wae) 
 		{

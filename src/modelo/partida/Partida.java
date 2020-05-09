@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import modelo.componentes.spells.FireSpell;
 import modelo.componentes.spells.FlowersSpell;
+import modelo.componentes.tablero.Casilla;
+import modelo.componentes.tablero.CasillaNull;
 import modelo.componentes.tablero.Tablero;
 import modelo.componentes.tokens.Bomba;
 import modelo.componentes.tokens.Multiplicador;
@@ -389,6 +391,33 @@ public class Partida
 		placeStep.stopThread();
 		moveShootStep.stopThread();
 		smashStep.stopThread();
+	}
+	
+	public void moveToken(Token token)
+	{
+		Casilla casilla = token.getCasilla();
+		Casilla nextCasilla = casilla.getBottomCasilla();
+		Casilla secondCasilla = nextCasilla.getBottomCasilla();
+		if (!(nextCasilla instanceof CasillaNull) &&
+				!(secondCasilla instanceof CasillaNull) &&
+				nextCasilla.getColumn() != Tablero.JASPER_ROW)
+		{
+			if (casilla.hasFlowers() || 
+					nextCasilla.hasFlowers() || 
+						secondCasilla.hasFlowers())
+			{
+				token.setCasilla(nextCasilla);
+			}
+			else if (nextCasilla.hasPumpkin()) {}
+			else if (secondCasilla.hasPumpkin())
+			{
+				token.setCasilla(nextCasilla);
+			}
+			else
+			{
+				token.setCasilla(secondCasilla);
+			}
+		}
 	}
 
 }
