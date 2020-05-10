@@ -32,7 +32,7 @@ public class SmashStep implements Step {
 		
 		partida.setStep(partida.getDescendStep());
 		partida.nextTurn();
-		partida.getStep().display();
+		partida.display();
 	}
 
 	@Override

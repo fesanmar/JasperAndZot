@@ -36,12 +36,13 @@ public class Partida
 	private TokensBag tokensBag;
 	private Dice manyDice;
 	private Dice appearDice;
+	private ArrayList<Token> tokens;
+	private ArrayList<Token> discardPile;
+
 	// Spels
 	private FireSpell fireSpell;
 	private FlowersSpell flowersSpell;
 	
-	private ArrayList<Token> tokens;
-	private ArrayList<Token> discardPile;
 	// Steps
 	private Step step;
 	private Step prevStep;
@@ -400,9 +401,14 @@ public class Partida
 		Casilla secondCasilla = nextCasilla.getBottomCasilla();
 		if (!(nextCasilla instanceof CasillaNull) &&
 				!(secondCasilla instanceof CasillaNull) &&
-				nextCasilla.getColumn() != Tablero.JASPER_ROW)
+				nextCasilla.getRow() != Tablero.JASPER_ROW &&
+				!nextCasilla.hasPumpkin())
 		{
-			if (casilla.hasFlowers() || 
+			if (secondCasilla.getRow() >= Tablero.JASPER_ROW)
+			{
+				token.setCasilla(nextCasilla);
+			}
+			else if (casilla.hasFlowers() || 
 					nextCasilla.hasFlowers() || 
 						secondCasilla.hasFlowers())
 			{

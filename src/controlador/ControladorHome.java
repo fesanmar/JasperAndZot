@@ -1,6 +1,7 @@
 package controlador;
 
 import java.awt.Cursor;
+import java.awt.Point;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -10,11 +11,14 @@ import java.awt.event.WindowEvent;
 
 import modelo.partida.Partida;
 import vista.Home;
+import modelo.componentes.tablero.Casilla;
+import modelo.componentes.tokens.Token;;
 
 public class ControladorHome
 {
 	Home vistaHome;
 	ControladorVentana controladorVentana;
+	volatile Partida partida;
 
 	public ControladorHome(Home vistaHome)
 	{
@@ -93,6 +97,13 @@ public class ControladorHome
 				try
 				{
 					vistaHome.tablero.getPartida().place(e.getX(), e.getY());
+					Point point = new Point(e.getX(), e.getY());
+					Casilla casillaOver = vistaHome.tablero.getCasilla(point);
+					Token[] tokensCasillaOver = casillaOver.getTokens();
+					for (Token token : tokensCasillaOver)
+					{
+						System.out.println(token);
+					}
 				} catch (NullPointerException npe)
 				{
 				}
@@ -116,7 +127,6 @@ public class ControladorHome
 					}					
 				}
 				catch (NullPointerException npe) {}
-
 			}
 		});
 
@@ -133,7 +143,8 @@ public class ControladorHome
 		String player = this.vistaHome.txtDlgJugador.getText();
 		if (!player.trim().isEmpty())
 		{
-			this.vistaHome.tablero.setPartida(new Partida(player, this.vistaHome.tablero, this.vistaHome));
+			partida = new Partida(player, this.vistaHome.tablero, this.vistaHome);
+			this.vistaHome.tablero.setPartida(partida);
 			this.vistaHome.dlgJugador.setVisible(false);
 			this.vistaHome.txtDlgJugador.setText("");
 			this.vistaHome.tablero.getPartida().display();

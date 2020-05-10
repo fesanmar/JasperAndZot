@@ -25,7 +25,9 @@ public class TokensBag
 			throw new EmptyBagException();
 		
 		int selection = random.nextInt(tokensBag.size());
-		return tokensBag.get(selection);
+		Token draweToken = tokensBag.get(selection);
+		tokensBag.remove(draweToken);
+		return draweToken;
 	}
 	
 	public void refillBag()

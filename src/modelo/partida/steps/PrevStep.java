@@ -12,7 +12,7 @@ import modelo.partida.Partida;
 public class PrevStep implements Step, Runnable {
 
 	private Partida partida;
-	private boolean running;
+	private volatile boolean running;
 	
 	volatile private boolean isSelected = false;
 	private Thread thread;

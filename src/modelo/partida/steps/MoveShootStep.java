@@ -15,10 +15,10 @@ public class MoveShootStep implements Step, Runnable
 
 	private Partida partida;
 	private Thread thread;
-	private boolean hasMoved;
-	private boolean hasShooted;
+	private volatile boolean hasMoved;
+	private volatile boolean hasShooted;
 	private Spell spell;
-	private boolean running;
+	private volatile boolean running;
 
 	public MoveShootStep(Partida partida)
 	{
@@ -26,9 +26,7 @@ public class MoveShootStep implements Step, Runnable
 		running = false;
 	}
 
-	public void descend()
-	{
-	}
+	public void descend() {}
 
 	public void place(int x, int y)
 	{

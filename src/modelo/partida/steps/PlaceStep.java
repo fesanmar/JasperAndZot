@@ -44,7 +44,7 @@ public class PlaceStep implements Step, Runnable
 		partida.getAssault().placeTokens(drawedTokens);
 		partida.repaintHome();
 		partida.setStep(partida.getMoveShootStep());
-		partida.getStep().display();
+		partida.display();
 	}
 
 	public void place(int x, int y)
@@ -70,6 +70,7 @@ public class PlaceStep implements Step, Runnable
 		partida.repaintMessageArea();
 		thread = new Thread(this, "PlaceStep thread" + partida.getTurn());
 		thread.start();
+		
 	}
 
 	@Override

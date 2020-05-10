@@ -64,7 +64,7 @@ public class Home extends Frame
 	Image imgIcono;
 
 	//////////// Componenetes //////////////
-	public Tablero tablero;
+	public volatile Tablero tablero;
 
 	public Home(Tablero tablero)
 	{

@@ -32,7 +32,7 @@ public class FireSpellChain extends SpellChain
 				{
 					if (token instanceof Multiplicador) 
 						multipliers++;
-					addScore = token.die();
+					addScore += token.die();
 				}
 			}
 		}

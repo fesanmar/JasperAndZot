@@ -18,8 +18,8 @@ public class DescendStep implements Step, Runnable {
 		for (Token token : partida.getTokens())
 		{
 			token.move();
-			partida.repaintHome();
 		}
+		partida.repaintHome();
 		partida.setStep(partida.getPlaceStep());
 		partida.display();
 	}
@@ -36,7 +36,8 @@ public class DescendStep implements Step, Runnable {
 			partida.getTablero().setMessage("Comineza el descenso");
 			partida.repaintMessageArea();
 			thread = new Thread(this, "Descend thread" + partida.getTurn());
-			thread.start();	
+			thread.start();
+			
 		}
 		else
 		{
@@ -62,11 +63,11 @@ public class DescendStep implements Step, Runnable {
 			Thread.sleep(3000);
 			partida.getTablero().setMessage("");
 			partida.repaintMessageArea();
+			descend();
 		} catch (InterruptedException e)
 		{
 			e.printStackTrace();
 		}
-		descend();
 	}
 
 	@Override
