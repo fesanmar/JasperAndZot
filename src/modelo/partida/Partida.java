@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import modelo.componentes.spells.FireSpell;
 import modelo.componentes.spells.FlowersSpell;
-import modelo.componentes.tablero.Casilla;
-import modelo.componentes.tablero.CasillaNull;
 import modelo.componentes.tablero.Tablero;
 import modelo.componentes.tokens.Bomba;
 import modelo.componentes.tokens.Multiplicador;
@@ -378,6 +376,8 @@ public class Partida
 	public void end()
 	{
 		// TODO
+		System.out.println("La partida ha terminado");
+		System.out.println("Tu puntuación es: " + getScore());
 	}
 	
 	public void gameOver() 

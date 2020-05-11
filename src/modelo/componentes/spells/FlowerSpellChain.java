@@ -29,5 +29,6 @@ public class FlowerSpellChain extends SpellChain
 				}
 			}
 		}
+		chainOfCasillas.clear();
 	}
 }
