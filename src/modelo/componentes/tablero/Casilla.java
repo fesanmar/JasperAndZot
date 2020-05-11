@@ -50,5 +50,5 @@ public interface Casilla {
 	
 	abstract void explote();
 	
-
+	abstract void burn();
 }

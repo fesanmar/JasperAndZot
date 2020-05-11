@@ -221,6 +221,18 @@ public class CasillaReal extends Elemento implements Casilla {
 			tablero.getPartida().discard(token);
 		}
 	}
+	
+	@Override
+	public void burn()
+	{ 
+		for (Token token : getTokens())
+		{
+			if (token instanceof Flores)
+			{
+				((Flores) token).setWillBurn(true);
+			}
+		}
+	}
 
 	@Override
 	public boolean hasFlowers()
@@ -260,7 +272,4 @@ public class CasillaReal extends Elemento implements Casilla {
 		}
 		return false;
 	}
-		
-		
-
 }

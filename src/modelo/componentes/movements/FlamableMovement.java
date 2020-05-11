@@ -1,7 +1,6 @@
 package modelo.componentes.movements;
 
 import modelo.componentes.tablero.Casilla;
-import modelo.componentes.tokens.Flores;
 import modelo.componentes.tokens.Token;
 
 public class FlamableMovement extends Movement
@@ -21,14 +20,11 @@ public class FlamableMovement extends Movement
 			token.setCasilla(nextCasilla);
 			if (nextCasilla.hasFlowers())
 			{
-				Token[] nextCasillaTokens = nextCasilla.getTokens();
-				for (Token tokenInNext : nextCasillaTokens)
-				{
-					if (tokenInNext instanceof Flores)
-					{
-						((Flores) tokenInNext).setWillBurn(true);
-					}
-				}
+				Casilla nextCasillaLeft = nextCasilla.getLeftCasilla();
+				Casilla nextCasillaRight = nextCasilla.getRightCasilla();
+				nextCasilla.burn();
+				nextCasillaLeft.burn();
+				nextCasillaRight.burn();
 			}
 		}
 	}

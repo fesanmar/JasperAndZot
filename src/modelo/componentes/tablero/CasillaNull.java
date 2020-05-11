@@ -129,4 +129,7 @@ public class CasillaNull implements Casilla {
 		return true;
 	}
 
+	@Override
+	public void burn() {}
+
 }
