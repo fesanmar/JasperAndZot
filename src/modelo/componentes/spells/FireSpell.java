@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tablero.Tablero;
+import modelo.componentes.tokens.Bomba;
 import modelo.componentes.tokens.Flores;
 import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
@@ -27,6 +28,10 @@ public class FireSpell extends Spell
 				spellChain.createChain(affectedTokens);
 				spellChain.updateScore();
 				break;
+			}
+			else if (token instanceof Bomba)
+			{
+				token.atack();
 			}
 		}
 	}
