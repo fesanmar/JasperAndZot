@@ -34,6 +34,8 @@ public interface Casilla {
 	
 	abstract Token[] getTokens();
 	
+	abstract Token getPumpkin();
+	
 	abstract void setRow(int row);
 	
 	abstract void setColumn(int column);

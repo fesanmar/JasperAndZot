@@ -61,7 +61,7 @@ public class MoveShootStep implements Step, Runnable
 			partida.removeSpellsFromGame();
 			partida.repaintHome();
 			partida.setStep(partida.getSmashStep());
-			partida.getStep().display();
+			partida.display();
 		}
 	}
 

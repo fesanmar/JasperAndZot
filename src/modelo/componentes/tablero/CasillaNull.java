@@ -132,4 +132,10 @@ public class CasillaNull implements Casilla {
 	@Override
 	public void burn() {}
 
+	@Override
+	public Token getPumpkin()
+	{
+		return null;
+	}
+
 }

@@ -276,4 +276,16 @@ public class CasillaReal extends Elemento implements Casilla {
 		}
 		return false;
 	}
+
+	@Override
+	public Token getPumpkin()
+	{
+		Token[] tokensInCasilla = getTokens();
+		for (Token token : tokensInCasilla)
+		{
+			if (token instanceof Calabaza)
+				return token;
+		}
+		return null;
+	}
 }

@@ -1,5 +1,8 @@
 package modelo.partida.steps;
 
+import java.util.ArrayList;
+
+import modelo.componentes.tablero.Tablero;
 import modelo.componentes.tokens.Token;
 import modelo.partida.*;
 
@@ -20,9 +23,12 @@ public class SmashStep implements Step {
 
 	public void smash() 
 	{
-		for (Token token : partida.getTokens())
+		// Primero atacan los tokens en la fila anterior a las calabazas
+		ArrayList<Token> tokensInFrontOfPumkins =
+				partida.getToken(Tablero.PUMPKIN_ROW - 1);
+		for (Token token : tokensInFrontOfPumkins)
 		{
-			// Aquí se implementa el aplastamiento
+			token.atack();
 		}
 		
 		partida.setStep(partida.getDescendStep());
@@ -46,10 +52,6 @@ public class SmashStep implements Step {
 	}
 
 	@Override
-	public void stopThread()
-	{
-		// TODO Auto-generated method stub
-		
-	}
+	public void stopThread() {}
 
 }

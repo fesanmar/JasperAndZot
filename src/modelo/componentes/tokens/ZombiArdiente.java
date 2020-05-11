@@ -40,9 +40,14 @@ public class ZombiArdiente extends Componente implements Token {
 		advance.walk();
 	}
 
-	public void atack() {
-		// TODO - implement ZombiArdiente.atack
-		throw new UnsupportedOperationException();
+	public void atack() 
+	{
+		Casilla nextCasilla = getCasilla().getBottomCasilla();
+		Token token;
+		if ((token = nextCasilla.getPumpkin()) != null)
+		{
+			token.die();
+		}
 	}
 
 	public int die() 

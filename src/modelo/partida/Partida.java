@@ -163,6 +163,19 @@ public class Partida
 	{
 		return tokens;
 	}
+	
+	public ArrayList<Token> getToken(int row)
+	{
+		ArrayList<Token> tokensInRow = new ArrayList<Token>();
+		for (Token token : getTokens())
+		{
+			if (token.getCasilla().getRow() == row)
+			{
+				tokensInRow.add(token);
+			}
+		}
+		return tokensInRow;
+	}
 
 	public void setTokens(ArrayList<Token> tokens)
 	{
