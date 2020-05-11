@@ -1,6 +1,7 @@
 package modelo.componentes.spells;
 
 import modelo.componentes.tablero.Casilla;
+import modelo.componentes.tokens.Calabaza;
 import modelo.componentes.tokens.Multiplicador;
 import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
@@ -32,7 +33,8 @@ public class FireSpellChain extends SpellChain
 				{
 					if (token instanceof Multiplicador) 
 						multipliers++;
-					addScore += token.die();
+					if (!(token instanceof Calabaza))
+						addScore += token.die();
 				}
 			}
 		}
