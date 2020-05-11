@@ -18,7 +18,6 @@ public class NormalFirstMovement extends Movement
 		{
 			Casilla nextCasilla = token.getCasilla().getBottomCasilla();
 			token.setCasilla(nextCasilla);
-			
 		}
 	}
 

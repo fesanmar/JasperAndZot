@@ -2,7 +2,7 @@ package modelo.componentes.tokens;
 
 import modelo.componentes.Componente;
 import modelo.componentes.movements.Advance;
-import modelo.componentes.movements.InmuneToFlowersAdvnce;
+import modelo.componentes.movements.InmuneToFlowersAdvance;
 import modelo.componentes.tablero.Casilla;
 import modelo.partida.Partida;
 
@@ -16,7 +16,7 @@ public class ZombiArdiente extends Componente implements Token {
 	{
 		super(SIDE, "./images/zombiardiente.jpeg");
 		this.partida = partida;
-		advance = new InmuneToFlowersAdvnce(this);
+		advance = new InmuneToFlowersAdvance(this);
 	}
 	
 	public Casilla getCasilla() 

@@ -8,6 +8,7 @@ public class Flores extends Componente implements Token {
 
 	Casilla casilla;
 	Partida partida;
+	private boolean willBurn;
 	
 	public Flores(Casilla casilla, Partida partida)
 	{
@@ -44,5 +45,21 @@ public class Flores extends Componente implements Token {
 
 	@Override
 	public void casted() {}
+
+	/**
+	 * @return the willBurn
+	 */
+	public boolean willBurn()
+	{
+		return willBurn;
+	}
+
+	/**
+	 * @param willBurn the willBurn to set
+	 */
+	public void setWillBurn(boolean willBurn)
+	{
+		this.willBurn = willBurn;
+	}
 
 }

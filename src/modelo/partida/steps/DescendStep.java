@@ -1,5 +1,8 @@
 package modelo.partida.steps;
 
+import java.util.ArrayList;
+
+import modelo.componentes.tokens.Flores;
 import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
 
@@ -22,6 +25,19 @@ public class DescendStep implements Step, Runnable {
 		{
 			token.move();
 		}
+		// Hacemos arder las flores afectadas por zombis de fuego
+		ArrayList<Token> flowersToBurn = new ArrayList<Token>();
+		for (Token token : partida.getTokens())
+		{
+			if (token instanceof Flores)
+			{
+				if (((Flores) token).willBurn())
+				{
+					flowersToBurn.add(token);
+				}
+			}
+		}
+		partida.getTokens().removeAll(flowersToBurn);
 		partida.repaintHome();
 		partida.setStep(partida.getPlaceStep());
 		partida.display();
