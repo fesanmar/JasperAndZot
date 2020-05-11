@@ -57,6 +57,7 @@ public class Calabaza extends Componente implements Token
 			partida.setScore(partida.getScore() - 10);
 			partida.gameOver();
 		}
+		partida.setScore(partida.getScore() -10);
 		return -10;
 	}
 

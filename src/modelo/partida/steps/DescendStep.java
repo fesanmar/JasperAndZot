@@ -2,6 +2,8 @@ package modelo.partida.steps;
 
 import java.util.ArrayList;
 
+import modelo.componentes.tablero.Tablero;
+import modelo.componentes.tokens.Bomba;
 import modelo.componentes.tokens.Flores;
 import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
@@ -38,6 +40,19 @@ public class DescendStep implements Step, Runnable {
 			}
 		}
 		partida.getTokens().removeAll(flowersToBurn);
+		// Explotan las bombas que quedan frente a calabazas
+		ArrayList<Token> tokensLeft =partida.getTokens(); 
+		for (int i = 0; i < tokensLeft.size(); i++)
+		{
+			if (tokensLeft.get(i) instanceof Bomba)
+			{
+				if (tokensLeft.get(i).getCasilla().getBottomCasilla().hasPumpkin() 
+						|| tokensLeft.get(i).getCasilla().getRow() == Tablero.PUMPKIN_ROW)
+				{
+					tokensLeft.get(i).atack();
+				}				
+			}
+		}
 		partida.repaintHome();
 		partida.setStep(partida.getPlaceStep());
 		partida.display();

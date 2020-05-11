@@ -4,6 +4,7 @@ import modelo.componentes.Componente;
 import modelo.componentes.movements.Advance;
 import modelo.componentes.movements.NormalAdvance;
 import modelo.componentes.tablero.Casilla;
+import modelo.componentes.tablero.Tablero;
 import modelo.partida.Partida;
 
 public class Bomba extends Componente implements Token {

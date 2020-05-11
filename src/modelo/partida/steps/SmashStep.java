@@ -1,5 +1,6 @@
 package modelo.partida.steps;
 
+import modelo.componentes.tokens.Token;
 import modelo.partida.*;
 
 public class SmashStep implements Step {
@@ -11,24 +12,18 @@ public class SmashStep implements Step {
 		this.partida = partida;
 	}
 	
-	public void descend() {
-		// TODO - implement SmashStep.descend
-		throw new UnsupportedOperationException();
-	}
+	public void descend() {}
 
-	public void place(int x, int y) {
-		// TODO - implement SmashStep.place
-		throw new UnsupportedOperationException();
-	}
+	public void place(int x, int y) {}
 
-	public void shoot() {
-		// TODO - implement SmashStep.moveAndShoot
-		throw new UnsupportedOperationException();
-	}
+	public void shoot() {}
 
 	public void smash() 
 	{
-		// TODO: Aquí se implementa el aplasatado
+		for (Token token : partida.getTokens())
+		{
+			// Aquí se implementa el aplastamiento
+		}
 		
 		partida.setStep(partida.getDescendStep());
 		partida.nextTurn();
