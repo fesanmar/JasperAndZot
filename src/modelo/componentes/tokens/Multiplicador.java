@@ -1,6 +1,8 @@
 package modelo.componentes.tokens;
 
 import modelo.componentes.Componente;
+import modelo.componentes.movements.Advance;
+import modelo.componentes.movements.NormalAdvance;
 import modelo.componentes.tablero.Casilla;
 import modelo.partida.Partida;
 
@@ -8,11 +10,13 @@ public class Multiplicador extends Componente implements Token {
 
 	private Partida partida;
 	private Casilla casilla;
+	Advance advance;
 
 	public Multiplicador(Partida partida)
 	{
 		super(SIDE, "./images/pordos.jpeg");
 		this.partida = partida;
+		advance = new NormalAdvance(this);
 	}
 	
 	public Casilla getCasilla() 
@@ -33,7 +37,7 @@ public class Multiplicador extends Componente implements Token {
 
 	public void move() 
 	{
-		partida.moveToken(this);
+		advance.walk();
 	}
 
 	public void atack() {}

@@ -247,6 +247,19 @@ public class CasillaReal extends Elemento implements Casilla {
 		}
 		return false;
 	}
+
+	@Override
+	public boolean hasImpassableToken()
+	{
+		for (Token token : getTokens())
+		{
+			if (!(token instanceof Flores))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 		
 		
 

@@ -123,4 +123,10 @@ public class CasillaNull implements Casilla {
 		return false;
 	}
 
+	@Override
+	public boolean hasImpassableToken()
+	{
+		return true;
+	}
+
 }

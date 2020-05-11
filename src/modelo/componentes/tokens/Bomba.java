@@ -1,6 +1,8 @@
 package modelo.componentes.tokens;
 
 import modelo.componentes.Componente;
+import modelo.componentes.movements.Advance;
+import modelo.componentes.movements.NormalAdvance;
 import modelo.componentes.tablero.Casilla;
 import modelo.partida.Partida;
 
@@ -8,11 +10,14 @@ public class Bomba extends Componente implements Token {
 
 	private Partida partida;
 	private Casilla casilla;
+	private Advance advance;
 
 	public Bomba(Partida partida)
 	{
 		super(SIDE, "./images/bomba.jpeg");
 		this.partida = partida;
+		advance = new NormalAdvance(this);
+		
 	}
 	
 	public Casilla getCasilla() 
@@ -29,7 +34,7 @@ public class Bomba extends Componente implements Token {
 
 	public void move() 
 	{
-		partida.moveToken(this);
+		advance.walk();
 	}
 
 	public void atack() 

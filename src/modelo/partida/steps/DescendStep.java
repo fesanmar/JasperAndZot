@@ -15,6 +15,9 @@ public class DescendStep implements Step, Runnable {
 
 	public void descend() 
 	{
+		partida.getTokens().sort(
+				(t1, t2) -> t2.getCasilla().getNumber() - t1.getCasilla().getNumber() 
+				);
 		for (Token token : partida.getTokens())
 		{
 			token.move();

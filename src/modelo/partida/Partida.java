@@ -394,36 +394,37 @@ public class Partida
 		smashStep.stopThread();
 	}
 	
-	public void moveToken(Token token)
-	{
-		Casilla casilla = token.getCasilla();
-		Casilla nextCasilla = casilla.getBottomCasilla();
-		Casilla secondCasilla = nextCasilla.getBottomCasilla();
-		if (!(nextCasilla instanceof CasillaNull) &&
-				!(secondCasilla instanceof CasillaNull) &&
-				nextCasilla.getRow() != Tablero.JASPER_ROW &&
-				!nextCasilla.hasPumpkin())
-		{
-			if (secondCasilla.getRow() >= Tablero.JASPER_ROW)
-			{
-				token.setCasilla(nextCasilla);
-			}
-			else if (casilla.hasFlowers() || 
-					nextCasilla.hasFlowers() || 
-						secondCasilla.hasFlowers())
-			{
-				token.setCasilla(nextCasilla);
-			}
-			else if (nextCasilla.hasPumpkin()) {}
-			else if (secondCasilla.hasPumpkin())
-			{
-				token.setCasilla(nextCasilla);
-			}
-			else
-			{
-				token.setCasilla(secondCasilla);
-			}
-		}
-	}
+	// TODO: Borrar este método cuando todo funcione con los Movements
+//	public void moveToken(Token token)
+//	{
+//		Casilla casilla = token.getCasilla();
+//		Casilla nextCasilla = casilla.getBottomCasilla();
+//		Casilla secondCasilla = nextCasilla.getBottomCasilla();
+//		if (!(nextCasilla instanceof CasillaNull) &&
+//				!(secondCasilla instanceof CasillaNull) &&
+//				nextCasilla.getRow() != Tablero.JASPER_ROW &&
+//				!nextCasilla.hasToken())
+//		{
+//			if (secondCasilla.getRow() >= Tablero.JASPER_ROW)
+//			{
+//				token.setCasilla(nextCasilla);
+//			}
+//			else if (casilla.hasFlowers() || 
+//					nextCasilla.hasFlowers() || 
+//						secondCasilla.hasFlowers())
+//			{
+//				token.setCasilla(nextCasilla);
+//			}
+//			else if (nextCasilla.hasPumpkin()) {}
+//			else if (secondCasilla.hasPumpkin())
+//			{
+//				token.setCasilla(nextCasilla);
+//			}
+//			else
+//			{
+//				token.setCasilla(secondCasilla);
+//			}
+//		}
+//	}
 
 }
