@@ -19,11 +19,8 @@ public class TokensBag
 		
 	}
 	
-	public Token getToken() throws EmptyBagException
+	public Token getToken()
 	{
-		if (tokensBag.size() == 0)
-			throw new EmptyBagException();
-		
 		int selection = random.nextInt(tokensBag.size());
 		Token draweToken = tokensBag.get(selection);
 		tokensBag.remove(draweToken);

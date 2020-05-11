@@ -1,6 +1,5 @@
 package modelo.partida.steps;
 
-import modelo.componentes.tokens.EmptyBagException;
 import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
 import modelo.partida.assaults.NormalAssault;
@@ -25,10 +24,8 @@ public class PlaceStep implements Step, Runnable
 		Token[] drawedTokens = new Token[partida.getAssault().getNumberOfTokensToDraw()];
 		for (int i = 0; i < drawedTokens.length; i++)
 		{
-			try
-			{
-				drawedTokens[i] = partida.getTokensBag().getToken();
-			} catch (EmptyBagException ebe)
+			drawedTokens[i] = partida.getTokensBag().getToken();
+			if (partida.getTokensBag().isEmpty())
 			{
 				if (partida.getAssault() instanceof NormalAssault)
 				{
