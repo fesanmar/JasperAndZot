@@ -29,6 +29,7 @@ import modelo.partida.steps.PrevStep;
 import modelo.partida.steps.SmashStep;
 import modelo.partida.steps.Step;
 import modelo.partida.steps.VictoryStep;
+import musicandfx.AudioPlayer;
 import vista.Home;
 
 public class Partida
@@ -65,6 +66,9 @@ public class Partida
 	private Assault normalAssault;
 	private Assault aggravatedAssault;
 	private Home vistaHome;
+	
+	// Music
+	AudioPlayer audioPlayer;
 
 	public Partida(String player, Tablero tablero, Home vistaHome)
 	{
@@ -115,6 +119,10 @@ public class Partida
 		// Spells
 		fireSpell = new FireSpell(this);
 		flowersSpell = new FlowersSpell(this);
+		
+		// Hacemos que suene la música
+		audioPlayer = new AudioPlayer("./audio/magicville.wav");
+		audioPlayer.playInfiniteLoop();
 	}
 	
 	public void repaintHome()
@@ -436,6 +444,7 @@ public class Partida
 		placeStep.stopThread();
 		moveShootStep.stopThread();
 		smashStep.stopThread();
+		audioPlayer.stop();
 	}
 	
 	public void saveWinnerMatch()
@@ -466,4 +475,6 @@ public class Partida
 			e.printStackTrace();
 		}
 	}
+	
+
 }
