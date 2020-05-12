@@ -6,9 +6,10 @@ import modelo.componentes.tablero.Tablero;
 import modelo.componentes.tokens.Token;
 import modelo.partida.*;
 
-public class SmashStep implements Step {
+public class SmashStep implements Step, Runnable {
 
 	private Partida partida;
+	private Thread thread;
 
 	public SmashStep(Partida partida)
 	{
@@ -30,6 +31,7 @@ public class SmashStep implements Step {
 		{
 			token.atack();
 		}
+		partida.repaintHome();
 		
 		partida.setStep(partida.getDescendStep());
 		partida.nextTurn();
@@ -42,7 +44,9 @@ public class SmashStep implements Step {
 		
 		partida.getTablero().setMessage("¡Cuidado con tus calabazas!");
 		partida.repaintHome();
-		smash();
+		thread = new Thread(this, "SmashStep" + partida.getTurn());
+		thread.start();
+		// smash();
 	}
 
 	@Override
@@ -53,5 +57,20 @@ public class SmashStep implements Step {
 
 	@Override
 	public void stopThread() {}
+
+	@Override
+	public void run()
+	{
+		try
+		{
+			Thread.sleep(3000);
+			partida.getTablero().setMessage("");
+			partida.repaintMessageArea();
+			smash();
+		} catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}		
+	}
 
 }
