@@ -217,12 +217,15 @@ public class CasillaReal extends Elemento implements Casilla {
 		
 		for (Token token : tokens)
 		{
-			if (token instanceof Calabaza)
+			if (token instanceof Calabaza || token instanceof Flores)
 			{
 				token.die();
 			}
-			// Se descarta, en vez de matarlo, para que no puntúe.
-			tablero.getPartida().discard(token);
+			else
+			{
+				// Se descarta, en vez de matarlo, para que no puntúe.
+				tablero.getPartida().discard(token);				
+			}
 		}
 	}
 	

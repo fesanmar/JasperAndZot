@@ -37,4 +37,9 @@ public class TokensBag
 	{
 		return tokensBag.isEmpty();
 	}
+	
+	public int tokensLeft()
+	{
+		return tokensBag.size();
+	}
 }

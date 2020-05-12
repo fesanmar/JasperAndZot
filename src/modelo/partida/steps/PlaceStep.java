@@ -25,6 +25,7 @@ public class PlaceStep implements Step, Runnable
 		for (int i = 0; i < drawedTokens.length; i++)
 		{
 			drawedTokens[i] = partida.getTokensBag().getToken();
+			System.out.println("Quedan " + partida.getTokensBag().tokensLeft());
 			if (partida.getTokensBag().isEmpty())
 			{
 				if (partida.getAssault() instanceof NormalAssault)
