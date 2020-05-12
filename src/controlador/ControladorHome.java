@@ -11,6 +11,7 @@ import java.awt.event.WindowEvent;
 
 import modelo.partida.Partida;
 import vista.Home;
+import vista.Ranking;
 import modelo.WiningMatches;
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tokens.Token;;
@@ -61,6 +62,7 @@ public class ControladorHome
 				ale -> {
 					WiningMatches wm = new WiningMatches();
 					wm.queryForWiningMatches();
+					new Ranking(this.vistaHome, wm);
 				});
 
 		//////////// Eventos de TextFields ///////////

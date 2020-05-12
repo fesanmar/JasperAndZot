@@ -28,7 +28,7 @@ import modelo.partida.steps.PlaceStep;
 import modelo.partida.steps.PrevStep;
 import modelo.partida.steps.SmashStep;
 import modelo.partida.steps.Step;
-import modelo.partida.steps.VictorySpet;
+import modelo.partida.steps.VictoryStep;
 import vista.Home;
 
 public class Partida
@@ -85,7 +85,7 @@ public class Partida
 		moveShootStep = new MoveShootStep(this);
 		smashStep = new SmashStep(this);
 		gameOverStep = new GameOverStep(this);
-		victoryStep = new VictorySpet(this);
+		victoryStep = new VictoryStep(this);
 
 		// Borramos el mensaje de inicio del tablero
 		tablero.setMessage("");

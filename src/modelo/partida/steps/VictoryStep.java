@@ -2,11 +2,11 @@ package modelo.partida.steps;
 
 import modelo.partida.Partida;
 
-public class VictorySpet implements Step
+public class VictoryStep implements Step
 {
 	private Partida partida;
 
-	public VictorySpet(Partida partida)
+	public VictoryStep(Partida partida)
 	{
 		this.partida = partida;
 	}
