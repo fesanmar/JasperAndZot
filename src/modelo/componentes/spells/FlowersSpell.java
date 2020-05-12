@@ -28,15 +28,16 @@ public class FlowersSpell extends Spell
 		Token[] affectedTokens = getFirstAffectedTokens();
 		for (Token token : affectedTokens)
 		{
-			if (token instanceof Zombi || token instanceof ZombiArdiente)
+			if (token instanceof Bomba)
+			{
+				token.atack();
+				break;
+			}
+			else if (token instanceof Zombi || token instanceof ZombiArdiente)
 			{
 				spellChain.createChain(affectedTokens);
 				spellChain.updateScore();
 				break;
-			}
-			else if (token instanceof Bomba)
-			{
-				token.atack();
 			}
 		}
 		

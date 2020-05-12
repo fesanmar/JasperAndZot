@@ -150,13 +150,14 @@ public class Partida
 	
 	public void discard(Token token)
 	{
-		System.out.println(token + "Will be descarted");
+		// TODO: Borrar estos comentarios
+//		System.out.println(token + "Will be descarted");
 		tokens.remove(token);
 		discardPile.add(token);
-		for (Token tokenDiscard : discardPile)
-		{
-			System.out.println("Token en descarte:" + tokenDiscard);
-		}
+//		for (Token tokenDiscard : discardPile)
+//		{
+//			System.out.println("Token en descarte:" + tokenDiscard);
+//		}
 	}
 	
 	public void removeFromTheGame(Token token)

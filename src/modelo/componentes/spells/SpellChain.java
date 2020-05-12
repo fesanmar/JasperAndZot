@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tokens.Bomba;
+import modelo.componentes.tokens.Calabaza;
 import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
 
@@ -70,6 +71,10 @@ public abstract class SpellChain
 			if (token instanceof Bomba)
 			{
 				token.casted();
+				return false;
+			}
+			else if (token instanceof Calabaza)
+			{
 				return false;
 			}
 			else 

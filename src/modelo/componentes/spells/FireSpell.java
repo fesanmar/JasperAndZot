@@ -23,15 +23,16 @@ public class FireSpell extends Spell
 		Token[] affectedTokens = getFirstAffectedTokens();
 		for (Token token : affectedTokens)
 		{
-			if (token instanceof Flores)
+			if (token instanceof Bomba)
+			{
+				token.atack();
+				break;
+			}
+			else if (token instanceof Flores)
 			{
 				spellChain.createChain(affectedTokens);
 				spellChain.updateScore();
 				break;
-			}
-			else if (token instanceof Bomba)
-			{
-				token.atack();
 			}
 		}
 	}
@@ -48,7 +49,7 @@ public class FireSpell extends Spell
 			if (casilla.getColumn() == jasperColumn 
 					&& casilla.getRow() >= Tablero.FENCE_ROW
 					&& casilla.getRow() < Tablero.JASPER_ROW
-					&& token instanceof Flores)
+					&& (token instanceof Flores || token instanceof Bomba))
 			{
 				casillasAffected.add(casilla);
 			}
