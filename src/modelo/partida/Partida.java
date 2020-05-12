@@ -22,6 +22,7 @@ import modelo.partida.steps.PlaceStep;
 import modelo.partida.steps.PrevStep;
 import modelo.partida.steps.SmashStep;
 import modelo.partida.steps.Step;
+import modelo.partida.steps.VictorySpet;
 import vista.Home;
 
 public class Partida
@@ -51,6 +52,8 @@ public class Partida
 	private Step moveShootStep;
 	private Step smashStep;
 	private Step gameOverStep;
+	private Step victoryStep;
+	
 	// Assaults
 	private Assault assault;
 	private Assault normalAssault;
@@ -76,6 +79,7 @@ public class Partida
 		moveShootStep = new MoveShootStep(this);
 		smashStep = new SmashStep(this);
 		gameOverStep = new GameOverStep(this);
+		victoryStep = new VictorySpet(this);
 
 		// Borramos el mensaje de inicio del tablero
 		tablero.setMessage("");
@@ -324,6 +328,14 @@ public class Partida
 		return gameOverStep;
 	}
 
+	/**
+	 * @return the victoryStep
+	 */
+	public Step getVictoryStep()
+	{
+		return victoryStep;
+	}
+
 	public Assault getAssault()
 	{
 		return assault;
@@ -396,13 +408,6 @@ public class Partida
 	{
 		tablero.removeVolatileComponents(fireSpell);
 		tablero.removeVolatileComponents(flowersSpell);
-	}
-	
-	public void end()
-	{
-		// TODO
-		System.out.println("La partida ha terminado");
-		System.out.println("Tu puntuación es: " + getScore());
 	}
 	
 	public int getPumpkinsLeft()

@@ -29,7 +29,7 @@ public class TokensBag
 	
 	public void refillBag()
 	{
-		tokensBag = partida.getDiscardPile();
+		tokensBag = new ArrayList<Token>(partida.getDiscardPile());
 		partida.emptyDiscardPile();
 	}
 	

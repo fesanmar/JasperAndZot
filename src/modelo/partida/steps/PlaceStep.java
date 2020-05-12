@@ -9,10 +9,12 @@ public class PlaceStep implements Step, Runnable
 
 	private Partida partida;
 	private Thread thread;
+	private boolean isTheEnd;
 
 	public PlaceStep(Partida partida)
 	{
 		this.partida = partida;
+		this.isTheEnd = false;
 	}
 
 	public void descend()
@@ -34,14 +36,21 @@ public class PlaceStep implements Step, Runnable
 					partida.setAssault(partida.getAggravatedAssault());
 				} else
 				{
-					partida.end();
+					isTheEnd = true;
 				}
 			}
 		}
+		if (isTheEnd)
+		{
+			partida.setStep(partida.getVictoryStep());
+		}
+		else
+		{
+			partida.getAssault().placeTokens(drawedTokens);
+			partida.repaintHome();
+			partida.setStep(partida.getMoveShootStep());			
+		}
 
-		partida.getAssault().placeTokens(drawedTokens);
-		partida.repaintHome();
-		partida.setStep(partida.getMoveShootStep());
 		partida.display();
 	}
 
