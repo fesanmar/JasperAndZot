@@ -64,7 +64,14 @@ public class DescendStep implements Step, Runnable {
 			}
 		}
 		partida.repaintHome();
-		partida.setStep(partida.getPlaceStep());
+		if (partida.getPumpkinsLeft() != 0)
+		{
+			partida.setStep(partida.getPlaceStep());			
+		}
+		else
+		{
+			partida.setStep(partida.getGameOverStep());
+		}
 		partida.display();
 	}
 

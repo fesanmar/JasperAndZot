@@ -41,7 +41,6 @@ public class Jasper extends Componente implements Token
 
 	public int die() 
 	{
-		partida.gameOver();
 		return 0;
 	}
 

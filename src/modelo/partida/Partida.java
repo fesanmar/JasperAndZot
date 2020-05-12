@@ -6,6 +6,7 @@ import modelo.componentes.spells.FireSpell;
 import modelo.componentes.spells.FlowersSpell;
 import modelo.componentes.tablero.Tablero;
 import modelo.componentes.tokens.Bomba;
+import modelo.componentes.tokens.Calabaza;
 import modelo.componentes.tokens.Multiplicador;
 import modelo.componentes.tokens.Token;
 import modelo.componentes.tokens.TokensBag;
@@ -15,6 +16,7 @@ import modelo.partida.assaults.AggravatedAssault;
 import modelo.partida.assaults.Assault;
 import modelo.partida.assaults.NormalAssault;
 import modelo.partida.steps.DescendStep;
+import modelo.partida.steps.GameOverStep;
 import modelo.partida.steps.MoveShootStep;
 import modelo.partida.steps.PlaceStep;
 import modelo.partida.steps.PrevStep;
@@ -48,6 +50,7 @@ public class Partida
 	private Step placeStep;
 	private Step moveShootStep;
 	private Step smashStep;
+	private Step gameOverStep;
 	// Assaults
 	private Assault assault;
 	private Assault normalAssault;
@@ -72,6 +75,7 @@ public class Partida
 		placeStep = new PlaceStep(this);
 		moveShootStep = new MoveShootStep(this);
 		smashStep = new SmashStep(this);
+		gameOverStep = new GameOverStep(this);
 
 		// Borramos el mensaje de inicio del tablero
 		tablero.setMessage("");
@@ -150,14 +154,8 @@ public class Partida
 	
 	public void discard(Token token)
 	{
-		// TODO: Borrar estos comentarios
-//		System.out.println(token + "Will be descarted");
 		tokens.remove(token);
 		discardPile.add(token);
-//		for (Token tokenDiscard : discardPile)
-//		{
-//			System.out.println("Token en descarte:" + tokenDiscard);
-//		}
 	}
 	
 	public void removeFromTheGame(Token token)
@@ -318,6 +316,14 @@ public class Partida
 		return this.smashStep;
 	}
 
+	/**
+	 * @return the gameOverStep
+	 */
+	public Step getGameOverStep()
+	{
+		return gameOverStep;
+	}
+
 	public Assault getAssault()
 	{
 		return assault;
@@ -399,9 +405,17 @@ public class Partida
 		System.out.println("Tu puntuación es: " + getScore());
 	}
 	
-	public void gameOver() 
+	public int getPumpkinsLeft()
 	{
-		// TODO
+		int numberOfPumkins = 0;
+		for (Token tokenLeft : getTokens())
+		{
+			if (tokenLeft instanceof Calabaza)
+			{
+				numberOfPumkins++;
+			}
+		}
+		return numberOfPumkins;
 	}
 	
 	public void quitPartida()

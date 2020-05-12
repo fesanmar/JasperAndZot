@@ -41,11 +41,17 @@ public class SmashStep implements Step, Runnable {
 			token.atack();
 		}
 		
-		
 		partida.repaintHome();
 		
-		partida.setStep(partida.getDescendStep());
-		partida.nextTurn();
+		if (partida.getPumpkinsLeft() != 0)
+		{
+			partida.setStep(partida.getDescendStep());
+			partida.nextTurn();			
+		}
+		else
+		{
+			partida.setStep(partida.getGameOverStep());
+		}
 		partida.display();
 	}
 

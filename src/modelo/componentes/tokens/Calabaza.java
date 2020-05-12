@@ -43,20 +43,6 @@ public class Calabaza extends Componente implements Token
 		setCasilla(new CasillaNull());
 		partida.delToken(this);
 		partida.setAssault(partida.getAggravatedAssault());
-		
-		int numberOfPumkins = 0;
-		for (Token token : partida.getTokens())
-		{
-			if (token instanceof Calabaza)
-			{
-				numberOfPumkins++;
-			}
-		}
-		if (numberOfPumkins == 0)
-		{
-			partida.setScore(partida.getScore() - 10);
-			partida.gameOver();
-		}
 		partida.setScore(partida.getScore() -10);
 		return -10;
 	}
