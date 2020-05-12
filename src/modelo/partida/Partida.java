@@ -1,7 +1,13 @@
 package modelo.partida;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 
+import modelo.Conector;
 import modelo.componentes.spells.FireSpell;
 import modelo.componentes.spells.FlowersSpell;
 import modelo.componentes.tablero.Tablero;
@@ -430,5 +436,34 @@ public class Partida
 		placeStep.stopThread();
 		moveShootStep.stopThread();
 		smashStep.stopThread();
+	}
+	
+	public void saveWinnerMatch()
+	{
+		Conector conector = new Conector();
+		Connection conn = conector.getConexion();
+		String sql = "INSERT INTO matches (player, gameDateTime, turns, score) "
+				+ "VALUES (?,?,?,?)";
+		try
+		{
+			PreparedStatement pStatement = conn.prepareStatement(sql);
+			Calendar date = Calendar.getInstance();
+			Timestamp timestamp = new Timestamp(date.getTimeInMillis());
+			pStatement.setString(1, getPlayer());
+			pStatement.setTimestamp(2, timestamp);
+			pStatement.setInt(3, getTurn());
+			pStatement.setInt(4, getScore());
+			
+			// String consulta = pStatement.toString();
+			pStatement.executeUpdate();
+			
+			pStatement.close();
+			conector.close();
+			
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
 	}
 }

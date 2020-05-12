@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import modelo.partida.Partida;
+import modelo.partida.assaults.AggravatedAssault;
 
 public class TokensBag
 {
@@ -21,6 +22,11 @@ public class TokensBag
 	
 	public Token getToken()
 	{
+		if (partida.getAssault() instanceof AggravatedAssault &&
+				tokensBag.size() == 0)
+		{
+			return null;
+		}
 		int selection = random.nextInt(tokensBag.size());
 		Token draweToken = tokensBag.get(selection);
 		tokensBag.remove(draweToken);

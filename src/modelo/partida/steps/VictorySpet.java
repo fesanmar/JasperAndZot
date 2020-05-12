@@ -16,6 +16,7 @@ public class VictorySpet implements Step
 	{
 		this.partida.getTablero().setMessage("¡Enhorabuena! ¡Has ganado!");
 		this.partida.repaintMessageArea();
+		partida.saveWinnerMatch();
 	}
 
 	@Override
