@@ -11,6 +11,7 @@ import java.awt.event.WindowEvent;
 
 import modelo.partida.Partida;
 import vista.Home;
+import modelo.WiningMatches;
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tokens.Token;;
 
@@ -56,6 +57,11 @@ public class ControladorHome
 		{
 			startGame();
 		});
+		this.vistaHome.miRanking10.addActionListener(
+				ale -> {
+					WiningMatches wm = new WiningMatches();
+					wm.queryForWiningMatches();
+				});
 
 		//////////// Eventos de TextFields ///////////
 		this.vistaHome.txtDlgJugador.addKeyListener(new KeyAdapter()
