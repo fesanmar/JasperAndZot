@@ -43,8 +43,18 @@ public class ZombiArdiente extends Componente implements Token {
 	public void atack() 
 	{
 		Casilla nextCasilla = getCasilla().getBottomCasilla();
+		Casilla leftCasilla = getCasilla().getLeftCasilla();
+		Casilla rightCasilla = getCasilla().getRightCasilla();
 		Token token;
 		if ((token = nextCasilla.getPumpkin()) != null)
+		{
+			token.die();
+		}
+		else if((token = rightCasilla.getPumpkin()) != null)
+		{
+			token.die();
+		}
+		else if((token = leftCasilla.getPumpkin()) != null)
 		{
 			token.die();
 		}

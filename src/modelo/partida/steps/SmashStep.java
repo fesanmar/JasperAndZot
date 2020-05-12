@@ -31,6 +31,17 @@ public class SmashStep implements Step, Runnable {
 		{
 			token.atack();
 		}
+		
+		// De derecha a izquierda (de mayor orden a menor, atacan los de
+		// la fila de abajo
+		ArrayList<Token> tokensInPumpinsRow =
+				partida.getToken(Tablero.PUMPKIN_ROW);
+		for (Token token : tokensInPumpinsRow)
+		{
+			token.atack();
+		}
+		
+		
 		partida.repaintHome();
 		
 		partida.setStep(partida.getDescendStep());
@@ -46,7 +57,6 @@ public class SmashStep implements Step, Runnable {
 		partida.repaintHome();
 		thread = new Thread(this, "SmashStep" + partida.getTurn());
 		thread.start();
-		// smash();
 	}
 
 	@Override
