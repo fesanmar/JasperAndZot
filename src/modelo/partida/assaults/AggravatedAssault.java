@@ -59,5 +59,4 @@ public class AggravatedAssault extends Assault
 			return null;
 		}
 	}
-
 }

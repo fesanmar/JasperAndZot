@@ -5,6 +5,7 @@ import modelo.componentes.movements.Advance;
 import modelo.componentes.movements.NormalAdvance;
 import modelo.componentes.tablero.Casilla;
 import modelo.partida.Partida;
+import musicandfx.AudioPlayer;
 
 public class Bomba extends Componente implements Token {
 
@@ -39,6 +40,8 @@ public class Bomba extends Componente implements Token {
 
 	public void atack() 
 	{
+		AudioPlayer audioPlayer = new AudioPlayer("./audio/bomb.wav");
+		audioPlayer.play(0);
 		// Explota su casilla con todos los tokens
 		Casilla casilla = this.getCasilla();
 		casilla.explote();

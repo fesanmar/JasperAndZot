@@ -68,7 +68,7 @@ public class Partida
 	private Home vistaHome;
 	
 	// Music
-	AudioPlayer audioPlayer;
+	private AudioPlayer audioPlayer;
 
 	public Partida(String player, Tablero tablero, Home vistaHome)
 	{
@@ -412,6 +412,11 @@ public class Partida
 		}
 	}
 	
+	public AudioPlayer getAudioPlayer()
+	{
+		return audioPlayer;
+	}
+
 	public void addSpellsToGame()
 	{
 		tablero.addVolatileComponents(fireSpell);

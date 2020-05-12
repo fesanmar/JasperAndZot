@@ -3,6 +3,7 @@ package modelo.componentes.tokens;
 import modelo.componentes.Componente;
 import modelo.componentes.tablero.Casilla;
 import modelo.partida.Partida;
+import musicandfx.AudioPlayer;
 
 public class Jasper extends Componente implements Token 
 {
@@ -27,6 +28,8 @@ public class Jasper extends Componente implements Token
 	 */
 	public void setCasilla(Casilla casilla) 
 	{
+		AudioPlayer audioPlayer = new AudioPlayer("./audio/placeJasper.wav");
+		audioPlayer.play(0);
 		setX(casilla.getX());
 		setY(casilla.getY());
 		this.casilla = casilla;

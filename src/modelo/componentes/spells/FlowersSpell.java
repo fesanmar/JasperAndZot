@@ -11,6 +11,7 @@ import modelo.componentes.tokens.Token;
 import modelo.componentes.tokens.Zombi;
 import modelo.componentes.tokens.ZombiArdiente;
 import modelo.partida.Partida;
+import musicandfx.AudioPlayer;
 
 public class FlowersSpell extends Spell
 {
@@ -25,6 +26,8 @@ public class FlowersSpell extends Spell
 	@Override
 	public void cast()
 	{
+		AudioPlayer audioPlayer = new AudioPlayer("./audio/qubodupGrowthSpell03.wav");
+		audioPlayer.play(0);
 		Token[] affectedTokens = getFirstAffectedTokens();
 		for (Token token : affectedTokens)
 		{

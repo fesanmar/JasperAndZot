@@ -4,6 +4,7 @@ import modelo.componentes.Componente;
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tablero.CasillaNull;
 import modelo.partida.Partida;
+import musicandfx.AudioPlayer;
 
 public class Calabaza extends Componente implements Token
 {
@@ -40,6 +41,8 @@ public class Calabaza extends Componente implements Token
 	@Override
 	public int die()
 	{
+		AudioPlayer audioPlayer = new AudioPlayer("./audio/smahedPumkin.wav");
+		audioPlayer.play(0);
 		setCasilla(new CasillaNull());
 		partida.delToken(this);
 		partida.setAssault(partida.getAggravatedAssault());

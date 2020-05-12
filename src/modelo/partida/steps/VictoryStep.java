@@ -1,6 +1,7 @@
 package modelo.partida.steps;
 
 import modelo.partida.Partida;
+import musicandfx.AudioPlayer;
 
 public class VictoryStep implements Step
 {
@@ -14,6 +15,9 @@ public class VictoryStep implements Step
 	@Override
 	public void display()
 	{
+		this.partida.getAudioPlayer().stop();
+		AudioPlayer audioPlayer = new AudioPlayer("./audio/victorySound.wav");
+		audioPlayer.play(0);
 		this.partida.getTablero().setMessage("¡Enhorabuena! ¡Has ganado!");
 		this.partida.repaintMessageArea();
 		partida.saveWinnerMatch();

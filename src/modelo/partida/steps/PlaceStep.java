@@ -3,6 +3,7 @@ package modelo.partida.steps;
 import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
 import modelo.partida.assaults.NormalAssault;
+import musicandfx.AudioPlayer;
 
 public class PlaceStep implements Step, Runnable
 {
@@ -75,6 +76,8 @@ public class PlaceStep implements Step, Runnable
 	{
 		partida.getTablero().setMessage("Lanzando los dados");
 		partida.repaintMessageArea();
+		AudioPlayer audioPlayer = new AudioPlayer("./audio/dice-29.wav");
+		audioPlayer.play(0);
 		thread = new Thread(this, "PlaceStep thread" + partida.getTurn());
 		thread.start();
 		

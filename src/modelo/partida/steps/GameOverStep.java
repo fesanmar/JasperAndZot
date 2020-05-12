@@ -1,6 +1,7 @@
 package modelo.partida.steps;
 
 import modelo.partida.Partida;
+import musicandfx.AudioPlayer;
 
 public class GameOverStep implements Step
 {
@@ -14,6 +15,9 @@ public class GameOverStep implements Step
 	@Override
 	public void display()
 	{
+		this.partida.getAudioPlayer().stop();
+		AudioPlayer audioPlayer = new AudioPlayer("./audio/game_over_bad_chest.wav");
+		audioPlayer.play(0);
 		this.partida.getTablero().setMessage("¡Has perdido!");
 		this.partida.repaintMessageArea();
 	}

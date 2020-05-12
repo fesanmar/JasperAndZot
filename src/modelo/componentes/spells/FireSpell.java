@@ -8,18 +8,23 @@ import modelo.componentes.tokens.Bomba;
 import modelo.componentes.tokens.Flores;
 import modelo.componentes.tokens.Token;
 import modelo.partida.Partida;
+import musicandfx.AudioPlayer;
 
 public class FireSpell extends Spell
 {
+	
 	public FireSpell(Partida partida)
 	{
 		super(255, 910, "./images/fire.jpeg", partida);
 		spellChain = new FireSpellChain(partida);
+		
 	}
 
 	@Override
 	public void cast()
 	{
+		AudioPlayer audioPlayer = new AudioPlayer("./audio/Fire.wav");
+		audioPlayer.play(0);
 		Token[] affectedTokens = getFirstAffectedTokens();
 		for (Token token : affectedTokens)
 		{

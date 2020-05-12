@@ -57,6 +57,24 @@ public class AudioPlayer
 		}
 	}
 	
+	public void play(int loops)
+	{
+		try
+		{
+			ol.open(ais);
+			ol.loop(0);
+
+		} catch (LineUnavailableException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public void stop()
 	{
 		ol.close();
