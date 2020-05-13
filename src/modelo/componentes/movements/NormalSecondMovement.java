@@ -1,7 +1,6 @@
 package modelo.componentes.movements;
 
 import modelo.componentes.tablero.Casilla;
-import modelo.componentes.tokens.Flores;
 import modelo.componentes.tokens.Token;
 
 public class NormalSecondMovement extends Movement
@@ -21,9 +20,9 @@ public class NormalSecondMovement extends Movement
 			Casilla prevCasilla = actualCasilla.getAboveCasilla();
 			Casilla nextCasilla = actualCasilla.getBottomCasilla();
 			
-			if (hasUnburnedFlowers(actualCasilla) ||
-					hasUnburnedFlowers(nextCasilla) ||
-					hasUnburnedFlowers(prevCasilla))
+			if (actualCasilla.hasFlowers() ||
+					nextCasilla.hasFlowers() ||
+					prevCasilla.hasFlowers())
 			{
 				token.setCasilla(actualCasilla);
 			}
@@ -32,29 +31,6 @@ public class NormalSecondMovement extends Movement
 				token.setCasilla(nextCasilla);
 			}
 		}
-	}
-	
-	private boolean hasUnburnedFlowers(Casilla casilla)
-	{
-		// Devuelve false si alguno de los tokens que contiene
-		// la casilla es una flor que va a arder.
-		if (casilla.hasFlowers())
-		{
-			Token[] casillaTokens = casilla.getTokens();
-			for (Token possibleFlower : casillaTokens)
-			{
-				if (possibleFlower instanceof Flores)
-				{
-					if (((Flores) possibleFlower).willBurn())
-					{
-						return false;
-					}
-				}
-			}
-			return true;
-			
-		}
-		return false;
 	}
 
 }
