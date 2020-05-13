@@ -4,6 +4,7 @@ import modelo.componentes.Componente;
 import modelo.componentes.tablero.Casilla;
 import modelo.componentes.tablero.CasillaNull;
 import modelo.partida.Partida;
+import modelo.partida.assaults.NormalAssault;
 import musicandfx.AudioPlayer;
 
 public class Calabaza extends Componente implements Token
@@ -45,7 +46,10 @@ public class Calabaza extends Componente implements Token
 		audioPlayer.play(0);
 		setCasilla(new CasillaNull());
 		partida.delToken(this);
-		partida.setAssault(partida.getAggravatedAssault());
+		if (partida.getAssault() instanceof NormalAssault)
+		{
+			partida.setAssault(partida.getAggravatedAssault());			
+		}
 		partida.setScore(partida.getScore() -10);
 		return -10;
 	}

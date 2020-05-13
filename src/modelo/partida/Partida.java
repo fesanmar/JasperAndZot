@@ -361,6 +361,11 @@ public class Partida
 	public void setAssault(Assault assault)
 	{
 		this.assault = assault;
+		if (getAssault() instanceof AggravatedAssault)
+		{
+			AudioPlayer audioPlayer = new AudioPlayer("./audio/Laugh_Evil_00.wav");
+			audioPlayer.play(0);
+		}
 	}
 
 	public Assault getNormalAssault()
