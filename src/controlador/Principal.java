@@ -1,5 +1,10 @@
 package controlador;
-
+/** Juego Jasper and Zot en castellano para escritorio
+ * @author Felipe Santa´Cruz
+ * @author https://github.com/fesanmar/
+ * @version 1.0
+ * @since 1.0
+*/
 import java.util.TimeZone;
 
 import modelo.componentes.tablero.Tablero;

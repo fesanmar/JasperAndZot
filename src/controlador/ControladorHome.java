@@ -1,6 +1,7 @@
 package controlador;
 
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Point;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -8,6 +9,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import modelo.partida.Partida;
 import vista.Home;
@@ -49,6 +53,31 @@ public class ControladorHome
 		/////////// Eventos del menú ///////////////
 		this.vistaHome.miNuevoJuego.addActionListener(ale -> this.vistaHome.dlgJugador.setVisible(true));
 		this.vistaHome.miSalir.addActionListener(ae -> this.vistaHome.dlgSalir.setVisible(true));
+		this.vistaHome.miManual.addActionListener(
+				(ale) -> {
+					try
+					{
+						Runtime.getRuntime().exec("hh.exe Ayuda_Jasper_and_Zot.chm");
+					} catch (IOException e1)
+					{
+						e1.printStackTrace();
+					}
+				});
+		this.vistaHome.miCreditos.addActionListener(
+				(ale) -> {
+					if (Desktop.isDesktopSupported() &&
+							Desktop.getDesktop().isSupported(Desktop.Action.BROWSE))
+					{
+						try
+						{
+							Desktop.getDesktop().browse(new URI("https://github.com/fesanmar/JasperAndZot/blob/master/credits.md"));
+						} catch (IOException | URISyntaxException e1)
+						{
+							e1.printStackTrace();
+						}
+					}
+				}
+				);
 
 		/////////// Eventos de botones //////////////
 		// Botones Dialog SALIR
