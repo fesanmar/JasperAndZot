@@ -43,7 +43,7 @@ public class FireSpellChain extends SpellChain
 		int lengthChain = chainOfCasillas.size();
 		if (lengthChain >= 5) addScore += 5;
 		if (lengthChain >= 10) addScore += 10;
-		if (multipliers > 0) addScore *= multipliers;
+		if (multipliers > 0) addScore *= (multipliers * 2);
 		partida.setScore(partida.getScore() + addScore);
 		chainOfCasillas.clear();
 	}
