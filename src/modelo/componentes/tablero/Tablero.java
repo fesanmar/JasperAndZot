@@ -29,7 +29,7 @@ public class Tablero extends Componente {
 	{
 		super(0, 40, 485, 972, PATH_TABLERO);
 		// El mensaje de inicio muestra que se inicie partida
-		message = "Comineza una nueva partida";
+		message = "Comienza una nueva partida";
 		
 		// Inicializamos las 66 casillas que tiene el tablero
 		casillas = new CasillaReal[ROWS][COLUMNS];

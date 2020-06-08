@@ -84,7 +84,7 @@ public class DescendStep implements Step, Runnable {
 	{
 		if (partida.getTurn() > 1)
 		{
-			partida.getTablero().setMessage("Comineza el descenso");
+			partida.getTablero().setMessage("Comienza el descenso");
 			partida.repaintMessageArea();
 			thread = new Thread(this, "Descend thread" + partida.getTurn());
 			thread.start();
