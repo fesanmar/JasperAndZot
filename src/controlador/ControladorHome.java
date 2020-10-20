@@ -57,7 +57,7 @@ public class ControladorHome
 				(ale) -> {
 					try
 					{
-						Runtime.getRuntime().exec("hh.exe Ayuda_Jasper_and_Zot.chm");
+						Runtime.getRuntime().exec("hh.exe ./help/Ayuda_Jasper_and_Zot.chm");
 					} catch (IOException e1)
 					{
 						e1.printStackTrace();
