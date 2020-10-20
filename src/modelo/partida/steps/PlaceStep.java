@@ -76,7 +76,7 @@ public class PlaceStep implements Step, Runnable
 	{
 		partida.getTablero().setMessage("Lanzando los dados");
 		partida.repaintMessageArea();
-		AudioPlayer audioPlayer = new AudioPlayer("./audio/dice-29.wav");
+		AudioPlayer audioPlayer = new AudioPlayer("dice-29.wav");
 		audioPlayer.play(0);
 		thread = new Thread(this, "PlaceStep thread" + partida.getTurn());
 		thread.start();

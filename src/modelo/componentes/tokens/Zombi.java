@@ -14,7 +14,7 @@ public class Zombi extends Componente implements Token
 
 	public Zombi(Partida partida)
 	{
-		super(SIDE, "./images/zombi.jpeg");
+		super(SIDE, "zombi.jpeg");
 		this.partida = partida;
 		advance = new NormalAdvance(this);
 	}

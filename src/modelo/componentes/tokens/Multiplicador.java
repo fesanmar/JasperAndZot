@@ -14,7 +14,7 @@ public class Multiplicador extends Componente implements Token {
 
 	public Multiplicador(Partida partida)
 	{
-		super(SIDE, "./images/pordos.jpeg");
+		super(SIDE, "pordos.jpeg");
 		this.partida = partida;
 		advance = new NormalAdvance(this);
 	}

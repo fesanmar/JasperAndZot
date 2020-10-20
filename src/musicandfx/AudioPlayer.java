@@ -1,6 +1,5 @@
 package musicandfx;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.sound.sampled.AudioFileFormat;
@@ -19,11 +18,10 @@ public class AudioPlayer
 	
 	public AudioPlayer(String file)
 	{
-		File audioFile = new File(file);
 		try
 		{
-			AudioFileFormat aff = AudioSystem.getAudioFileFormat(audioFile);
-			ais = AudioSystem.getAudioInputStream(audioFile);
+			AudioFileFormat aff = AudioSystem.getAudioFileFormat(getClass().getClassLoader().getResource(file));
+			ais = AudioSystem.getAudioInputStream(getClass().getClassLoader().getResource(file));
 			AudioFormat af = aff.getFormat();
 			DataLine.Info info = new DataLine.Info(
 					Clip.class, ais.getFormat(),

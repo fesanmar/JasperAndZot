@@ -12,7 +12,7 @@ public class Flores extends Componente implements Token {
 	
 	public Flores(Casilla casilla, Partida partida)
 	{
-		super(SIDE, "./images/flores.jpeg");
+		super(SIDE, "flores.jpeg");
 		setCasilla(casilla);
 		this.partida = partida;
 	}

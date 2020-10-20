@@ -17,7 +17,6 @@ import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;
 import java.awt.TextField;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -70,10 +69,9 @@ public class Home extends Frame
 	{
 		this.tablero = tablero;
 		// Cargamos el icono
-		File pathIcono = new File("./images/jasper.jpeg");
 		try
 		{
-			imgIcono = ImageIO.read(pathIcono);
+			imgIcono = ImageIO.read(getClass().getClassLoader().getResource("jasper.jpeg"));
 		} catch (IOException e)
 		{
 			e.printStackTrace();

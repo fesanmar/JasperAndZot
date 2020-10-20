@@ -14,7 +14,7 @@ public class ZombiArdiente extends Componente implements Token {
 	
 	public ZombiArdiente(Partida partida)
 	{
-		super(SIDE, "./images/zombiardiente.jpeg");
+		super(SIDE, "zombiardiente.jpeg");
 		this.partida = partida;
 		advance = new InmuneToFlowersAdvance(this);
 	}

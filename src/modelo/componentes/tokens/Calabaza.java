@@ -14,7 +14,7 @@ public class Calabaza extends Componente implements Token
 	
 	public Calabaza(Casilla casilla, Partida partida)
 	{
-		super(SIDE, "./images/calabaza.jpeg");
+		super(SIDE, "calabaza.jpeg");
 		this.partida = partida;
 		setCasilla(casilla);
 	}
@@ -42,7 +42,7 @@ public class Calabaza extends Componente implements Token
 	@Override
 	public int die()
 	{
-		AudioPlayer audioPlayer = new AudioPlayer("./audio/smahedPumkin.wav");
+		AudioPlayer audioPlayer = new AudioPlayer("smahedPumkin.wav");
 		audioPlayer.play(0);
 		setCasilla(new CasillaNull());
 		partida.delToken(this);

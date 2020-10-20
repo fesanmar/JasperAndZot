@@ -13,12 +13,12 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import modelo.partida.Partida;
-import vista.Home;
-import vista.Ranking;
 import modelo.WiningMatches;
 import modelo.componentes.tablero.Casilla;
-import modelo.componentes.tokens.Token;;
+import modelo.componentes.tokens.Token;
+import modelo.partida.Partida;
+import vista.Home;
+import vista.Ranking;;
 
 public class ControladorHome
 {

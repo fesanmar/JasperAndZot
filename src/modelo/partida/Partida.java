@@ -121,7 +121,7 @@ public class Partida
 		flowersSpell = new FlowersSpell(this);
 		
 		// Hacemos que suene la música
-		audioPlayer = new AudioPlayer("./audio/magicville.wav");
+		audioPlayer = new AudioPlayer("magicville.wav");
 		audioPlayer.playInfiniteLoop();
 	}
 	
@@ -363,7 +363,7 @@ public class Partida
 		this.assault = assault;
 		if (getAssault() instanceof AggravatedAssault)
 		{
-			AudioPlayer audioPlayer = new AudioPlayer("./audio/Laugh_Evil_00.wav");
+			AudioPlayer audioPlayer = new AudioPlayer("Laugh_Evil_00.wav");
 			audioPlayer.play(0);
 		}
 	}

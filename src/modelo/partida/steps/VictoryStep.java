@@ -16,7 +16,7 @@ public class VictoryStep implements Step
 	public void display()
 	{
 		this.partida.getAudioPlayer().stop();
-		AudioPlayer audioPlayer = new AudioPlayer("./audio/victorySound.wav");
+		AudioPlayer audioPlayer = new AudioPlayer("victorySound.wav");
 		audioPlayer.play(0);
 		this.partida.getTablero().setMessage("¡Enhorabuena! ¡Has ganado!");
 		this.partida.repaintMessageArea();

@@ -1,8 +1,6 @@
 package modelo.componentes;
 
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
@@ -22,7 +20,7 @@ public class Componente extends Elemento {
 		try
 		{
 			this.image = ImageIO.read(getClass().getClassLoader().getResource(file));
-		} catch (IOException e)
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
@@ -31,11 +29,10 @@ public class Componente extends Elemento {
 	public Componente(int x, int y, int side, String file)
 	{
 		super(x, y, side);
-		File pathImage = new File(file);
 		try
 		{
-			this.image = ImageIO.read(pathImage);
-		} catch (IOException e)
+			this.image = ImageIO.read(getClass().getClassLoader().getResource(file));
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
@@ -44,11 +41,10 @@ public class Componente extends Elemento {
 	public Componente(int side, String file)
 	{
 		super(0, 0, side);
-		File pathImage = new File(file);
 		try
 		{
-			this.image = ImageIO.read(pathImage);
-		} catch (IOException e)
+			this.image = ImageIO.read(getClass().getClassLoader().getResource(file));
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}

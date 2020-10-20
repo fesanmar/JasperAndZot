@@ -18,7 +18,7 @@ public class FlowersSpell extends Spell
 	
 	public FlowersSpell(Partida partida)
 	{
-		super(185, 910, "./images/earth.jpeg", partida);
+		super(185, 910, "earth.jpeg", partida);
 		spellChain = new FlowerSpellChain(partida);
 		
 	}
@@ -26,7 +26,7 @@ public class FlowersSpell extends Spell
 	@Override
 	public void cast()
 	{
-		AudioPlayer audioPlayer = new AudioPlayer("./audio/qubodupGrowthSpell03.wav");
+		AudioPlayer audioPlayer = new AudioPlayer("qubodupGrowthSpell03.wav");
 		audioPlayer.play(0);
 		Token[] affectedTokens = getFirstAffectedTokens();
 		for (Token token : affectedTokens)

@@ -15,7 +15,7 @@ public class FireSpell extends Spell
 	
 	public FireSpell(Partida partida)
 	{
-		super(255, 910, "./images/fire.jpeg", partida);
+		super(255, 910, "fire.jpeg", partida);
 		spellChain = new FireSpellChain(partida);
 		
 	}
@@ -23,7 +23,7 @@ public class FireSpell extends Spell
 	@Override
 	public void cast()
 	{
-		AudioPlayer audioPlayer = new AudioPlayer("./audio/Fire.wav");
+		AudioPlayer audioPlayer = new AudioPlayer("Fire.wav");
 		audioPlayer.play(0);
 		Token[] affectedTokens = getFirstAffectedTokens();
 		for (Token token : affectedTokens)

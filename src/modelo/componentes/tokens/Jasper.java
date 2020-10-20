@@ -12,7 +12,7 @@ public class Jasper extends Componente implements Token
 	
 	public Jasper(Casilla casilla, Partida partida)
 	{
-		super(casilla.getX(), casilla.getY(), SIDE, "./images/jasper.jpeg");
+		super(casilla.getX(), casilla.getY(), SIDE, "jasper.jpeg");
 		this.casilla = casilla;
 		this.partida = partida;
 	}
@@ -28,7 +28,7 @@ public class Jasper extends Componente implements Token
 	 */
 	public void setCasilla(Casilla casilla) 
 	{
-		AudioPlayer audioPlayer = new AudioPlayer("./audio/placeJasper.wav");
+		AudioPlayer audioPlayer = new AudioPlayer("placeJasper.wav");
 		audioPlayer.play(0);
 		setX(casilla.getX());
 		setY(casilla.getY());

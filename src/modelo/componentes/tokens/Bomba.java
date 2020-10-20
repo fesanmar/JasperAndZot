@@ -15,7 +15,7 @@ public class Bomba extends Componente implements Token {
 
 	public Bomba(Partida partida)
 	{
-		super(SIDE, "./images/bomba.jpeg");
+		super(SIDE, "bomba.jpeg");
 		this.partida = partida;
 		advance = new NormalAdvance(this);
 		
@@ -40,7 +40,7 @@ public class Bomba extends Componente implements Token {
 
 	public void atack() 
 	{
-		AudioPlayer audioPlayer = new AudioPlayer("./audio/bomb.wav");
+		AudioPlayer audioPlayer = new AudioPlayer("bomb.wav");
 		audioPlayer.play(0);
 		// Explota su casilla con todos los tokens
 		Casilla casilla = this.getCasilla();
