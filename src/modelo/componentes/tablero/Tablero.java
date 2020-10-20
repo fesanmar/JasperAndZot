@@ -9,7 +9,7 @@ import modelo.partida.Partida;
 
 public class Tablero extends Componente {
 
-	private final static String PATH_TABLERO = "./images/tablero.jpg";
+	private final static String PATH_TABLERO = "tablero.jpg";
 	public final static int ROWS = 11;
 	public final static int COLUMNS = 6;
 	private final static int FIRST_X = 61;

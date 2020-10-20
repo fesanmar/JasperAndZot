@@ -19,10 +19,9 @@ public class Componente extends Elemento {
 	public Componente(int x, int y, int width, int height, String file)
 	{
 		super(x, y, width, height);
-		File pathImage = new File(file);
 		try
 		{
-			this.image = ImageIO.read(pathImage);
+			this.image = ImageIO.read(getClass().getClassLoader().getResource(file));
 		} catch (IOException e)
 		{
 			e.printStackTrace();
